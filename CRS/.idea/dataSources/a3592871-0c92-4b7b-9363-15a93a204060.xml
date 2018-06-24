@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="@localhost">
+  <database-model serializer="dbm" rdbms="ORACLE" format-version="4.9">
+    <root id="1">
+      <ServerVersion>11.2.0.2</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="PUBLIC">
+      <ObjectId>1</ObjectId>
+    </schema>
+    <schema id="3" parent="1" name="SYS">
+      <ObjectId>0</ObjectId>
+    </schema>
+    <schema id="4" parent="1" name="SYSTEM">
+      <ObjectId>5</ObjectId>
+    </schema>
+    <schema id="5" parent="1" name="OUTLN">
+      <ObjectId>9</ObjectId>
+    </schema>
+    <schema id="6" parent="1" name="DIP">
+      <ObjectId>14</ObjectId>
+    </schema>
+    <schema id="7" parent="1" name="ORACLE_OCM">
+      <ObjectId>21</ObjectId>
+    </schema>
+    <schema id="8" parent="1" name="DBSNMP">
+      <ObjectId>29</ObjectId>
+    </schema>
+    <schema id="9" parent="1" name="APPQOSSYS">
+      <ObjectId>30</ObjectId>
+    </schema>
+    <schema id="10" parent="1" name="CTXSYS">
+      <ObjectId>32</ObjectId>
+    </schema>
+    <schema id="11" parent="1" name="XDB">
+      <ObjectId>34</ObjectId>
+    </schema>
+    <schema id="12" parent="1" name="ANONYMOUS">
+      <ObjectId>35</ObjectId>
+    </schema>
+    <schema id="13" parent="1" name="MDSYS">
+      <ObjectId>42</ObjectId>
+    </schema>
+    <schema id="14" parent="1" name="HR">
+      <ObjectId>43</ObjectId>
+    </schema>
+    <schema id="15" parent="1" name="FLOWS_FILES">
+      <ObjectId>44</ObjectId>
+    </schema>
+    <schema id="16" parent="1" name="APEX_PUBLIC_USER">
+      <ObjectId>45</ObjectId>
+    </schema>
+    <schema id="17" parent="1" name="APEX_040000">
+      <ObjectId>47</ObjectId>
+    </schema>
+    <schema id="18" parent="1" name="OAEC">
+      <ObjectId>48</ObjectId>
+    </schema>
+    <schema id="19" parent="1" name="EASYBUY">
+      <ObjectId>49</ObjectId>
+    </schema>
+    <schema id="20" parent="1" name="XS$NULL">
+      <ObjectId>2147483638</ObjectId>
+    </schema>
+    <schema id="21" parent="1" name="CHEN">
+      <ObjectId>53</ObjectId>
+      <IntrospectionTimestamp>2018-06-22.00:50:18</IntrospectionTimestamp>
+      <CreatedTimestamp>2018-06-22.00:49:55</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:50:08</ModifiedTimestamp>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <sequence id="22" parent="21" name="T_BRAND_ID_SEQ">
+      <ObjectId>20432</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:50:08</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:50:08</ModifiedTimestamp>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="23" parent="21" name="T_CAR_ID_SEQ">
+      <ObjectId>20434</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:50:08</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:50:08</ModifiedTimestamp>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="24" parent="21" name="T_CATEGORY_ID_SEQ">
+      <ObjectId>20433</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:50:08</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:50:08</ModifiedTimestamp>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="25" parent="21" name="T_RECORD_ID_SEQ">
+      <ObjectId>20435</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:50:08</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:50:08</ModifiedTimestamp>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="26" parent="21" name="T_USER_ID_SEQ">
+      <ObjectId>20431</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:50:08</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:50:08</ModifiedTimestamp>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <table id="27" parent="21" name="T_BRAND">
+      <ObjectId>20420</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:49:55</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="28" parent="21" name="T_CAR">
+      <ObjectId>20426</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:49:55</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="29" parent="21" name="T_CATEGORY">
+      <ObjectId>20423</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:49:55</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="30" parent="21" name="T_RECORD">
+      <ObjectId>20429</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:49:55</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <table id="31" parent="21" name="T_USER">
+      <ObjectId>20416</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:49:55</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <TemporaryPreserve>1</TemporaryPreserve>
+    </table>
+    <column id="32" parent="27" name="ID">
+      <Position>1</Position>
+      <DataType>NUMBER(11 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="27" name="NAME">
+      <Position>2</Position>
+      <DataType>VARCHAR2(50 byte)|0s</DataType>
+    </column>
+    <index id="34" parent="27" name="T_BRAND_ID_PK">
+      <ObjectId>20421</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:49:55</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="35" parent="27" name="T_BRAND_NAME_UK">
+      <ObjectId>20422</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:49:55</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>NAME</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="36" parent="27" name="T_BRAND_ID_PK">
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <ColNames>ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>T_BRAND_ID_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="37" parent="27" name="T_BRAND_NAME_UK">
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <ColNames>NAME</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>T_BRAND_NAME_UK</UnderlyingIndexName>
+    </key>
+    <column id="38" parent="28" name="ID">
+      <Position>1</Position>
+      <DataType>NUMBER(11 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="28" name="CAR_NUMBER">
+      <Position>2</Position>
+      <DataType>VARCHAR2(10 byte)|0s</DataType>
+    </column>
+    <column id="40" parent="28" name="BRAND_ID">
+      <Position>3</Position>
+      <DataType>NUMBER(11 digit)|0s</DataType>
+    </column>
+    <column id="41" parent="28" name="MODEL">
+      <Position>4</Position>
+      <DataType>VARCHAR2(40 byte)|0s</DataType>
+    </column>
+    <column id="42" parent="28" name="COLOR">
+      <Position>5</Position>
+      <DataType>VARCHAR2(20 byte)|0s</DataType>
+    </column>
+    <column id="43" parent="28" name="CATEGORY_ID">
+      <Position>6</Position>
+      <DataType>NUMBER(11 digit)|0s</DataType>
+    </column>
+    <column id="44" parent="28" name="T_COMMENTS">
+      <Position>7</Position>
+      <DataType>VARCHAR2(100 byte)|0s</DataType>
+    </column>
+    <column id="45" parent="28" name="PRICE">
+      <Position>8</Position>
+      <DataType>NUMBER(11,2 digit)|0s</DataType>
+    </column>
+    <column id="46" parent="28" name="RENT">
+      <Position>9</Position>
+      <DataType>NUMBER(9,2 digit)|0s</DataType>
+    </column>
+    <column id="47" parent="28" name="STATUS">
+      <Position>10</Position>
+      <DataType>NUMBER(1 digit)|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="48" parent="28" name="USEABLE">
+      <Position>11</Position>
+      <DataType>NUMBER(1 digit)|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <index id="49" parent="28" name="T_CAR_ID_PK">
+      <ObjectId>20427</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:49:55</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="50" parent="28" name="T_CAR_NUMBER_UK">
+      <ObjectId>20428</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:49:55</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>CAR_NUMBER</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="51" parent="28" name="T_CAR_ID_PK">
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <ColNames>ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>T_CAR_ID_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="52" parent="28" name="T_CAR_NUMBER_UK">
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <ColNames>CAR_NUMBER</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>T_CAR_NUMBER_UK</UnderlyingIndexName>
+    </key>
+    <foreign-key id="53" parent="28" name="T_CAR_BRAND_ID_FK">
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <ColNames>BRAND_ID</ColNames>
+      <RefSchemaName>CHEN</RefSchemaName>
+      <RefTableName>T_BRAND</RefTableName>
+      <RefKeyName>T_BRAND_ID_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <foreign-key id="54" parent="28" name="T_CAR_CATEGORY_ID_FK">
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <ColNames>CATEGORY_ID</ColNames>
+      <RefSchemaName>CHEN</RefSchemaName>
+      <RefTableName>T_CATEGORY</RefTableName>
+      <RefKeyName>T_CATEGORY_ID_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <check id="55" parent="28" name="T_CAR_STATUS_CK">
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <ColNames>STATUS</ColNames>
+      <Predicate>status=0 OR status=1</Predicate>
+    </check>
+    <check id="56" parent="28" name="T_CAR_USEABLE_CK">
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <ColNames>USEABLE</ColNames>
+      <Predicate>useable=0 OR useable=1</Predicate>
+    </check>
+    <column id="57" parent="29" name="ID">
+      <Position>1</Position>
+      <DataType>NUMBER(11 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="58" parent="29" name="NAME">
+      <Position>2</Position>
+      <DataType>VARCHAR2(50 byte)|0s</DataType>
+    </column>
+    <index id="59" parent="29" name="T_CATEGORY_ID_PK">
+      <ObjectId>20424</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:49:55</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="60" parent="29" name="T_CATEGORY_NAME_UK">
+      <ObjectId>20425</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:49:55</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>NAME</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="61" parent="29" name="T_CATEGORY_ID_PK">
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <ColNames>ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>T_CATEGORY_ID_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="62" parent="29" name="T_CATEGORY_NAME_UK">
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <ColNames>NAME</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>T_CATEGORY_NAME_UK</UnderlyingIndexName>
+    </key>
+    <column id="63" parent="30" name="ID">
+      <Position>1</Position>
+      <DataType>NUMBER(11 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="64" parent="30" name="USER_ID">
+      <Position>2</Position>
+      <DataType>NUMBER(11 digit)|0s</DataType>
+    </column>
+    <column id="65" parent="30" name="CAR_ID">
+      <Position>3</Position>
+      <DataType>NUMBER(11 digit)|0s</DataType>
+    </column>
+    <column id="66" parent="30" name="START_DATE">
+      <Position>4</Position>
+      <DataType>DATE|0s</DataType>
+    </column>
+    <column id="67" parent="30" name="RETURN_DATE">
+      <Position>5</Position>
+      <DataType>DATE|0s</DataType>
+    </column>
+    <column id="68" parent="30" name="PAYMENT">
+      <Position>6</Position>
+      <DataType>NUMBER(9,2 digit)|0s</DataType>
+    </column>
+    <index id="69" parent="30" name="T_RECORD_ID_PK">
+      <ObjectId>20430</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:49:55</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="70" parent="30" name="T_RECORD_ID_PK">
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <ColNames>ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>T_RECORD_ID_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="71" parent="30" name="T_RECORD_USER_ID_FK">
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <ColNames>USER_ID</ColNames>
+      <RefSchemaName>CHEN</RefSchemaName>
+      <RefTableName>T_USER</RefTableName>
+      <RefKeyName>T_USER_ID_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <foreign-key id="72" parent="30" name="T_RECORD_CAR_ID_FK">
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <ColNames>CAR_ID</ColNames>
+      <RefSchemaName>CHEN</RefSchemaName>
+      <RefTableName>T_CAR</RefTableName>
+      <RefKeyName>T_CAR_ID_PK</RefKeyName>
+      <OnDelete>restrict</OnDelete>
+    </foreign-key>
+    <column id="73" parent="31" name="ID">
+      <Position>1</Position>
+      <DataType>NUMBER(11 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="74" parent="31" name="USERNAME">
+      <Position>2</Position>
+      <DataType>VARCHAR2(40 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="75" parent="31" name="PASSWORD">
+      <Position>3</Position>
+      <DataType>VARCHAR2(32 byte)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="76" parent="31" name="SEX">
+      <Position>4</Position>
+      <DataType>NUMBER(1 digit)|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="77" parent="31" name="ID_NUMBER">
+      <Position>5</Position>
+      <DataType>VARCHAR2(18 byte)|0s</DataType>
+    </column>
+    <column id="78" parent="31" name="TEL">
+      <Position>6</Position>
+      <DataType>VARCHAR2(11 byte)|0s</DataType>
+    </column>
+    <column id="79" parent="31" name="ADDR">
+      <Position>7</Position>
+      <DataType>VARCHAR2(100 byte)|0s</DataType>
+    </column>
+    <column id="80" parent="31" name="TYPE">
+      <Position>8</Position>
+      <DataType>NUMBER(1 digit)|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <index id="81" parent="31" name="T_USER_ID_PK">
+      <ObjectId>20417</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:49:55</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="82" parent="31" name="T_USER_USERNAME_UK">
+      <ObjectId>20418</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:49:55</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>USERNAME</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="83" parent="31" name="T_USER_ID_NUMBER_UK">
+      <ObjectId>20419</ObjectId>
+      <CreatedTimestamp>2018-06-22.00:49:55</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <TablespaceName>SYSTEM</TablespaceName>
+      <ColNames>ID_NUMBER</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="84" parent="31" name="T_USER_ID_PK">
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <ColNames>ID</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>T_USER_ID_PK</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="85" parent="31" name="T_USER_USERNAME_UK">
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <ColNames>USERNAME</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>T_USER_USERNAME_UK</UnderlyingIndexName>
+    </key>
+    <key id="86" parent="31" name="T_USER_ID_NUMBER_UK">
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <ColNames>ID_NUMBER</ColNames>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <UnderlyingIndexName>T_USER_ID_NUMBER_UK</UnderlyingIndexName>
+    </key>
+    <check id="87" parent="31" name="T_USER_NAME_NN">
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <ColNames>USERNAME</ColNames>
+      <Predicate>&quot;USERNAME&quot; IS NOT NULL</Predicate>
+    </check>
+    <check id="88" parent="31" name="T_USER_PASSWORD_NN">
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <ColNames>PASSWORD</ColNames>
+      <Predicate>&quot;PASSWORD&quot; IS NOT NULL</Predicate>
+    </check>
+    <check id="89" parent="31" name="T_USER_SEX_CK">
+      <ModifiedTimestamp>2018-06-22.00:49:55</ModifiedTimestamp>
+      <ColNames>SEX</ColNames>
+      <Predicate>sex=0 OR sex=1</Predicate>
+    </check>
+  </database-model>
+</dataSource>
