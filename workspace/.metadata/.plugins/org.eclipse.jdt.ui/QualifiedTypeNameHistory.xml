@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.lang.reflect.Array"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="javax.xml.ws.ResponseWrapper"/>
+<fullyQualifiedTypeName name="javax.servlet.Servlet"/>
+<fullyQualifiedTypeName name="com.sun.net.httpserver.HttpsServer"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+<fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
+<fullyQualifiedTypeName name="java.io.BufferedReader"/>
+<fullyQualifiedTypeName name="java.util.Enumeration"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="com.yosakura.web.Util.ResultSetHandler"/>
+<fullyQualifiedTypeName name="org.eclipse.jdt.internal.compiler.lookup.UnresolvedReferenceBinding"/>
+<fullyQualifiedTypeName name="T"/>
+<fullyQualifiedTypeName name="org.eclipse.jdt.internal.compiler.ast.ThisReference"/>
+<fullyQualifiedTypeName name="oracle.net.aso.e"/>
+<fullyQualifiedTypeName name="com.yosakura.web.dao.RegisterDao"/>
+<fullyQualifiedTypeName name="java.lang.Class"/>
+<fullyQualifiedTypeName name="com.sun.java.util.jar.pack.Package.Class.Field"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="com.yosakura.web.dao.impl.RegisterDaoImpl"/>
+<fullyQualifiedTypeName name="com.yosakura.web.Util.ConnectionFactory"/>
+<fullyQualifiedTypeName name="oracle.jdbc.driver.OracleDriver"/>
+<fullyQualifiedTypeName name="java.lang.Long"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="com.yosakura.web.dao.impl.LoginDaoImpl"/>
+<fullyQualifiedTypeName name="javax.management.Query"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="com.yosakura.web.dao.LoginDao"/>
+<fullyQualifiedTypeName name="com.yosakura.web.Util.SqlUtil"/>
+<fullyQualifiedTypeName name="jdk.management.resource.internal.inst.UnixAsynchronousSocketChannelImplRMHooks"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="com.yosakura.web.Util.JDBCUtil"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="com.yosakura.web.entity.User"/>
+</qualifiedTypeNameHistroy>

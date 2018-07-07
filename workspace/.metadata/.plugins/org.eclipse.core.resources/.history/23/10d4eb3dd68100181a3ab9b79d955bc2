@@ -1,0 +1,46 @@
+package com.yosakura.web.Util;
+
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+public class SqlUtil {
+    
+    public static Object[] transformation(Object obj) {       
+        Object [] objArray = null;
+        Class userClass = Class.forName("com.yosakura.");
+        if (class1) {
+        	
+        }
+        getdeclaredfields
+        for (int i = 0;i < infoValue.getValue();i++) {
+            String[] strInfo = str[i].split(":");
+            if (!"-1".equals(strInfo[1]) && !"null".equals(strInfo[1]) && !"-1.0".equals(strInfo[1]) ) {
+                objArray[i] = strInfo[1];
+            }else {
+                objArray[i] = null;
+            }
+        }
+    }
+    public static java.sql.Timestamp strToSqlDate(String strDate) {
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        java.util.Date date = null;
+        if (strDate == null) {
+            return null;
+        }
+        try {
+            date = sf.parse(strDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        java.sql.Timestamp dateSQL = new java.sql.Timestamp(date.getTime());
+        return dateSQL;
+    }
+    public static String getTime() {
+        Timestamp now = new Timestamp(System.currentTimeMillis());
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(now);
+    }
+    public static Timestamp getTimestamp () {
+        return new Timestamp(System.currentTimeMillis());
+    }
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>ServletDemo</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  <servlet>
+  	<servlet-name>ServletA</servlet-name>
+  	<servlet-class>com.yosakura.web.servlet.ServletA</servlet-class>
+  	<!-- 默认(-1)第一次访问时创建 -->
+  	<load-on-startup>-1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ServletA</servlet-name>
+  	<url-pattern>/a</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>ServletB</servlet-name>
+  	<servlet-class>com.yosakura.web.servlet.ServletB</servlet-class>
+  	<load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ServletB</servlet-name>
+  	<url-pattern>/b</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>ServletC</servlet-name>
+  	<servlet-class>com.yosakura.web.servlet.ServletC</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ServletC</servlet-name>
+  	<url-pattern>/c</url-pattern>
+  </servlet-mapping>
+</web-app>

@@ -1,0 +1,34 @@
+package com.yosakura.web.servlet;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.yosakura.web.dao.impl.LoginDaoImpl;
+import com.yosakura.web.entity.User;
+
+public class LoginServlet extends HttpServlet{
+	private static final long serialVersionUID = -1746719809057585732L;
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8"); 
+		String userName = req.getParameter("uname");
+		String pwd = req.getParameter("pwd");
+		int utype = Integer.parseInt(req.getParameter("utype"));
+		System.out.printf("%s,%s,%s",userName,pwd,utype);
+		User user = new User(userName,pwd,utype);
+		String sql = "SELECT * FROM t_user WHERE user_name=? AND pwd=? AND type=?";
+		new LoginDaoImpl().Query(sql, user);
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+	}
+	@Override
+	public void init() throws ServletException {
+		System.out.println("LoginServlet 初始化");
+	}
+}

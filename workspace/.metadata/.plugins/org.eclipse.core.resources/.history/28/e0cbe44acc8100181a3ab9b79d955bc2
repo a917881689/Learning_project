@@ -1,0 +1,5 @@
+package com.yosakura.web.dao.impl;
+
+public class RegisterDaoImpl {
+
+}

@@ -1,0 +1,20 @@
+package com.yosakura.web.dao.impl;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import com.yosakura.web.Util.ConnectionFactory;
+import com.yosakura.web.Util.JDBCUtil;
+import com.yosakura.web.Util.SqlUtil;
+import com.yosakura.web.dao.RegisterDao;
+
+public class RegisterDaoImpl implements RegisterDao{
+
+	@Override
+	public int addUser(String sql, Object obj) throws SQLException {
+		Object [] objArray =  SqlUtil.getObjAttr(obj);
+        Connection conn = ConnectionFactory.getConnection();
+        return JDBCUtil.update(sql, objArray, conn);
+	}
+	
+}

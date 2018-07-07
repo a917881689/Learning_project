@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 哪些是get请求 url地址栏 ，超链接，表单默认请求 location.href = "" -->
+<!-- 常见的post请求: <form action=“” method="post" -->
+<a href="model">get请求访问 servlet</a>
+<hr/>
+<form action="" method="post">
+	<input type="submit"/>
+</form>
+</body>
+</html>

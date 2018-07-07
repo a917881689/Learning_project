@@ -1,0 +1,12 @@
+package com.yosakura.web.dao.impl;
+
+import com.yosakura.web.dao.RegisterDao;
+
+public class RegisterDaoImpl implements RegisterDao{
+
+	@Override
+	public int addUser(String sql, Object obj) {
+		
+	}
+	
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 哪些是get请求 url地址栏 ，超链接，表单默认请求 location.href = "" -->
+<!-- 常见的post请求: <form action=“” method="post" -->
+	<h2>1.完全匹配方式</h2>
+	<a href="model">get请求访问 servlet</a>
+	<hr/>
+	<!-- action表单提交的路径url , 一般写的是servlet -->
+	<form action="model" method="post">
+		<input type="submit" value="提交"/>
+	</form>
+	<h2>2.路径匹配方式</h2>
+	<a href="admin/shop">get请求路径访问servlet</a>
+	<a href="admin/app">get请求路径访问servlet</a>
+	
+	<h2>3.后缀名匹配方式</h2>
+	<a href="addmin.action">get请求后缀名访问</a>
+	<a href="app.action">get请求后缀名访问</a>
+</body>
+</html>
