@@ -1,9 +1,7 @@
 package com.yosakura.web.servlet;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Enumeration;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -13,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yosakura.web.dao.impl.RegisterDaoImpl;
 import com.yosakura.web.entity.User;
-
-import oracle.net.aso.e;
 
 public class RegisterServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;

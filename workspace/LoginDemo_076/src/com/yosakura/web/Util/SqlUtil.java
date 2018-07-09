@@ -14,7 +14,7 @@ public class SqlUtil {
     	for (Field field : fields)
     	{
     		// 对于每个属性，获取属性名
-    		String varName = field.getName();
+    		// String varName = field.getName();
     		try
     		{
     			// isAccessible() 可访问标志
