@@ -6,8 +6,6 @@
 <fullyQualifiedTypeName name="javax.xml.ws.ResponseWrapper"/>
 <fullyQualifiedTypeName name="javax.servlet.Servlet"/>
 <fullyQualifiedTypeName name="com.sun.net.httpserver.HttpsServer"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
-<fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
 <fullyQualifiedTypeName name="java.io.BufferedReader"/>
 <fullyQualifiedTypeName name="java.util.Enumeration"/>
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
@@ -25,10 +23,8 @@
 <fullyQualifiedTypeName name="com.yosakura.web.Util.ConnectionFactory"/>
 <fullyQualifiedTypeName name="oracle.jdbc.driver.OracleDriver"/>
 <fullyQualifiedTypeName name="java.lang.Long"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="com.yosakura.web.dao.impl.LoginDaoImpl"/>
 <fullyQualifiedTypeName name="javax.management.Query"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="com.yosakura.web.dao.LoginDao"/>
 <fullyQualifiedTypeName name="com.yosakura.web.Util.SqlUtil"/>
 <fullyQualifiedTypeName name="jdk.management.resource.internal.inst.UnixAsynchronousSocketChannelImplRMHooks"/>
@@ -36,4 +32,19 @@
 <fullyQualifiedTypeName name="com.yosakura.web.Util.JDBCUtil"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="com.yosakura.web.entity.User"/>
+<fullyQualifiedTypeName name="com.sun.xml.internal.bind.CycleRecoverable.Context"/>
+<fullyQualifiedTypeName name="com.sun.corba.se.spi.activation.Server"/>
+<fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+<fullyQualifiedTypeName name="java.security.KeyStore.PrivateKeyEntry"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="com.yosakura.service.impl.LoginServiceImpl"/>
+<fullyQualifiedTypeName name="com.sun.org.apache.bcel.internal.generic.RETURN"/>
+<fullyQualifiedTypeName name="javax.imageio.spi.RegisterableService"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="com.yosakura.service.RegisterService"/>
+<fullyQualifiedTypeName name="com.yosakura.service.LoginService"/>
+<fullyQualifiedTypeName name="com.yosakura.service.impl.RegisterServiceImpl"/>
+<fullyQualifiedTypeName name="com.yosakura.entity.User"/>
 </qualifiedTypeNameHistroy>

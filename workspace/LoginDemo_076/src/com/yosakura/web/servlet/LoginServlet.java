@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.yosakura.web.dao.impl.LoginDaoImpl;
-import com.yosakura.web.entity.User;
+import com.yosakura.entity.User;
+import com.yosakura.service.impl.LoginServiceImpl;
 
 public class LoginServlet extends HttpServlet{
 	private static final long serialVersionUID = -1746719809057585732L;
@@ -19,8 +19,7 @@ public class LoginServlet extends HttpServlet{
 		String pwd = req.getParameter("pwd");
 		int utype = Integer.parseInt(req.getParameter("utype"));
 		User user = new User(userName,pwd,utype);
-		String sql = "SELECT * FROM t_user WHERE user_name=? AND pwd=? AND type=?";
-		user = new LoginDaoImpl().Query(sql, user);
+		user = new LoginServiceImpl().login(user);
 		if (user != null) {
 			if (user.getType() == 0) {
 				System.out.println("普通用户");

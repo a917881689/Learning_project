@@ -1,0 +1,7 @@
+package com.yosakura.service;
+
+import com.yosakura.entity.User;
+
+public interface LoginService {
+	User login(String userName,String pwd,int utype);
+}
