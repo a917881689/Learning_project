@@ -2,13 +2,11 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="javax.xml.ws.ResponseWrapper"/>
 <fullyQualifiedTypeName name="javax.servlet.Servlet"/>
 <fullyQualifiedTypeName name="com.sun.net.httpserver.HttpsServer"/>
 <fullyQualifiedTypeName name="java.io.BufferedReader"/>
 <fullyQualifiedTypeName name="java.util.Enumeration"/>
-<fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="com.yosakura.web.Util.ResultSetHandler"/>
 <fullyQualifiedTypeName name="org.eclipse.jdt.internal.compiler.lookup.UnresolvedReferenceBinding"/>
@@ -35,16 +33,24 @@
 <fullyQualifiedTypeName name="com.sun.xml.internal.bind.CycleRecoverable.Context"/>
 <fullyQualifiedTypeName name="com.sun.corba.se.spi.activation.Server"/>
 <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
 <fullyQualifiedTypeName name="java.security.KeyStore.PrivateKeyEntry"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="com.yosakura.service.impl.LoginServiceImpl"/>
 <fullyQualifiedTypeName name="com.sun.org.apache.bcel.internal.generic.RETURN"/>
-<fullyQualifiedTypeName name="javax.imageio.spi.RegisterableService"/>
 <fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="com.yosakura.service.RegisterService"/>
 <fullyQualifiedTypeName name="com.yosakura.service.LoginService"/>
 <fullyQualifiedTypeName name="com.yosakura.service.impl.RegisterServiceImpl"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="javax.imageio.spi.RegisterableService"/>
+<fullyQualifiedTypeName name="java.net.URLEncoder"/>
+<fullyQualifiedTypeName name="java.net.URLDecoder"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="com.yosakura.service.UserService"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="com.yosakura.dao.UserDao"/>
+<fullyQualifiedTypeName name="com.yosakura.dao.impl.UserDaoImpl"/>
 <fullyQualifiedTypeName name="com.yosakura.entity.User"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="com.yosakura.service.impl.UserServiceImpl"/>
 </qualifiedTypeNameHistroy>

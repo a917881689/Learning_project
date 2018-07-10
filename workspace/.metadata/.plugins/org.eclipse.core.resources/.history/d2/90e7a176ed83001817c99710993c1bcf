@@ -1,0 +1,39 @@
+package com.yosakura.web.servlet;
+
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * 响应输出的几种方式
+ * @author Administrator
+ *
+ */
+public class ResponseServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// System.out的类型 ：打印字节流 控制台输出
+		PrintStream out = System.out; // 系统标准的系统输出
+		out.println(97); // 输出97 换行
+		out.print(97); // 输出97 不换行
+		out.write(97); // 输出a 不换行
+		out.flush(); // 刷新out.write的缓冲区
+		// 输出到http响应中  
+		// 封装到响应正文中
+		PrintWriter pw = resp.getWriter();
+		// 输出a 
+		pw.write(97);
+		// 97 不换行
+		pw.print(97);
+		// 97 客户端(浏览器)不换行
+		pw.println(97);
+		
+		
+	}
+}

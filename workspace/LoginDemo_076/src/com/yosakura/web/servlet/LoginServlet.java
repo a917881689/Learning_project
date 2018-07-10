@@ -14,6 +14,10 @@ public class LoginServlet extends HttpServlet{
 	private static final long serialVersionUID = -1746719809057585732L;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		this.doPost(req, resp);
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8"); 
 		String userName = req.getParameter("uname");
 		String pwd = req.getParameter("pwd");
@@ -29,10 +33,6 @@ public class LoginServlet extends HttpServlet{
 		}else {
 			System.out.println("用户信息错误！");
 		}
-	}
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 	}
 	@Override
 	public void init() throws ServletException {

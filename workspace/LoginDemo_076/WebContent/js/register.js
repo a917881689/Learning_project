@@ -125,7 +125,7 @@ $(function () {
 
 // 注册按钮
     $('#register').click(function (){
-        var $input = $('input');
+    	var $input = $('input:text,input:password');
         for (var index = 0;index < $input.length;index++) {
             if ('' == $input.eq(index).val() || !reg_regist[index].test($input.eq(index).val())) {
                 $input.eq(index).blur();

@@ -1,0 +1,22 @@
+package com.yosakura.service.impl;
+
+import com.yosakura.entity.User;
+import com.yosakura.service.UserService;
+/**
+ * 用户业务逻辑层的实现类
+ * @author Administrator
+ *
+ */
+public class UserServiceImpl implements UserService{
+
+	@Override
+	public boolean regist(User user) {
+		
+	}
+
+	@Override
+	public User login(User user) {
+		return null;
+	}
+	
+}
