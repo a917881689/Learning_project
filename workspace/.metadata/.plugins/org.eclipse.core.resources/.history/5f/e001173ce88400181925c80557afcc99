@@ -1,0 +1,32 @@
+package com.yosakura.test;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.yosakura.entity.Student;
+import com.yosakura.util.C3P0Util;
+
+/**
+ * Dbutils工具的使用
+ * 核心：通用的查询对象:new QueryRunner对象
+ * qr对象共用 update (添加删除更新通用) query(查询)
+ *
+ */
+public class DbutilsTest {
+	public static void main(String[] args) throws SQLException {
+		// 1.获取数据源
+		queryAllStudent();
+	}
+
+	public static void queryAllStudent() throws SQLException {
+		QueryRunner qr = C3P0Util.getQueryRunner();
+		String sql = "SELECT sname,age,gender,birthday,cid FROM student"; 
+		// 学生对象Bean的集合List
+		List<Student> list = qr.query(sql,new BeanListHandler<Student>(Student.class));
+		System.out.println(list);
+	}
+}

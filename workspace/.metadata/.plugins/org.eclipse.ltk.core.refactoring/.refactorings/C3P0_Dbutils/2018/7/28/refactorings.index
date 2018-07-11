@@ -1,0 +1,10 @@
+1531299349105	Extract method 'queryAllStudent'
+1531299622121	Extract method 'queryStudentByName'
+1531299821505	Extract method 'queryStudentMohu1'
+1531300136658	Extract method 'addStudent'
+1531300294421	Extract method 'updateStudent'
+1531300393306	Extract method 'deleteStudent'
+1531300546965	Extract method 'sumaryFunction'
+1531301582053	Copy compilation unit
+1531301614015	Copy files
+1531301737256	Copy file
