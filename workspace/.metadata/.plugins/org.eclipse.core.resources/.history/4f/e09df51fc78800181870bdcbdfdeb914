@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	您的年龄为：${param.age}岁，您处于阶段
+	<c:if test="${param.age > 0 and param.age < 16}">
+		青少年
+	</c:if>
+	<c:if test="${param.age >= 16 and param.age <= 30}">
+		青年
+	</c:if>
+	<c:if test="${param.age > 30 and param.age <= 50}">
+		中年
+	</c:if>
+	<c:if test="${param.age > 50 }">
+		老年
+	</c:if>
+</body>
+</html>

@@ -70,6 +70,7 @@ $(function () {
             }
         })
     })
+    
     // 删除按钮点击事件
     $('#del_btn').click(function () {
         $.ajax({
@@ -80,6 +81,24 @@ $(function () {
             data: $('#form_del').serialize(), // 序列化表单值
             success : function(data) {   //如果请求成功，返回数据。
                 alert(Number(data)==1?"删除成功":"删除失败")
+            }
+        })
+    })
+    
+    $('#query_update').click(function () {
+        $.ajax({
+            url : "admin?operation=getGoods_where",//请求地址
+            dataType : "json",//预期服务器返回的数据格式
+            type : "post",//请求方式
+            async : false,//是否异步请求
+            data: $('#form_update').serialize(), // 序列化表单值
+            success : function(data) {   //如果请求成功，返回数据。
+                var html = "";
+                $.each(data, function(index, item){    //遍历json数组
+                    goodsId_array[item.tId] = "商品编号:"+item.gId+"  商品名称:"+item.gName+"  类型:"+type_array[item.typeId]+"  价格:"+item.price;
+                    html +="<option value="+item.gId+" >  商品编号:"+item.gId+"  商品名称:"+item.gName+"  类型:"+type_array[item.typeId]+"  价格:"+item.price+"</option>";
+                });
+                $("#del_goods").html(html); //在goods标签里显示html内容
             }
         })
     })

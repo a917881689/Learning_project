@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="oracle.jdbc.proxy.annotation.GetCreator"/>
-<fullyQualifiedTypeName name="javax.management.Query"/>
-<fullyQualifiedTypeName name="com.yosakura.entity.Student"/>
-<fullyQualifiedTypeName name="org.apache.commons.dbutils.handlers.ScalarHandler"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="com.yosakura.Util.C3P0Util"/>
 <fullyQualifiedTypeName name="com.yosakura.util.SqlUtil"/>
@@ -41,10 +37,8 @@
 <fullyQualifiedTypeName name="com.sun.xml.internal.bind.v2.schemagen.xmlschema.List"/>
 <fullyQualifiedTypeName name="com.yosakura.service.GoodsService"/>
 <fullyQualifiedTypeName name="com.yosakura.dao.GoodsDao"/>
-<fullyQualifiedTypeName name="com.yosakura.util.C3P0Util"/>
 <fullyQualifiedTypeName name="org.apache.commons.dbutils.handlers.ColumnListHandler"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="org.apache.commons.dbutils.handlers.BeanListHandler"/>
 <fullyQualifiedTypeName name="com.alibaba.fastjson.JSONObject"/>
 <fullyQualifiedTypeName name="java.io.PrintWriter"/>
 <fullyQualifiedTypeName name="com.alibaba.fastjson.JSONArray"/>
@@ -54,10 +48,16 @@
 <fullyQualifiedTypeName name="com.yosakura.dao.impl.GoodsDaoImpl"/>
 <fullyQualifiedTypeName name="com.yosakura.entity.User"/>
 <fullyQualifiedTypeName name="com.yosakura.service.impl.GoodsServiceImpl"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.lang.Double"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="com.yosakura.entity.Goods"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.yosakura.beans.Emp"/>
+<fullyQualifiedTypeName name="com.yosakura.util.C3P0Util"/>
+<fullyQualifiedTypeName name="org.apache.commons.dbutils.handlers.BeanListHandler"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="com.oracle.jrockit.jfr.Producer"/>
+<fullyQualifiedTypeName name="com.yosakura.entity.Product"/>
 </qualifiedTypeNameHistroy>
