@@ -1,5 +1,0 @@
-package com.yosakura.web.dao;
-
-public abstract interface RegisterDao {
-	int addUser (String sql,Object obj);
-}

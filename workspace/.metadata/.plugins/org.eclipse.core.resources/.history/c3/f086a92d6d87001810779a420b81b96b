@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>管理员</title>
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+<script type="text/javascript" src="./js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="./js/admin.js"></script>
+</head>
+<body>
+<div>
+	<div class="admin_title">
+		<h2>欢迎管理员${sessionScope.loginUser.uname}登录</h2>
+	</div>
+	<div>
+		<ul  class="link_ul">
+			<li><a class="link father">添加商品</a>
+				<div class="son">
+					<form>
+						<input type="text" class="input_text" name="gname" placeholder="  商品名"/>
+						商品类型：<select name="gtype" id="gtype">
+					        <c:forEach var="goods"  items="${requestScope.goods}" >
+					        	<option value="${goods.gId}" >${goods.gName}</option>
+							</c:forEach>
+					    </select>
+					    <input type="text" class="input_text" name="price" placeholder="  商品价格"/>
+					    <button type="button" class="button_blue">添加</button>
+				    </form>
+				</div>
+			</li>
+			<li>
+				<a href="" class="link father">删除商品</a>
+				<div class="son">
+					<form>
+						<input type="text" class="input_text" name="gname" placeholder="  商品名"/>
+						商品类型：<select name="gtype" id="gtype">
+					        <c:forEach var="goods"  items="${requestScope.goods}" >
+					        	<option value="${goods.gId}" >${goods.gName}</option>
+							</c:forEach>
+					    </select>
+					    <input type="text" class="input_text" name="price" placeholder="  商品价格"/>
+					    <button type="button" class="button_blue">添加</button>
+				    </form>
+				</div>			
+			</li>
+				
+			<li>
+				<a href="" class="link father">修改商品</a>
+				<div class="son">
+					<form>
+						<input type="text" class="input_text" name="gname" placeholder="  商品名"/>
+						商品类型：<select name="gtype" id="gtype">
+					        <c:forEach var="goods"  items="${requestScope.goods}" >
+					        	<option value="${goods.gId}" >${goods.gName}</option>
+							</c:forEach>
+					    </select>
+					    <input type="text" class="input_text" name="price" placeholder="  商品价格"/>
+					    <button type="button" class="button_blue">添加</button>
+				    </form>
+				</div>
+			</li>
+			<li >
+				<a href="" class="link father">查询商品</a>
+				<div class="son">
+					<form>
+						<input type="text" class="input_text" name="gname" placeholder="  商品名"/>
+						商品类型：<select name="gtype" id="gtype">
+					        <c:forEach var="goods"  items="${requestScope.goods}" >
+					        	<option value="${goods.gId}" >${goods.gName}</option>
+							</c:forEach>
+					    </select>
+					    <input type="text" class="input_text" name="price" placeholder="  商品价格"/>
+					    <button type="button" class="button_blue">添加</button>
+				    </form>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+	
+</body>
+</html>

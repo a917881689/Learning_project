@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="./js/jquery-3.1.0.min.js"></script>
+    <style type="text/css">
+        ul{list-style-type: none;}
+        body{font-size: 14px;color: black;font-family: NSimSun;}
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            margin: auto;
+            margin-top: 50px;
+            width: 450px;
+            height: 500px;
+            border: 1px solid #2456ff;
+            position: relative;
+            background-color: #d6ddc4;
+        }
+        #title>h1 {
+            margin-top: 20px;
+            height: 20px;
+            text-align: center;
+        }
+        #view {
+            position: absolute;
+            left: 45px;
+            margin-top: 20px;
+            height: 300px;
+        }
+        #view input {
+            width: 340px;
+            height: 33px;
+            line-height: 43px;
+            border: 2px solid #CCCCCC;
+            border-radius: 5px;
+        }
+        .text_info {
+            font-size: 10px;
+            margin: 3px 0 3px 5px;
+            height: 20px;
+        }
+        #d_btn {
+            position: absolute;
+            left: 20px;
+            bottom:20px;
+        }
+        button {
+            border: none;
+            border-radius: 5px;
+            cursor:pointer;
+            width: 150px;
+            height: 35px;
+            font-size: 1.4rem;
+            color: white;
+            font-family: NSimSun;
+            background-color: #68a9ff;
+            font-weight: bolder;
+            margin-left: 20px;
+            margin-right: 20px;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="title">
+            <h1>注册</h1>
+        </div>
+        <div id="view">
+            <from action="#">
+                <input type="text" id="u_name" placeholder="  用户名"/>
+                <div class="text_info"><p id="name_info"></p></div>
+                <input type="password" id="u_pwd" placeholder="  密码"/>
+                <div class="text_info"><p id="pwd_info"></p></div>
+                <input type="password" id="u_pwd2" placeholder="  确认密码"/>
+                <div class="text_info"><p id="pwd2_info"></p></div>
+                <input type="text" id="u_tel" placeholder="  手机号"/>
+                <div class="text_info"><p id="tel_info"></p></div>
+                <input type="text" id="u_id" placeholder="  身份证号"/>
+                <div class="text_info"><p id="id_info"></p></div>
+                <input type="text" id="u_email" placeholder="  邮箱"/>
+                <div class="text_info"><p id="email_info"></p></div>
+            </from>
+        </div>
+        <div id="d_btn">
+            <button type="button" id="login">登录</button>
+            <button type="button" id="register">注册</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        var reg_login = [/^[A-z_]\w{3,15}$/,/^.+$/,/^.+$/,/^1[3456789]\d{9}$/,/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/,/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/]
+        // 账号验证
+        var u_name = $("#u_name");
+        var name_info = $('#name_info');
+
+        u_name.focus(function () {
+            name_info.text('用户名必须4-16位，包括数字字母下划线，不能数字开头').css({"color":"gray"});
+        });
+        u_name.blur(function () {
+            var $uname = u_name.val();
+            if ("" == $uname) {
+                name_info.text('×用户名不能为空').css({"color":"red"});
+
+                return;
+            }
+            if (!reg_login[0].test($uname)) {
+                name_info.text('×格式错误 用户名必须4-16位，包括数字字母下划线，不能数字开头').css({"color":"Red"});
+                return;
+            }
+            name_info.text('√ 可用').css({"color":"green"});
+        });
+        // 密码验证
+        var u_pwd = $("#u_pwd");
+        var pwd_info = $('#pwd_info');
+
+        u_pwd.focus(function () {
+            pwd_info.text('');
+        });
+        u_pwd.blur(function () {
+            var $pwd = u_pwd.val();
+            if (!reg_login[1].test($pwd)) {
+                pwd_info.text('×密码不能为空').css({"color":"red"});
+                return;
+            }
+            pwd_info.text('√ ').css({"color":"green"});
+        });
+
+        // 双重密码验证
+        var u_pwd2 = $("#u_pwd2");
+        var pwd_info2 = $('#pwd2_info');
+
+        u_pwd2.focus(function () {
+            pwd_info2.text('');
+        });
+        u_pwd2.blur(function () {
+            var $pwd = u_pwd.val();
+            var $pwd2 = u_pwd2.val();
+            if (!reg_login[2].test($pwd2)) {
+                pwd_info2.text('×密码不能为空').css({"color":"red"});
+                return;
+            }
+            if ($pwd != $pwd2) {
+                pwd_info2.text('×两次密码不一致').css({"color":"red"});
+                return;
+            }
+            pwd_info2.text('√ 两次密码一致').css({"color":"green"});
+        });
+
+        // 手机号验证
+        var u_tel = $("#u_tel");
+        var tel_info = $('#tel_info');
+
+        u_tel.focus(function () {
+            tel_info.text('');
+        });
+        u_tel.blur(function () {
+            var $tel = u_tel.val();
+            if ('' == $tel) {
+                tel_info.text('×手机号不能为空').css({"color":"red"});
+                return;
+            }
+            if (!reg_login[3].test($tel)) {
+                tel_info.text('×手机号不符合规范,请输入正确的手机号').css({"color":"Red"});
+                return;
+            }
+            tel_info.text('√ 正确').css({"color":"green"});
+        });
+
+        // 身份证验证
+
+        var u_id = $("#u_id");
+        var id_info = $('#id_info');
+
+        u_id.focus(function () {
+            id_info.text('');
+        });
+        u_id.blur(function () {
+            var $id = u_id.val();
+            if ("" == $id) {
+                id_info.text('×身份证不能为空').css({"color":"red"});
+                return;
+            }
+            if (!reg_login[4].test($id)) {
+                id_info.text('×身份证不符合规范,请输入正确的身份证号').css({"color":"Red"});
+                return;
+            }
+            id_info.text('√ 正确').css({"color":"green"});
+        });
+
+        // 邮箱验证
+        var u_email = $("#u_email");
+        var email_info = $('#email_info');
+
+        u_email.focus(function () {
+            email_info.text('');
+        });
+        u_email.blur(function () {
+            var $email = u_email.val();
+            if ("" == $email) {
+                email_info.text('×邮箱不能为空').css({"color":"red"});
+                return;
+            }
+            if (!reg_login[5].test($email)) {
+                email_info.text('×邮箱不符合规范,请输入正确的邮箱').css({"color":"Red"});
+                return;
+            }
+            email_info.text('√ 正确').css({"color":"green"});
+        });
+
+
+        $('#login').click(function(){
+            window.location="作业登录.html";
+        });
+        $('#register').click(function (){
+            var $input = $('input');
+            for (var index = 0;index < $input.length;index++) {
+                if ('' == $input.eq(index).val() || !reg_login[index].test($input.eq(index).val())) {
+                    $input.eq(index).blur();
+                    return;
+                }
+            }
+            alert("提交")
+            $('form').submit();
+        })
+
+    </script>
+</body>
+</html>

@@ -26,6 +26,7 @@ public class DbutilsTest {
 		// updateStudent();
 		// deleteStudent();
 		// sumaryFunction(); // 统计函数
+		// 
 	}
 
 	public static void sumaryFunction() throws SQLException {

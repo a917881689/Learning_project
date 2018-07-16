@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <classpath>
+  <source-attachment entry="D:/apache-tomcat-7.0.65-windows-x64/apache-tomcat-7.0.65/lib/jasper.jar" runtime-id="Apache Tomcat v7.0" source-attachment-path="D:/apache-tomcat-7.0.65-windows-x64/apache-tomcat-7.0.65/apache-tomcat-7.0.52-src.zip"/>
   <source-attachment entry="D:/apache-tomcat-7.0.65-windows-x64/apache-tomcat-7.0.65/lib/servlet-api.jar" runtime-id="Apache Tomcat v7.0" source-attachment-path="D:/apache-tomcat-7.0.65-windows-x64/apache-tomcat-7.0.65/apache-tomcat-7.0.52-src.zip"/>
 </classpath>

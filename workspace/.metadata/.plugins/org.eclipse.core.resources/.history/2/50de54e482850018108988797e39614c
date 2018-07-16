@@ -1,0 +1,17 @@
+package com.yosakura.service;
+
+import com.yosakura.beans.Account;
+
+/**
+ * 业务类
+ * @author Administrator
+ *
+ */
+public class AccountServiceImpl {
+	// 转账功能
+	public boolean zhuanzhang (Account account) {
+		// 付款人扣钱
+		// 付款人加钱
+		return false;
+	}
+}

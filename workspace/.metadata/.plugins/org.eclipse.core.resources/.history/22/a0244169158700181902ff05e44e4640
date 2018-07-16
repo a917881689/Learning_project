@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>管理员</title>
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+<script type="text/javascript" src="./js/jquery-3.1.0.min.js"></script>
+</head>
+<body>
+<div>
+	<div class="admin_title">
+		<h2>欢迎管理员${sessionScope.loginUser.uname}登录</h2>
+	</div>
+	<div>
+		<ul class="link_ul">
+			<li><a href="javascript:onclick:" class="link">添加商品</a>
+				<div>
+					
+				</div>
+			</li>
+			<li><a href="javascript:onclick:" class="link">删除商品</a></li>
+			<li><a href="javascript:onclick:" class="link">修改商品</a></li>
+			<li><a href="javascript:onclick:" class="link">查询商品</a></li>
+		</ul>
+	</div>
+</div>
+	
+</body>
+</html>

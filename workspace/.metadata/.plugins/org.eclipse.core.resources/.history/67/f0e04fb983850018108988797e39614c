@@ -1,0 +1,57 @@
+package com.yosakura.beans;
+
+public class Account {
+	private long id;
+	// 付款人
+	private String from;
+	// 收款人
+	private String to;
+	// 转账金额
+	private double money;
+	// 余额
+	private double balance;
+	public Account() {
+		super();
+	}
+	public Account(String from, String to, double money) {
+		this.from = from;
+		this.to = to;
+		this.money = money;
+	}
+	public Account(String from, String to, double money, double balance) {
+		super();
+		this.from = from;
+		this.to = to;
+		this.money = money;
+		this.balance = balance;
+	}
+	public String getFrom() {
+		return from;
+	}
+	public void setFrom(String from) {
+		this.from = from;
+	}
+	public String getTo() {
+		return to;
+	}
+	public void setTo(String to) {
+		this.to = to;
+	}
+	public double getMoney() {
+		return money;
+	}
+	public void setMoney(double money) {
+		this.money = money;
+	}
+	public double getBalance() {
+		return balance;
+	}
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+	@Override
+	public String toString() {
+		return "Account [from=" + from + ", to=" + to + ", money=" + money + ", balance=" + balance + "]";
+	}
+	
+}

@@ -1,0 +1,26 @@
+package com.yosakura.entity;
+
+public class Goods {
+	private long gId;
+	private String gName;
+	private long typeId;
+	private double price;
+	public Goods() {
+		super();
+	}
+	public Goods(long gId, String gName, long typeId, double price) {
+		super();
+		this.gId = gId;
+		this.gName = gName;
+		this.typeId = typeId;
+		this.price = price;
+	}
+	public Goods(String gName, long typeId, double price) {
+		this.gId = -1;
+		this.gName = gName;
+		this.typeId = typeId;
+		this.price = price;
+	}
+	
+	
+}

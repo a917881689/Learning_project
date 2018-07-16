@@ -1,0 +1,12 @@
+package com.yosakura.service;
+/**
+ * 业务类
+ * @author Administrator
+ *
+ */
+public class AccountServiceImpl {
+	public boolean zhuanzhang () {
+		
+		return false;
+	}
+}

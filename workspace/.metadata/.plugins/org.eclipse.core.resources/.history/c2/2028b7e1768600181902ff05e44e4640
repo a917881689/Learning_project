@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<%--  JSP九大隐式（内置）对象：JSP被翻译后的servlet中的service中定义的九个变量 --%>
+	<%
+		// 1. out (JspWriter) 页面输出（out缓冲区）
+		
+	%>
+</body>
+</html>

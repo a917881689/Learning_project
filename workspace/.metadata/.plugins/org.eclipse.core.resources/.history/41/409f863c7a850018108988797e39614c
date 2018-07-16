@@ -1,0 +1,53 @@
+package com.yosakura.web.servlet;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.yosakura.entity.User;
+import com.yosakura.service.impl.UserServiceImpl;
+
+public class LoginServlet extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html;charset=UTF-8");
+		// 获取登陆参数并非空验证
+		String uname = req.getParameter("uname");
+		String pwd = req.getParameter("pwd");
+		String utype = req.getParameter("utype");
+		if (uname == null || "".equals(uname) || pwd == null || "".equals(pwd) || utype == null || "".equals(utype)) {
+			resp.getWriter().write("<script type='text/javascript'>alert('信息不完整')</script>");
+			resp.setHeader("refresh","1;url=loginUI.html");
+			return;
+		}
+		User user = new User(uname,pwd,Integer.parseInt(utype));
+		UserServiceImpl usi = new UserServiceImpl();
+		User verifyUser = usi.login(user);
+		if (verifyUser != null) {
+			// 普通用户,不加else 是为了扩展 高等级用户
+			if (verifyUser.getUtype() == 0) {
+				// 普通用户
+				resp.getWriter().write("<h2>欢迎普通用户"+verifyUser.getUname()+"登录<h2>");
+				System.out.println("普通用户登录");
+				resp.sendRedirect("user.html");
+			}
+			if (verifyUser.getUtype() == 1) {
+				resp.getWriter().write("<h2>欢迎管理员"+verifyUser.getUname()+"登录<h2>");
+				System.out.println("管理员登录");
+				resp.sendRedirect("admin.html");
+			}
+		}else {
+			resp.getWriter().write("<script type='text/javascript'>alert('用户名或密码错误')</script>");
+			resp.setHeader("refresh","1;url=loginUI.html");
+		}
+	}
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		this.doPost(req, resp);
+	}
+}

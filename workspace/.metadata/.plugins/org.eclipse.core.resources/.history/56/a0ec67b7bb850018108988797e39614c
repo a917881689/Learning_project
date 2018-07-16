@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#container {
+		width:800px;
+		margin:auto;
+	}
+	#d1 {
+		width:600px;
+		height:500px;
+		float:left;
+	}
+	#d2 {
+		width:220px;
+		height:300px;
+		background-color:red;
+		float:left;
+	}
+	a {
+		display:block;
+		float:left;
+		width:225px;
+	}
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="d1">
+	<a href="shop"><img src="https://img.alicdn.com/bao/uploaded/i4/97107193/TB23BL4hbFkpuFjy1XcXXclapXa_!!97107193.jpg_b.jpg"/></a>
+	<a href="shop"><img src="https://img.alicdn.com/bao/uploaded/i2/97107193/TB2oKMKXynB11BjSsphXXXpaXXa_!!97107193.jpg_b.jpg"/></a>
+	<a href="shop"><img src="https://img.alicdn.com/bao/uploaded/i4/T1GcJEFvhjXXXXXXXX_!!0-item_pic.jpg_b.jpg"/></a>
+	<a href="shop"><img src="https://img.alicdn.com/bao/uploaded/i1/1110305677/TB1pJ3OmDdYBeNkSmLyXXXfnVXa_!!0-item_pic.jpg_b.jpg"/></a>
+	<a href="shop"><img src="https://img.alicdn.com/bao/uploaded/i1/825963378/TB2WNu8bnnI8KJjSszgXXc8ApXa_!!825963378.jpg_b.jpg"/></a>
+	<a href="shop"><img src="https://img.alicdn.com/bao/uploaded/i2/TB1M6TGFVXXXXXFaXXXXXXXXXXX_!!0-item_pic.jpg_b.jpg"/></a>
+	</div>
+	<div id="d2">
+	</div>
+</div>
+</body>
+</html>

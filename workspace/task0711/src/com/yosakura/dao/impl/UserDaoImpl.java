@@ -25,8 +25,10 @@ public class UserDaoImpl implements UserDao{
 		// 获取查询对象
 		QueryRunner qr = C3P0Util.getQueryRunner();
 		String sql = "SELECT user_id,user_name,pwd,id_card,mobile,email,type  FROM t_user WHERE user_name=?";
+		// 创建用于接收结果的user对象
 		User user = null;
 		try {
+			// 调用qr的查询方法
 			user = qr.query(sql,new BeanHandler<User>(User.class),objArray);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -35,10 +37,13 @@ public class UserDaoImpl implements UserDao{
 	}
 	public User loginUser(User user) throws SQLException {
 		Object[] objArray = SqlUtil.getObjAttr(user);
+		// 获取查询对象
 		String sql = "SELECT user_id,user_name,pwd,id_card,mobile,email,type FROM t_user WHERE user_name=? AND pwd=? AND type=?";
 		QueryRunner qr = C3P0Util.getQueryRunner();
+		// 创建用于接收结果的user对象
 		user = null;
 		try {
+			// 调用qr的查询方法
 			user = qr.query(sql,new BeanHandler<User>(User.class),objArray);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -49,7 +54,9 @@ public class UserDaoImpl implements UserDao{
 	public int addUser(User user) throws SQLException{
 		Object [] objArray =  SqlUtil.getObjAttr(user);
 		String sql = "INSERT INTO t_user(user_id,user_name,pwd,id_card,mobile,email,type) VALUES(t_user_id_seq.nextval,?,?,?,?,?,?)";
+		// 获取查询对象
 		QueryRunner qr = C3P0Util.getQueryRunner();
+		// 调用qr的update更新方法
         int result = qr.update(sql,new BeanHandler<User>(User.class),objArray);
         return result; 
 	}

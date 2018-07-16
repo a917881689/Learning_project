@@ -1,5 +1,0 @@
-package com.yosakura.web.Util;
-
-public class JDBCUtil {
-
-}

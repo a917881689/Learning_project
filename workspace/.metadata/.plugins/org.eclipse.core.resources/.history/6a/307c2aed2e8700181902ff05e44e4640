@@ -1,0 +1,20 @@
+package com.yosakura.dao.impl;
+
+import java.util.List;
+
+import org.apache.commons.dbutils.QueryRunner;
+
+import com.yosakura.dao.GoodsDao;
+import com.yosakura.util.C3P0Util;
+
+public class GoodsDaoImpl implements GoodsDao{
+
+	@Override
+	public List<String> getGoodsType() {
+		QueryRunner qr = C3P0Util.getQueryRunner();
+		String sql = "SELECT type FROM t_goods";
+		qr.query(sql,)
+		return null;
+	}
+	
+}

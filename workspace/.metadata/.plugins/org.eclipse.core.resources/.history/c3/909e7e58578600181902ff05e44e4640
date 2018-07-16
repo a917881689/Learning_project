@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<a href="testSession">session的工作原理</a>
+	<a href="b">session设置</a>
+	<a href="c">session删除</a>
+	<a href="d">session设置</a>
+</body>
+</html>

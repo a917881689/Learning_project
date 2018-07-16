@@ -1,8 +1,0 @@
-package com.yosakura.web.dao;
-
-import java.sql.SQLException;
-
-public abstract interface RegisterDao {
-	
-	int addUser (String sql,Object obj) throws SQLException;
-}

@@ -1,0 +1,33 @@
+package com.yosakura.service;
+
+import java.sql.SQLException;
+
+import com.yosakura.dao.AccountDaoImpl;
+
+/**
+ * 业务类
+ * @author Administrator
+ *
+ */
+public class AccountServiceImpl {
+	// 转账功能
+	public boolean zhuanzhang (String from,String to,double money) {
+		AccountDaoImpl adi = new AccountDaoImpl();
+		// 付款人扣钱
+		int row2 = 0;
+		try {
+			int row1 = adi.getMoney(from, money);
+			// 收款人加钱		
+			if (row1 > 0) {
+				// 模拟银行系统崩溃
+				int num = 10/0;
+				row2 = adi.saveMoney(to,money);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("银行系统崩溃");
+		}
+		return row2>0;
+	}
+}

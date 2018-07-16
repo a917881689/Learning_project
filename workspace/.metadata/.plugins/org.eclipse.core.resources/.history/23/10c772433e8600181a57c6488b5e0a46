@@ -1,0 +1,64 @@
+package com.yosakura.web.servlet;
+
+import java.io.IOException;
+import java.util.LinkedList;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
+
+/**
+ * 商品详情的servlet (详情页此处省略)
+ * @author Administrator
+ *
+ */
+public class ProductDatailServlet extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 1.获取查看单个详情的商品的ID
+		String pid = req.getParameter("pid");
+		if (pid == null || "".equals(pid) || "null".equals(pid)) {
+			resp.sendRedirect("index.html");
+			return;
+		}
+		// 2.从请求中获取pid的Cookie
+		String newPids = null;
+		String oldPids = getCookieValue(req.getCookies(),"pids");
+		if (oldPids != null) {
+			// 之前有记录
+			String[] olds = oldPids.split("-");
+			LinkedList<String> list = new LinkedList<>();
+			for (String old : olds) {
+				// 将之前cookie中的商品id 放入链表集合中
+			}
+			if (list.contains(pid)) {
+				list.addFirst(list.remove(pid));
+			}
+		}else {
+			// 第一次访问
+			newPids = pid;
+		}
+		// 将拼接好的Cookie放入响应头中并发送给客户端
+		Cookie cookie = new Cookie("pids",newPids);
+		resp.addCookie(cookie);
+		
+	}
+	// 获取指定键的Cookie 值
+	public String getCookieValue(Cookie[] cookies,String str) {
+		if (cookies == null || str == null || "".equals(str) || "null".equals(str)) {
+			return null;
+		}
+		String value =null;
+		for (Cookie cookie : cookies) {
+			if (str.equals(cookie.getName())) {
+				value = cookie.getValue();
+			}
+		}
+		return value;
+	}
+}

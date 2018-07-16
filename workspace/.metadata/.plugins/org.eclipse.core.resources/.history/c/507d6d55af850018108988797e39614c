@@ -1,0 +1,72 @@
+package com.yosakura.web.servlet;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class ShopServlet extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 1.获取请求中的商品id
+		String[] pids = req.getParameterValues("product");
+		// 2.从Cookie中获取以前购物车中的pid
+		Cookie[] cookies = req.getCookies();
+		// 获取指定cookie的value
+		String old_pid = getCookieValue(cookies,"pid");
+		if (old_pid != null) {
+			String[] old_pids = old_pid.split("-");
+		}
+		
+		
+		if (old_pids != null) {
+			
+		}else {
+			// 购物车以前没有数据时
+			getString(pids, sb);
+		}
+		
+		
+			
+			// 将拼接好的pid放到Cookie中发送到浏览器保存
+			Cookie cookie = new Cookie("pid", newPid);
+			resp.addCookie(cookie);
+			resp.getWriter().write("<script type='text/javascript'>alert('hahaha')</script>");
+			resp.setHeader("refresh", "1;url:index.html");
+		
+		
+	}
+	public String getString(String[] pids) {
+		if (pids == null) {
+			return null;
+		}
+		StringBuilder sb = new StringBuilder();
+		if (pids != null) {
+			for (String pid : pids) {
+				sb.append(pid).append("-");
+			}
+		}
+		return sb.substring(0,sb.length()-1);
+	}
+	public String getCookieValue(Cookie[] cookies, String old_pid) {
+		if (cookies == null || old_pid == null) {
+			return null;
+		}
+		String pid = null;
+		for (Cookie cookie : cookies) {
+			if (old_pid.equals(cookie)) {
+				pid = cookie.getValue();
+			}
+		}
+		
+		return pid;
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		this.doGet(req, resp);
+	}
+}

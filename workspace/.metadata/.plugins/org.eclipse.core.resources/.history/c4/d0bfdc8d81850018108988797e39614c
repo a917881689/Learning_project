@@ -1,0 +1,12 @@
+package com.yosakura.beans;
+
+public class Account {
+	// 付款人
+	private String from;
+	// 收款人
+	private String to;
+	// 转账金额
+	private double money;
+	// 余额
+	private double balance;
+}

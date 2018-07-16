@@ -1,0 +1,57 @@
+package com.yosakura.web.servlet;
+
+import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.yosakura.util.CookieUtil;
+
+public class ShopServlet extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		// 获取所有cookie 对象
+		Cookie[] cookies = req.getCookies();
+		// 获取现在点击的记录
+		String fname = req.getParameter("fname");
+		// 获取浏览器存在的记录,找到我们需要的cookie
+		String record = CookieUtil.getCookieValue(cookies,"record");
+		String newRecord = null;
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String time = sdf.format(date);
+		fname =fname+" 时间:"+time;
+		// 历史记录 非空验证
+		if (record != null) {
+			// 获取历史记录字符串数组
+			record = URLDecoder.decode(record,"utf-8");
+			String[] records = record.split(",");
+			// 获取一个去重之后并拼接,的字符串
+			newRecord = CookieUtil.getString(CookieUtil.distict(records, fname));
+		}else {
+			// 直接获取name;
+			newRecord = fname;
+		}
+		
+		System.out.println("选择："+fname);
+		System.out.println("旧记录："+record);
+		System.out.println("新记录："+newRecord);
+		Cookie cookie = new Cookie("record", URLEncoder.encode(newRecord,"utf-8"));
+		resp.addCookie(cookie);
+		resp.setContentType("text/html;charset=utf-8");
+		resp.getWriter().write("你选择的是"+fname);
+		resp.setHeader("refresh", "1;url=index.html");
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		this.doGet(req, resp);
+	}
+}

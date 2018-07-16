@@ -1,0 +1,15 @@
+package com.yosakura.service;
+
+import com.yosakura.beans.Account;
+
+/**
+ * 业务类
+ * @author Administrator
+ *
+ */
+public class AccountServiceImpl {
+	public boolean zhuanzhang (Account account) {
+		
+		return false;
+	}
+}

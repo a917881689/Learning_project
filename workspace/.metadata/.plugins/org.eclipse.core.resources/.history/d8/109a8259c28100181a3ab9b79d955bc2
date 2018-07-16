@@ -1,5 +1,0 @@
-package com.yosakura.web.dao;
-
-public abstract class RegisterDao {
-
-}

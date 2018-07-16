@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;task0712&apos; to &apos;com.yosakura.web.servlet&apos;&#x0D;&#x0A;- Original project: &apos;task0712&apos;&#x0D;&#x0A;- Original element: &apos;task0712/src/task0712&apos;&#x0D;&#x0A;- Renamed element: &apos;task0712/src/com.yosakura.web.servlet&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;task0712&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;task0712" name="com.yosakura.web.servlet" qualified="false" references="true" stamp="1531390838684" textual="false" version="1.0"/>
+</session>

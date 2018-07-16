@@ -1,0 +1,34 @@
+package com.yosakura.service.impl;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.yosakura.dao.impl.GoodsDaoImpl;
+import com.yosakura.entity.GType;
+import com.yosakura.entity.Goods;
+import com.yosakura.service.GoodsService;
+
+public class GoodsServiceImpl implements GoodsService{
+
+	@Override
+	public List<GType> getGoodsType() {
+		List<GType> goods = null;
+		try {
+			goods = new GoodsDaoImpl().getGoodsType();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return goods;
+	}
+	@Override
+	public int addGoods(Goods goods) {
+		int rows = 0;
+		try {
+			rows = new GoodsDaoImpl().addGoods(goods);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rows;
+	}
+	
+}

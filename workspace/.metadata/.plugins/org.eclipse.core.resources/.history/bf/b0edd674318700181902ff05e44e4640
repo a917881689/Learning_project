@@ -1,0 +1,16 @@
+package com.yosakura.service.impl;
+
+import java.util.List;
+
+import com.yosakura.dao.impl.GoodsDaoImpl;
+import com.yosakura.entity.Goods;
+import com.yosakura.service.GoodsService;
+
+public class GoodsServiceImpl implements GoodsService{
+
+	@Override
+	public List<Goods> getGoodsType() {
+		return new GoodsDaoImpl().getGoodsType();
+	}
+	
+}

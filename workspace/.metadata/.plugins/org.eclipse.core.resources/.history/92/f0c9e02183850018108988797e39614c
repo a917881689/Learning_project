@@ -1,0 +1,20 @@
+package com.yosakura.service;
+
+import com.yosakura.beans.Account;
+import com.yosakura.dao.AccountDaoImpl;
+
+/**
+ * 业务类
+ * @author Administrator
+ *
+ */
+public class AccountServiceImpl {
+	// 转账功能
+	public boolean zhuanzhang (Account account) {
+		AccountDaoImpl adi = new AccountDaoImpl();
+		// 付款人扣钱
+		adi.getMoney(account.getFrom(), account.getMoney());
+		// 付款人加钱
+		return false;
+	}
+}

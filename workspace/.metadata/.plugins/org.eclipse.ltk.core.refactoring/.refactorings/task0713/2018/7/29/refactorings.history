@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.yosakura.entity.Type&apos; to &apos;GType&apos;&#x0D;&#x0A;- Original project: &apos;task0713&apos;&#x0D;&#x0A;- Original element: &apos;com.yosakura.entity.Type&apos;&#x0D;&#x0A;- Renamed element: &apos;com.yosakura.entity.GType&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Type&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.yosakura.entity{Type.java[Type" matchStrategy="1" name="GType" qualified="false" references="true" similarDeclarations="false" stamp="1531629242586" textual="false" version="1.0"/>
+</session>

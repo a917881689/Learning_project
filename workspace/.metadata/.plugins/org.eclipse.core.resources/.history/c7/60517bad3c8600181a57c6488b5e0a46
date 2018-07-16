@@ -1,0 +1,44 @@
+package com.yosakura.web.servlet;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * 商品详情的servlet (详情页此处省略)
+ * @author Administrator
+ *
+ */
+public class ProductDatailServlet extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 1.获取查看单个详情的商品的ID
+		String pid = req.getParameter("pid");
+		if (pid == null || "".equals(pid) || "null".equals(pid)) {
+			resp.sendRedirect("index.html");
+			return;
+		}
+		// 2.从请求中获取pid的Cookie
+		Cookie[] cookies = req.getCookies();
+		getCookieValue(req,"pid");
+		
+	}
+	// 获取指定键的Cookie 值
+	public String getCookieValue(Cookie[] cookies,String str) {
+		if (cookies == null || str == null || "".equals(str) || "null".equals(str)) {
+			return null;
+		}
+		String value =null;
+		for (Cookie cookie : cookies) {
+			if (str.equals(cookie.getName())) {
+				value = cookie.getValue();
+			}
+		}
+		return value;
+	}
+}

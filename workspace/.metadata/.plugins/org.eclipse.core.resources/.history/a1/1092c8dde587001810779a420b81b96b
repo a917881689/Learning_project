@@ -1,0 +1,9 @@
+package com.yosakura.service;
+
+import java.util.List;
+
+import com.yosakura.entity.Goods;
+
+public interface GoodsService {
+	List<Goods> getGoods();
+}

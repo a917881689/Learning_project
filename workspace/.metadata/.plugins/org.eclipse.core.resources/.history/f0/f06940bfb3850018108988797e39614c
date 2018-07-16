@@ -1,0 +1,29 @@
+package com.yosakura.web.servlet;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class jieSuan extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Cookie[] cookies = req.getCookies();
+		String pids = null;
+		String[] pidArray = null;
+		for (Cookie cookie : cookies) {
+			if ("pid".equals(cookie.getName())) {
+				pids = cookie.getValue();
+				pidArray = pids.split("-");
+			}
+		}
+		for (String pid : pidArray) {
+			// 循环调用业务逻辑层
+		}
+		resp.getWriter().write("结算成功："+);
+	}
+}

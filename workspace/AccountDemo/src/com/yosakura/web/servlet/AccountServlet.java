@@ -1,0 +1,34 @@
+package com.yosakura.web.servlet;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.yosakura.service.AccountServiceImpl;
+
+public class AccountServlet extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html;charset=utf-8");
+		String from = req.getParameter("from");
+		String to = req.getParameter("to");
+		String money = req.getParameter("money");
+		// 调用业务逻辑层的方法
+		AccountServiceImpl asi = new AccountServiceImpl();
+		boolean flag = asi.zhuanzhang(from,to,Double.parseDouble(money));
+		if (flag) {
+			System.out.println("成功");
+		}else {
+			System.out.println("失败");
+		}
+	}
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		this.doPost(req, resp);
+	}
+}

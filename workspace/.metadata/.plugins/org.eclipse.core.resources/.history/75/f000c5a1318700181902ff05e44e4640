@@ -1,0 +1,24 @@
+package com.yosakura.dao.impl;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ColumnListHandler;
+
+import com.yosakura.dao.GoodsDao;
+import com.yosakura.entity.Goods;
+import com.yosakura.util.C3P0Util;
+
+public class GoodsDaoImpl implements GoodsDao{
+
+	@Override
+	public List<Goods> getGoodsType() throws SQLException {
+		QueryRunner qr = C3P0Util.getQueryRunner();
+		String sql = "SELECT type FROM t_goods";
+		List<Goods> list = qr.query(sql,new BeanListHandler<Goods>(Goods.class));
+		return list.size()>0?list:null;
+	}
+	
+}

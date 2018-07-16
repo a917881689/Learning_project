@@ -1,0 +1,15 @@
+package com.yosakura.service.impl;
+
+import java.util.List;
+
+import com.yosakura.service.GoodsService;
+
+public class GoodsServiceImpl implements GoodsService{
+
+	@Override
+	public List<String> getGoodsType() {
+		
+		return null;
+	}
+	
+}

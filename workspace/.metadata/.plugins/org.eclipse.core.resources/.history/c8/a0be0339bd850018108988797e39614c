@@ -1,0 +1,8 @@
+package task0712;
+
+import javax.servlet.http.HttpServlet;
+
+public class CookieRecordServlet extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+	
+}
