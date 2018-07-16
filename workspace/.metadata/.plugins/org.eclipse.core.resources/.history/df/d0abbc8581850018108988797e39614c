@@ -1,7 +1,0 @@
-package com.yosakura.service;
-
-public class AccountServiceImpl {
-	public boolean zhuanzhang () {
-		
-	}
-}

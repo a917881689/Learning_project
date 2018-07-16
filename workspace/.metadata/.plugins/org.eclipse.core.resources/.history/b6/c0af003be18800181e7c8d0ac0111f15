@@ -1,0 +1,5 @@
+package com.yosakura.service;
+
+public class ProductService {
+
+}
