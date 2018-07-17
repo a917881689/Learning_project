@@ -24,7 +24,9 @@ public class ProductViewServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=UTF-8");
 		List<Product> products = new ProductServiceImpl().getProducts();
-		
+		for (Product product:products) {
+			System.out.println(product);
+		}
 		req.setAttribute("products",products);
 		req.getRequestDispatcher("productView.jsp").forward(req, resp);
 	}

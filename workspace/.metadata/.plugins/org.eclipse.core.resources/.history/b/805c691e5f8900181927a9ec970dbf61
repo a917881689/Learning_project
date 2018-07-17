@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet{
 				// 普通用户
 				resp.getWriter().write("<h2>欢迎普通用户"+verifyUser.getUname()+"登录<h2>");
 				System.out.println("普通用户登录");
-				resp.sendRedirect("productView");
+				resp.sendRedirect("user.jsp");
 			}
 			if (verifyUser.getUtype() == 1) {
 				// resp.getWriter().write("<h2>欢迎管理员"+verifyUser.getUname()+"登录<h2>");
