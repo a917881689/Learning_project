@@ -1,0 +1,9 @@
+package com.yosakura.test;
+
+import com.yosakura.entity.User;
+
+public class MyTest {
+	public static void main(String[] args) {
+		new User(1L,"张三",8888);
+	}
+}

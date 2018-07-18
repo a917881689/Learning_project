@@ -1,0 +1,7 @@
+package com.yosakura.dao;
+
+public interface ProductDao {
+
+	long ProductCount ();
+
+}

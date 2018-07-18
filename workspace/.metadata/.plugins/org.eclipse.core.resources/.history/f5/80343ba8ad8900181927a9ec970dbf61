@@ -1,0 +1,37 @@
+package com.yosakura.web.servlet;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/lasterHistory")
+public class LasterHistoryServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Cookie[] cookies = req.getCookies();
+		String record = null;
+		String[] recordArray = null;
+		if (cookies != null) {
+			for (Cookie cookie : cookies) {
+				if ("record".equals(cookie.getName())) {
+					record = cookie.getValue();
+					recordArray = record.split(",");
+					break;
+				}
+			}
+			for (String str : recordArray) {
+				resp.getWriter().write("<p>"+str+"</p>");
+			}
+		}
+		resp.getWriter().write("<h2>历史记录</h2>");
+	}
+
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
+}

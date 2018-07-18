@@ -1,0 +1,5 @@
+package com.yosakura.entity;
+
+public class PageModel {
+
+}

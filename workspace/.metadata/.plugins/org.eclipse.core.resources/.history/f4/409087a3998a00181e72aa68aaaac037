@@ -1,0 +1,64 @@
+package com.yosakura.dao.impl;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
+
+import com.yosakura.dao.ProductDao;
+import com.yosakura.entity.Product;
+import com.yosakura.util.C3P0Util;
+/**
+ * 商品持久层实现类
+ * @author Administrator
+ *
+ */
+public class ProductDaoImpl implements ProductDao{
+	// 查询商品的总条数
+	@Override
+	public long ProductCount() throws SQLException {
+		QueryRunner qr = C3P0Util.getQueryRunner();
+		String sql = "SELECT COUNT(*) FROM product";
+		return qr.query(sql, new ScalarHandler<>());
+	}
+	// 条件查询商品的总条数
+	@Override
+	public long ProductCount(String info) throws SQLException {
+		QueryRunner qr = C3P0Util.getQueryRunner();
+		String sql = "SELECT COUNT(*) FROM product WHERE brand like ? OR memo like ?";
+		return qr.query(sql, new ScalarHandler<>(),info,info);
+	}
+	// 获取当前页商品的集合
+	@Override
+	public List<Product> onePageProductList(int currentPage, int pageSize) throws SQLException {
+		QueryRunner qr = C3P0Util.getQueryRunner();
+		String sql = "SELECT id,brand,memo,price,img FROM product limit ?,?";
+		int start = (currentPage-1)*pageSize;
+		return qr.query(sql,new BeanListHandler<Product>(Product.class),start,pageSize);
+	}
+	// 获取条件查询当前页商品的集合
+	@Override
+	public List<Product> onePageProductList(String info,int currentPage, int pageSize) throws SQLException {
+		QueryRunner qr = C3P0Util.getQueryRunner();
+		String sql = "SELECT id,brand,memo,price,img FROM product WHERE brand like ? OR memo like ? limit ?,?";
+		int start = (currentPage-1)*pageSize;
+		return qr.query(sql,new BeanListHandler<Product>(Product.class),info,info,start,pageSize);
+	}
+	// 获取最近浏览商品记录
+	@Override
+	public List<Product> getlasterHistory(Object[] recordArray) throws SQLException {
+		QueryRunner qr = C3P0Util.getQueryRunner();
+		String sql = "SELECT id,brand,memo,price,img FROM product WHERE id = ?";
+		List<Product>  list = null;
+		for (Object obj : recordArray) {
+			list.add(getlasterHistorySing(sql,qr,obj));
+		}
+		
+	}
+	public Product getlasterHistorySing(String sql,QueryRunner qr,Object record) throws SQLException {
+		return qr.query(sql,new BeanHandler<Product>(Product.class),record);
+	}
+}

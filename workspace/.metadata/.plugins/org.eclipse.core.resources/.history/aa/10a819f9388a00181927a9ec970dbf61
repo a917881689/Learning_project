@@ -1,0 +1,5 @@
+package com.yosakura.web.servlet;
+
+public class TestAjaxServlet {
+
+}

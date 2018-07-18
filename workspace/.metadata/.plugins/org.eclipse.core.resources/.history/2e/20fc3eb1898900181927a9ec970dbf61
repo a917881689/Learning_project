@@ -1,0 +1,9 @@
+package com.yosakura.dao;
+
+import java.sql.SQLException;
+
+public interface ProductDao {
+
+	long ProductCount () throws SQLException;
+
+}

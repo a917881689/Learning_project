@@ -1,0 +1,13 @@
+package com.yosakura.dao;
+
+import java.sql.SQLException;
+
+public interface ProductDao {
+	/**
+	 * 1.查询商品的总个数
+	 * @return long类型的总条数
+	 * @throws SQLException
+	 */
+	long ProductCount () throws SQLException;
+
+}

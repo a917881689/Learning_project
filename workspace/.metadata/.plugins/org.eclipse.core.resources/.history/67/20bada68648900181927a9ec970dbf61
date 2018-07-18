@@ -1,0 +1,14 @@
+package com.yosakura.web.filter;
+
+import javax.servlet.Filter;
+
+/**
+ * 创建过滤器的步骤
+ * 1.类实现filter接口
+ * 2.重点重写doFilter():过滤的核心方法
+ * 3.在web.xml中配置
+ *
+ */
+public class Myfilter implements Filter{
+
+}

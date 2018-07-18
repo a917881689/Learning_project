@@ -30,6 +30,74 @@
 		<item value="false" key="GoIntoTopLevelTypeAction.isChecked"/>
 		<item value="false" key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_USE_PERSISTED_LOCATION"/>
 	</section>
+	<section name="javadoc">
+		<item value=" -encoding utf-8 -charset utf-8  " key="vmparam"/>
+		<item value="private" key="access"/>
+		<item value="false" key="noindex"/>
+		<item value="C:\Users\Administrator\Documents\GitHub\Learning_project\workspace\task0717\javadoc.xml" key="antpath"/>
+		<item value="false" key="nodeprecatedlist"/>
+		<item value="true" key="use"/>
+		<item value="true" key="author"/>
+		<item value="false" key="nodeprecated"/>
+		<item value="false" key="nonavbar"/>
+		<item value="" key="docletpath"/>
+		<item value="D:\java\jdk1.8\bin\javadoc.exe" key="javadoc_command_history"/>
+		<item value="1.8" key="source"/>
+		<item value="true" key="version"/>
+		<item value="" key="docletname"/>
+		<item value="true" key="splitindex"/>
+		<item value="true" key="fromStandard"/>
+		<item value="false" key="notree"/>
+		<item value="C:\Users\Administrator\Desktop" key="destdir"/>
+		<item value="false" key="openinbrowser"/>
+		<section name="projects">
+			<section name="AjaxDemo">
+				<item value="C:\Users\Administrator\Documents\GitHub\Learning_project\workspace\AjaxDemo\javadoc.xml" key="antpath"/>
+				<item value="C:\Users\Administrator\Desktop" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="LoginDemo_0718">
+				<item value="C:\Users\Administrator\Documents\GitHub\Learning_project\workspace\LoginDemo_0718\javadoc.xml" key="antpath"/>
+				<item value="C:\Users\Administrator\Documents\GitHub\Learning_project\workspace\LoginDemo_0718\doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="JsonDemo">
+				<item value="C:\Users\Administrator\Documents\GitHub\Learning_project\workspace\JsonDemo\javadoc.xml" key="antpath"/>
+				<item value="C:\Users\Administrator\Documents\GitHub\Learning_project\workspace\JsonDemo\doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="ELDemo">
+				<item value="C:\Users\Administrator\Documents\GitHub\Learning_project\workspace\ELDemo\javadoc.xml" key="antpath"/>
+				<item value="C:\Users\Administrator\Documents\GitHub\Learning_project\workspace\ELDemo\doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="Servers">
+				<item value="C:\Users\Administrator\Documents\GitHub\Learning_project\workspace\Servers\javadoc.xml" key="antpath"/>
+				<item value="C:\Users\Administrator\Documents\GitHub\Learning_project\workspace\Servers\doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="LoginDemo_0716">
+				<item value="C:\Users\Administrator\Documents\GitHub\Learning_project\workspace\LoginDemo_0716\javadoc.xml" key="antpath"/>
+				<item value="C:\Users\Administrator\Documents\GitHub\Learning_project\workspace\LoginDemo_0716\doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="RemoteSystemsTempFiles">
+				<item value="C:\Users\Administrator\Documents\GitHub\Learning_project\workspace\RemoteSystemsTempFiles\javadoc.xml" key="antpath"/>
+				<item value="C:\Users\Administrator\Documents\GitHub\Learning_project\workspace\RemoteSystemsTempFiles\doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="task0716">
+				<item value="C:\Users\Administrator\Documents\GitHub\Learning_project\workspace\task0716\javadoc.xml" key="antpath"/>
+				<item value="C:\Users\Administrator\Documents\GitHub\Learning_project\workspace\task0716\doc" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+			<section name="task0717">
+				<item value="C:\Users\Administrator\Documents\GitHub\Learning_project\workspace\task0717\javadoc.xml" key="antpath"/>
+				<item value="C:\Users\Administrator\Desktop" key="destdir"/>
+				<item value="" key="href"/>
+			</section>
+		</section>
+	</section>
 	<section name="OverrideMethodDialog">
 		<item value="true" key="showtypes"/>
 	</section>
@@ -46,6 +114,13 @@
 		<item value="692" key="DIALOG_HEIGHT"/>
 		<item value="521" key="DIALOG_X_ORIGIN"/>
 		<item value="8" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="JavadocWizardDialog">
+		<item value="616" key="DIALOG_WIDTH"/>
+		<item value="1|微软雅黑|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|微软雅黑" key="DIALOG_FONT_NAME"/>
+		<item value="608" key="DIALOG_HEIGHT"/>
+		<item value="500" key="DIALOG_X_ORIGIN"/>
+		<item value="33" key="DIALOG_Y_ORIGIN"/>
 	</section>
 	<section name="completion_proposal_size">
 	</section>

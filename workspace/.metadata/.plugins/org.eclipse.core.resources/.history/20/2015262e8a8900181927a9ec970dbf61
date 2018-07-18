@@ -1,0 +1,15 @@
+package com.yosakura.dao.impl;
+
+import java.sql.SQLException;
+
+import com.yosakura.dao.ProductDao;
+
+public class ProductDaoImpl implements ProductDao{
+
+	@Override
+	public long ProductCount() throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+}

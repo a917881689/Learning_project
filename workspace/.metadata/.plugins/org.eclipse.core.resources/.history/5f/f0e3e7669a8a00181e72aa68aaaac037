@@ -1,0 +1,56 @@
+package com.yosakura.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import org.apache.commons.dbutils.QueryRunner;
+
+import com.yosakura.entity.Product;
+
+
+
+public interface ProductDao {
+	/**
+	 * 1.查询商品的总个数
+	 * @return long类型的总条数
+	 */
+	long ProductCount () throws SQLException;
+	/**
+	 * 条件查询商品的总个数
+	 * @param info 条件
+	 * @return long类型的总条数
+	 */
+	long ProductCount(String info) throws SQLException;
+	/**
+	 * 查询一页商品的数据
+	 * @param currentPage 当前页
+	 * @param pageSize 一页商品的个数
+	 * @return 当前商品的集合
+	 */
+	List<Product> onePageProductList(int currentPage,int pageSize) throws SQLException;
+	/**
+	 * 条件查询一页商品的数据
+	 * @param currentPage 当前页
+	 * @param pageSize 一页商品的个数
+	 * @return 当前商品的集合
+	 */
+	List<Product> onePageProductList(String info, int currentPage, int pageSize) throws SQLException;
+	
+	/**
+	 * 查询最近浏览商品的数据
+	 * @param recordArray 条件数组
+	 * @return 最近浏览商品的集合
+	 * @throws SQLException
+	 */
+	List<Product> getlasterHistory(Object[] recordArray) throws SQLException;
+	/**
+	 * 单个查询语句
+	 * @param sql SQL语句
+	 * @param qr
+	 * @param record 条件
+	 * @return 商品对象
+	 * @throws SQLException
+	 */
+	Product queryByObject(String sql, QueryRunner qr, Object record) throws SQLException;
+	
+}
