@@ -1,7 +1,0 @@
-package com.yosakura.dao.impl;
-
-import com.yosakura.dao.ProductDao;
-
-public class ProductDaoImpl implements ProductDao{
-	
-}

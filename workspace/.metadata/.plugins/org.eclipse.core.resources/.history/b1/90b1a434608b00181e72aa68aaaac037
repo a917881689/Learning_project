@@ -1,0 +1,14 @@
+package com.yosakura.dao.impl;
+
+import com.yosakura.dao.ShopDao;
+import com.yosakura.entity.Shop;
+
+public class ShopDaoImpl implements ShopDao {
+
+	@Override
+	public int addShopCart(Shop shop) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

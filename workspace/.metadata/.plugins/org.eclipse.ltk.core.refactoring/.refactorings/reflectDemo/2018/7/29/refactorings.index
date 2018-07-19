@@ -1,0 +1,4 @@
+1531984649175	Extract method 'setFiled'
+1531985276377	Extract method '获取私有字段_并赋值'
+1531985887897	Extract method 'getAllmethod'
+1531986496586	Extract method 'getMethod'

@@ -47,7 +47,7 @@ public class ProductViewServlet extends HttpServlet {
 		}
 		req.setAttribute("pageModel",pageModel);
 		req.setAttribute("info",info);
-		req.getRequestDispatcher("productView.jsp").forward(req, resp);
+		req.getRequestDispatcher("productView.jsp").forward(req, resp); 
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);

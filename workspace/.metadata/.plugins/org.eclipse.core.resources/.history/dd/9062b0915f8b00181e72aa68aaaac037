@@ -1,0 +1,5 @@
+package com.yosakura.dao.impl;
+
+public class ShopDaoImpl {
+
+}

@@ -1,0 +1,10 @@
+package com.yosakura.test;
+
+import com.yosakura.annotation.MyAnnotation;
+
+public class AnnotationTest {
+	@MyAnnotation("id")
+	public void test () {
+		
+	}
+}

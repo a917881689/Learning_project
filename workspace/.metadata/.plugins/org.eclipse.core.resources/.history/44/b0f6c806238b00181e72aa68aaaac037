@@ -1,0 +1,13 @@
+package com.yosakura.test;
+
+import java.lang.reflect.Field;
+
+public class FieldTest {
+	public static void main(String[] args) throws Exception {
+		// 1.加载字节码对象
+		Class<?> clazz = Class.forName("com.yosakura.entity.User");
+		// 2.获取指定public类型字段
+		Field f1 = clazz.getField("utype");
+		System.out.println(f1.getModifiers()+"-"+f1.getType());
+	}
+}

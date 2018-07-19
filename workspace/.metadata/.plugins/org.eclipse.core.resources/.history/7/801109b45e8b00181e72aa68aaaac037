@@ -1,0 +1,7 @@
+package com.yosakura.service;
+
+public interface ShopService {
+	int addShopCart() {
+		
+	}
+}

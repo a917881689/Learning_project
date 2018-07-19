@@ -1,0 +1,7 @@
+package com.yosakura.test;
+
+public class MethodTest {
+	public static void main(String[] args) {
+		
+	}
+}

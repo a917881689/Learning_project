@@ -1,0 +1,14 @@
+package com.yosakura.service.impl;
+
+import com.yosakura.entity.Shop;
+import com.yosakura.service.ShopService;
+
+public class ShopServiceImpl implements ShopService{
+	//添加商品到购物车
+	@Override
+	public int addShopCart(Shop shop) {
+		
+		return 0;
+	}
+	
+}

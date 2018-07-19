@@ -22,6 +22,7 @@
     <url-pattern>/doOrder</url-pattern>
     <url-pattern>/productView</url-pattern>
     <url-pattern>/lasterHistory</url-pattern>
+    <url-pattern>/productDetail</url-pattern>
     <url-pattern>/admin.jsp</url-pattern>
     <url-pattern>/user.jsp</url-pattern>
     <url-pattern>/productView.jsp</url-pattern>

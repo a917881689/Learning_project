@@ -1,0 +1,32 @@
+package com.yosakura.test;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+
+import com.yosakura.entity.User;
+
+public class FieldTest {
+	public static void main(String[] args) throws Exception {
+		// 1.加载字节码对象
+		Class<?> clazz = Class.forName("com.yosakura.entity.User");
+		Field f1 = clazz.getDeclaredField("uname");
+		f1.setAccessible(true);
+	}
+	//获取public字段并赋值
+	public static void setFiled()
+			throws ClassNotFoundException, NoSuchFieldException, InstantiationException, IllegalAccessException {
+		// 1.加载字节码对象
+		Class<?> clazz = Class.forName("com.yosakura.entity.User");
+		// 2.获取指定public类型字段
+		Field f1 = clazz.getField("utype");
+		int grand = f1.getModifiers();
+		// 将级别字符串转换成修饰符字符串
+		String string = Modifier.toString(grand);
+		System.out.println(f1.getModifiers()+"-"+f1.getType());
+		
+		// 3.给对象赋值
+		User user = (User)clazz.newInstance();
+		f1.setInt(user,1);
+		System.out.println(user.getUtype()==1?"管理员":"普通用户");
+	}
+}

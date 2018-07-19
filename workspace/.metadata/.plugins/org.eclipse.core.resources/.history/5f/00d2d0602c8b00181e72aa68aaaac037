@@ -1,0 +1,5 @@
+package com.yosakura.annotation;
+
+public class MyAnnotation {
+
+}

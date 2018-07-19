@@ -1,0 +1,9 @@
+package com.yosakura.entity;
+
+public class Shop {
+	private Long id;
+	private Long pid;
+	private Integer pnum;
+	private Long uid;
+	
+}
