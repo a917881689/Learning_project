@@ -1,0 +1,8 @@
+package com.yosakura.entity;
+
+import java.util.List;
+
+public class ProCategoryModel {
+	private ProductCategory Product;
+	private List<ProCategoryModel> son;
+}

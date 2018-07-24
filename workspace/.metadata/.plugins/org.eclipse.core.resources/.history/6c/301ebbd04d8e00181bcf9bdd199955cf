@@ -1,0 +1,57 @@
+package com.yosakura.service;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.yosakura.entity.PageListModel;
+import com.yosakura.entity.PageModel;
+import com.yosakura.entity.Product;
+import com.yosakura.entity.ProductCategory;
+/**
+ * 商品的业务逻辑层接口
+ * @author Administrator
+ *
+ */
+public interface ProductService {
+	/**
+	 * 分页查询商品业务接口
+	 * @param currentPage  当前页
+	 * @param pageSize 一页显示多少个商品
+	 * @return 封装好的分页模型对象
+	 */
+	PageModel<Product> pageProduct(int currentPage,int pageSize);
+		
+	/**
+	 * 分页条件查询商品业务接口
+	 * @param info 条件查询
+	 * @param currentPage 当前页
+	 * @param pageSize 一页显示多少个商品
+	 * @return 封装好的分页模型对象
+	 */
+	PageModel<Product> queryProduct(String info, int currentPage, int pageSize);
+
+	/**
+	 * 根据ID数组查询商品 业务接口
+	 * @param recordArray 记录的商品id的数组
+	 * @return 商品对象的集合
+	 */
+	List<Product> queryProductsByidArray(Object[] termsArray);
+	/**
+	 * 根据单个ID查询商品接口
+	 * @param terms 商品id
+	 * @return 商品对象
+	 * @throws SQLException
+	 */
+	Product queryProductById(Object terms);
+
+	/**
+	 * 查询商品分类业务接口
+	 * @return 商品分类数据
+	 */
+	List<PageListModel<ProductCategory>> queryProductClassify();
+	/**
+	 * 查询首页商品业务接口
+	 * @return 商品分类数据
+	 */
+	List<Product> queryMajorProduct();
+}

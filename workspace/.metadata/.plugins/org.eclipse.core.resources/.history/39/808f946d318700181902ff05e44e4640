@@ -1,8 +1,0 @@
-package com.yosakura.dao;
-
-import java.sql.SQLException;
-import java.util.List;
-
-public interface GoodsDao {
-	List<String> getGoodsType() throws SQLException;
-}

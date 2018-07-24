@@ -1,0 +1,11 @@
+package com.yosakura.entity;
+
+public class ProductCategory {
+	private Long id;
+	private String brand;
+	private Long parentId;
+	public ProductCategory() {
+		super();
+	}
+	
+}

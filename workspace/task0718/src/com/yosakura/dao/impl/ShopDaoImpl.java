@@ -14,7 +14,7 @@ public class ShopDaoImpl implements ShopDao {
 	// 根据商品id和用户id查询购物车
 	public Long queryShopCart(Shop shop) throws SQLException {
 		QueryRunner qr = C3P0Util.getQueryRunner();
-		String sql = "SELECT id,pid,pnum,uid FROM shop_cart WHERE pid=? AND uid=?";
+		String sql = "SELECT id,pid,pnum,uid FROM amz_shop_cart WHERE pid=? AND uid=?";
 		return qr.query(sql,new ScalarHandler<Long>(),shop.getPid(),shop.getUid());
 		
 	}
@@ -23,12 +23,12 @@ public class ShopDaoImpl implements ShopDao {
 	public int addShopCart(Shop shop) throws SQLException {
 		QueryRunner qr = C3P0Util.getQueryRunner();
 		Object[] objAttr = SqlUtil.getObjAttr(shop);
-		String sql = "INSERT INTO shop_cart(pid,pnum,uid) VALUES(?,?,?)";
+		String sql = "INSERT INTO amz_shop_cart(pid,pnum,uid) VALUES(?,?,?)";
 		return qr.update(sql,objAttr);
 	}
 	public int updateShopCart(Shop shop) throws SQLException {
 		QueryRunner qr = C3P0Util.getQueryRunner();
-		String sql = "UPDATE shop_cart SET pnum=pnum+? WHERE id=?";
+		String sql = "UPDATE amz_shop_cart SET pnum=pnum+? WHERE id=?";
 		return qr.update(sql,shop.getPnum(),shop.getId());
 	}
 

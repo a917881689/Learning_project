@@ -1,0 +1,6 @@
+package com.yosakura.entity;
+
+public class ShopCartModel {
+	private Product pro;
+	private String pnum;
+}

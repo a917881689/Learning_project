@@ -1,0 +1,66 @@
+// JavaScript Document
+$(function (){
+    var veryCode_flag = false;
+    $("#veryCode").blur(function () {
+        var $veryCode = $(this).val();
+        var info = $(this).siblings('span').eq(0);
+        
+        if (!reg_regist[8].test($veryCode)) {
+        	info.text('验证码不能为空').prop("class","error");
+            return;
+        }
+        //验证码验证
+        $.ajax({
+        	url: "queryUserByVeryCode",
+        	type: "post",
+        	async: true,
+        	data: {"veryCode":$veryCode},
+        	dataType: "text",
+        	success: function (result) {
+        		if ("error" == result) {
+        			info.text('请求错误').prop("class","error");
+        			veryCode_flag = false;
+        			return;
+        		}
+        		if ("use" == result) {
+        			info.text('').prop("class","");
+        			veryCode_flag = true;
+        		}
+        		if ("unuse" == result) {
+        			info.text('验证码不正确，请重新输入').prop("class","error");
+        			veryCode_flag = false;
+        			return;
+        		}
+        	}
+        })
+    });
+    
+    $('#veryCode-img').click(function () {
+    	$(this).prop("src","getvalidateCode?" + new Date().getTime());
+    })
+    
+    // 登录按钮
+    $('#btn-login').click(function (){
+    	var $input = $('.reg_text');
+        for (var index = 0;index < $input.length;index++) {
+            if ('' == $input.eq(index).val()) {
+                $input.eq(index).blur();
+                return;
+            }
+        }
+        if (!veryCode_flag){
+        	$("#veryCode").blur();
+        	return;
+        }
+        $('#loginForm').submit();
+    })
+    
+    $('#veryCode-img').click(function () {
+    	$(this).prop("src","getvalidateCode?" + new Date().getTime());
+    })
+    
+})
+
+
+
+

@@ -1,0 +1,7 @@
+package com.yosakura.service.impl;
+
+import com.yosakura.service.NewsService;
+
+public class NewsServiceImpl implements NewsService{
+
+}

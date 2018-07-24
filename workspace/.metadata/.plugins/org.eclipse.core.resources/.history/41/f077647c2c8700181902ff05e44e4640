@@ -1,7 +1,0 @@
-package com.yosakura.service;
-
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-
-public interface GoodsService {
-	List<String> getGoodsType();
-}

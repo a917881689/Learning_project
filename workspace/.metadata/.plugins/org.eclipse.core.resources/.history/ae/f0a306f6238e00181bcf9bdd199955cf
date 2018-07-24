@@ -1,0 +1,9 @@
+package com.yosakura.entity;
+
+import java.util.List;
+
+public class PageListModel<T> {
+	private ProductCategory Product;
+	private List<ProCategoryModel> son;
+	
+}

@@ -1,8 +1,0 @@
-package com.yosakura.service.impl;
-
-import com.yosakura.service.ProductService;
-
-public class ProductServiceImpl implements ProductService{
-	public 
-
-}

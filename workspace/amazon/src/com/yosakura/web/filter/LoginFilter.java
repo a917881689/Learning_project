@@ -1,0 +1,40 @@
+package com.yosakura.web.filter;
+
+import java.io.IOException;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+public class LoginFilter implements Filter{
+	@Override
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
+		// 1.通过父类获取子类对象(获取子类session属性)
+		HttpServletRequest req = (HttpServletRequest)request;
+		HttpServletResponse resp = (HttpServletResponse)response;
+		// 2.登录验证的判断
+		HttpSession session= req.getSession(false);
+		if (session == null || session.getAttribute("loginUser") == null) {
+			resp.getWriter().write("<script tyep='text/javascript'>alert('访问前必须登陆')</script>");
+			resp.setHeader("refresh","1;url="+req.getContextPath()+"/loginUI.jsp");
+		}else {
+			// 放行
+			chain.doFilter(request, response);
+		}
+	}
+
+	@Override
+	public void destroy() {
+	}
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+	}
+
+}
