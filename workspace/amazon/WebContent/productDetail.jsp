@@ -65,31 +65,32 @@
 			<%@ include file="index_product_sort.jsp"%>
 		</div>
 		<div id="product" class="main">
-			<h1>商品名称:${pro.name}</h1>
-			<input type="hidden" value="${pro.id}" id="pro-id"/>
+			<h1>商品名称:<span id="pro-name"></span></h1>
+			<input type="hidden" value="${param.pid}" id="pro-id"/>
 			<input type="hidden" value="${pageContext.request.contextPath}" id="path"/>
 			<div class="infos">
 				<div class="thumb">
-					<img style="width: 100px; height: 100px;" src="${pageContext.request.contextPath}/${pro.imgSource}" />
+					<img style="width: 100px; height: 100px;" id="pro-img" src="${pageContext.request.contextPath}/${pro.imgSource}" />
 				</div>
 				<div class="buy">
 					<p>
-						商城价：<span class="price">￥${pro.price}</span>
+						商城价：<span class="price">￥<span id='pro-price'></span></span>
 					</p>
 					<p>
-						库 存：<span id="stock">${pro.stock}</span>(有货)
+						库 存：<span id="pro-stock"></span>
+						<span id="pro-stock-info">(无货)</span>
 					</p>
 					<div id="num-d">
-						<input type="text" id="pro-num" value="1" minnum='1' maxlength="5" onkeyup="value=value.replace(/[^\d]/g,'')">
-						<span class="glyphicon glyphicon-plus num-sp" id="add-num"></span>
-						<span class="glyphicon glyphicon-minus num-sp" id="reduce-num"></span>
+						<input type="text" id="pro-num" class="pro-click" value="1" minnum='1' maxlength="5" onkeyup="value=value.replace(/[^\d]/g,'')">
+						<span class="glyphicon glyphicon-plus num-sp pro-click" id="add-num"></span>
+						<span class="glyphicon glyphicon-minus num-sp pro-click" id="reduce-num"></span>
 					</div>
 					<div class="button" id="shop-d">
-						<button type="button" class="btn btn-orange" id="buy-Pro">
+						<button type="button" class="btn btn-orange pro-click" id="buy-Pro">
 							<span class="glyphicon glyphicon-shopping-cart"></span>
 				        	&nbsp;立即购买
 				    	</button>
-						<button type="button" class="btn btn-orange" id="add-shop-Pro">
+						<button type="button" class="btn btn-orange pro-click" id="add-shop-Pro">
 				        	<span class="glyphicon glyphicon-shopping-cart"></span>
 				        	&nbsp;加入购物车
 				    	</button>
@@ -102,7 +103,7 @@
 				<h2>
 					<strong>商品详情</strong>
 				</h2>
-				<div class="text">
+				<div class="text" id="pro-info">
 					商品名字：${pro.name}<br /> 商品描述：${pro.description}<br />
 					商品价格：￥${pro.price}<br /> 商品库存：${pro.stock}<br />
 				</div>

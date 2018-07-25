@@ -32,26 +32,20 @@ public class AddshopServlet extends HttpServlet {
 		}
 		if (user != null) {
 			// 用户登录
-			long uid = user.getId();	
+			long uid = user.getId();
 			// 创建购物车记录
 			int result = new ShopServiceImpl().addShopCart(new Shop(pid,pnum,uid));
 			resp.getWriter().write(result>0?"suc":"fail");
 		}else {
 			// 用户未登录
-			Shop shop = new Shop(pid,pnum);
-			// 判断cookie中是否有数据
+			// 获取cookie中的购物车数据,并更新cookie购物车数据
 			String cookieShopCartjson = CookieUtil.getCookieValue(req.getCookies(),"shopCart");
-			String shopCartjson = null;
-			if (cookieShopCartjson == null || "".equals(cookieShopCartjson)) {
-				shopCartjson = JSON.toJSONString(shop);
-			}else{
-				List<Shop> shopCartList = JSON.parseArray(cookieShopCartjson,Shop.class);
-				shopCartList.add(new Shop(pid,pnum));
-				shopCartjson = JSON.toJSONString(shopCartList);
-			}
+			String shopCartjson = CookieUtil.updateCookieShopCart(pid, pnum, cookieShopCartjson);
 			System.out.println("cookie购物车"+shopCartjson);
 			Cookie cookie = new Cookie("shopCart",shopCartjson);
 			cookie.setMaxAge(60*60*24*30);//过期时间为30天
+//			Cookie cookie = new Cookie("shopCart",null);
+//			cookie.setMaxAge(0); // 销毁
 			resp.addCookie(cookie);
 			resp.getWriter().write("suc");
 		}
@@ -60,4 +54,6 @@ public class AddshopServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);
 	}
+	
+	
 }

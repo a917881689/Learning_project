@@ -1,8 +1,15 @@
 package com.yosakura.util;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.yosakura.entity.Shop;
 
 public class CookieUtil {
 	public static String getCookieValue(Cookie[] cookies, String old_pid) {
@@ -24,7 +31,7 @@ public class CookieUtil {
 		LinkedList<String> oldList = new LinkedList<>();
 		boolean flag = true;
 		for (String str : old) {
-			if ("".equals(str) && !"null".equals(str)) {
+			if (!"".equals(str) && !"null".equals(str)) {
 				if (flag && str.equals(news)) {
 					oldList.addFirst(news);	
 					flag = false;
@@ -57,5 +64,37 @@ public class CookieUtil {
 			}
 		}
 		return sb.substring(0,sb.length()-1);
+	}
+	// cookie购物车
+	public static String updateCookieShopCart(Long pid, Integer pnum, String cookieShopCartjson) {
+		String shopCartjson = null;
+		// 判断cookie中是否有数据
+		if (cookieShopCartjson == null || "".equals(cookieShopCartjson)) {
+			// 没有数据直接创建一个购物车集合，添加到cookie中
+			List<Shop> shopCartList = new ArrayList<>();
+			shopCartList.add(new Shop(pid,pnum));
+			shopCartjson = JSON.toJSONString(shopCartList);
+		}else{
+			// 有数据获取json，转换成购物车集合，
+			JSONArray jsonArray = JSON.parseArray(cookieShopCartjson);
+			boolean flag = true;
+			// 判断是否有重复数据
+			 for (int i=0;i<jsonArray.size();i++) {
+				 JSONObject jsonObj = jsonArray.getJSONObject(i);
+				 if (Long.parseLong(jsonObj.get("pid").toString()) == pid) {
+						// 有重复数据,修改数量
+					 jsonObj.put("pnum",Integer.parseInt(jsonObj.get("pnum").toString())+pnum);
+					 flag = false;
+					 break;
+				 }
+			 }
+			 if (flag) {
+				 jsonArray.add(JSONObject.parseObject(JSONObject.toJSONString(new Shop(pid,pnum))));
+				// 没有重复数据，追加到json中
+			 }
+			 shopCartjson = jsonArray.toString();
+		}
+		// 返回修改好的购物车对象集合的json
+		return shopCartjson;
 	}
 }

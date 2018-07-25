@@ -1,32 +1,47 @@
-function addToCart(pid) {
-	
-	var stock=$("#stock").html()
-	var count=$("#count").val()
-	
-	if(parseInt(count)>parseInt(stock)){
-		alert("您选择的数量超过库存!")
-	}else{
-		$.ajax({
-			url : "addToCart",// 请求的servlet地址
-			type : "GET",// 请求方式
-			data : "" + pid+"_"+count,// 发送到服务器的数据
-			dataType : "text",// 设置返回数据类型
-			success : function(total) {
-				$("#cartCount").html(total);
-				alert("成功添加到购物车!")
-			},// 响应成功后执行的回调方法data响应文本
-			complete : function(XMLHttpRequest, statusText) {
-				
-			},// 响应完成后执行的回调方法
-			error : function(XMLHttpRequest, statusText) {
-				alert("添加到购物车失败!")
-			}// 响应失败后执行的回调方法
-		})
-	}
-
-}
-
 $(function () {
+	var pid = $('#pro-id').val();
+	var path = $('#path').val();
+	// 添加到最近查看
+	$.ajax({
+		url : "saveLastLook",// 请求的servlet地址
+		type : "GET",// 请求方式
+		data : {"pid":pid},// 发送到服务器的数据
+		dataType : "text",// 设置返回数据类型
+		success : function(total) {
+
+		},
+
+		error : function(XMLHttpRequest, statusText) {
+
+		}
+	})
+
+	// 根据id查询商品对象
+	$.ajax({
+		url : "queryProductByPId",// 请求的servlet地址
+		type : "GET",// 请求方式
+		data : {"pid":pid},// 发送到服务器的数据
+		dataType : "json",// 设置返回数据类型
+		success : function(pro) {
+			$('#pro-name').text(pro.name);
+			$('#pro-price').text(pro.price);
+			if (Number(pro.stock) > 0) {
+				$('#pro-stock').text(pro.stock);
+				$('#pro-stock-info').text("(有货)");
+			}else {
+				pro.stock = "(无货)";
+				$('#pro-stock-info').text("(无货)");
+				// 让按钮不能点击
+				$(".pro-click").css({"pointer-events":"none"})
+			}
+			$('#pro-img').prop("src",path+"/"+pro.imgSource);
+			$('#pro-info').html(
+				"商品名字："+pro.name+"<br /> 商品描述："+pro.description+"<br />"+
+				"商品价格：￥"+pro.price+"<br /> 商品库存："+pro.stock+"<br />" );
+		},
+		error : function(XMLHttpRequest, statusText) {
+		}
+	})
 	// 直接购买
 	$('#buy-Pro').click(function () {
 		var pid = $('#pro-id').val();
@@ -40,9 +55,9 @@ $(function () {
 	});
 	// 数量增加按钮
 	$('#add-num').click(function () {
-		var num = Number($('#stock').text());
+		var num = Number($('#pro-stock').text());
 		var pro_num = Number($('#pro-num').val());
-		if (pro_num >= num) {
+		if (pro_num >= num){
 			alert("您选择的数量超过库存!")
 			return;
 		}
@@ -59,12 +74,11 @@ $(function () {
 	})
 
 	$('#add-shop-Pro').click(function() {
-		$('#p-id').val();
 		$.ajax({
 			url: "addShop",
 			type: "get",
 			async: true,
-			data:{"pid":$('#p-id').val(),"pnum":$('#pro-num').val()},
+			data:{"pid":pid,"pnum":$('#pro-num').val()},
 			dataType:"text",
 			success: function (data) {
 				if (data == "suc") {

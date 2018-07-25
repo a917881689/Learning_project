@@ -33,10 +33,8 @@ $(function () {
 					count_pro_cart += 1;
 					get_pro_cart();
 				}else{
-					count_pro_cart = 0;
-					setTimeout(get_pro_cart(),3000);
+					console.log("请求超时")
 				}
-
 			}
 		})
 	}

@@ -205,6 +205,9 @@ body {
 
 .pre_look dl {
     margin: 5px;
+    height: 82px;
+    padding-top: 12px;
+    border: 1px solid #ccc;
 }
 
 .pre_look dl dt {
@@ -219,7 +222,7 @@ body {
 }
 
 .pre_look dl dd {
-    height: 60px;
+    height: 37px;
     margin-left: 66px;
 }
 
@@ -414,7 +417,7 @@ ul.product2 li dl dd.price {
     color: #4c4d4b;
 }
 
-.hot_sale li .price{
+.price{
     font-size: 14px;
     font-weight: bold;
     color: red;

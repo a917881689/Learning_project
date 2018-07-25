@@ -1,0 +1,30 @@
+package com.yosakura.web.servlet;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+/**
+ * 保存URL地址,跳转到login页面
+ * @author Administrator
+ *
+ */
+@WebServlet("/SaveURLServlet")
+public class SaveURLServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		session.setAttribute("redirectUrl",req.getParameter("saveURL"));
+		System.out.println(session.getAttribute("redirectUrl").toString());
+		resp.getWriter().write(session.getAttribute("redirectUrl").toString());
+	}
+
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
+}

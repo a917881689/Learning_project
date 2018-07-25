@@ -27,3 +27,8 @@
 1532341269212	Copy compilation unit
 1532398924423	Rename resource 'product_view.jsp'
 1532415141355	Delete element
+1532490092609	Rename type 'ProductDetailServlet'
+1532501645891	Extract method 'updateCookieShopCart'
+1532509759781	Rename resource 'Recently_browse.jsp'
+1532510081913	Rename type 'ShopCartServlet'
+1532510159402	Rename type 'LasterHistoryServlet'

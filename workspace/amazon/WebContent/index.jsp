@@ -13,6 +13,7 @@
 <script src="${pageContext.request.contextPath}/scripts/jquery-3.1.0.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/adv.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/index.js"></script>
+<script src="${pageContext.request.contextPath}/scripts/recently_browse.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -23,18 +24,8 @@
 			<!--商品分类-->
 			<jsp:include page="index_product_sort.jsp"/>
 			<!--商品分类结束-->
-
-			<div class="pre_look">
-				<h3>最近浏览</h3>
-				<dl>
-					<dt>
-						<img style="width: 54px; height: 54px;" src="" />
-					</dt>
-					<dd>
-						<a href=""></a>
-					</dd>
-				</dl>
-			</div>
+			<!-- 最近浏览 -->
+			<jsp:include page="recently_browse.jsp"/>
 		</div>
 
 		<div class="p_center">

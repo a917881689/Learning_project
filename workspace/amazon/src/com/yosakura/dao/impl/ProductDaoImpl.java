@@ -21,13 +21,6 @@ import com.yosakura.util.C3P0Util;
  *
  */
 public class ProductDaoImpl implements ProductDao{
-//	public static void main(String[] args) throws SQLException {
-//		List<ProductCategory> list = new ProductDaoImpl().queryProClassify();
-//		for (ProductCategory productCategory : list) {
-//			System.out.println(productCategory.getParentId());	
-//		}
-//		
-//	}
 	// 查询销量最高的六个商品,用作热卖商品显示	
 	@Override
 	public List<Product> querypopularProduct() throws SQLException {
@@ -84,7 +77,7 @@ public class ProductDaoImpl implements ProductDao{
 		int start = (currentPage-1)*pageSize;
 		return qr.query(sql,new BeanListHandler<Product>(Product.class,new BasicRowProcessor(new GenerousBeanProcessor())),info,info,start,pageSize);
 	}
-	// 根据ID数组查询商品
+	// 根据ID数组查询商品集合
 	@Override
 	public List<Product> queryProductsByidArray(Object[] termsArray) throws SQLException {
 		QueryRunner qr = C3P0Util.getQueryRunner();
@@ -97,11 +90,13 @@ public class ProductDaoImpl implements ProductDao{
 		}
 		return list;
 	}
+	// 根据id查询商品,需要qr查询对象
 	@Override
 	public Product queryProductById(QueryRunner qr,Object terms) throws SQLException {
 		String sql = "SELECT id,name,description,price,stock,major_id,minor_id,img_source FROM amz_product WHERE id = ?";
 		return qr.query(sql,new BeanHandler<Product>(Product.class,new BasicRowProcessor(new GenerousBeanProcessor())),terms);
 	}
+	// 根据id查询商品
 	@Override
 	public Product queryProductById(Object terms) throws SQLException {
 		QueryRunner qr = C3P0Util.getQueryRunner();

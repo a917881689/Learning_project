@@ -31,7 +31,7 @@ a:hover, a:active { color:#3a52a8; text-decoration:underline; }
 .shadow .box .msg { text-align:center; padding:20px; }
 
 .wrap { width:960px; margin:0 auto; }
-#header { overflow:hidden; padding-top:10px; }
+#header { overflow:hidden;}
 #header #logo { float:left; width:120px; text-align:center; }
 #header .help { float:right; }
 #header .help a { margin:0 5px; }

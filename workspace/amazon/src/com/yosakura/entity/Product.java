@@ -1,4 +1,7 @@
 package com.yosakura.entity;
+
+import java.math.BigDecimal;
+
 /**
  * 商品实体类
  */
@@ -6,7 +9,7 @@ public class Product {
 	private Long id;
 	private String name;
 	private String description;
-	private Double price;
+	private BigDecimal price;
 	private Long stock;
 	private Long majorId;
 	private Long minorId;
@@ -14,7 +17,7 @@ public class Product {
 	public Product() {
 		super();
 	}
-	public Product(Long id, String name, String description, Double price, Long stock, Long majorId, Long minorId,
+	public Product(Long id, String name, String description, BigDecimal price, Long stock, Long majorId, Long minorId,
 			String imgSource) {
 		super();
 		this.id = id;
@@ -44,10 +47,10 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
-	public void setPrice(Double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 	public Long getStock() {
@@ -79,6 +82,7 @@ public class Product {
 		return "Product [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", stock="
 				+ stock + ", majorId=" + majorId + ", minorId=" + minorId + ", imgSource=" + imgSource + "]";
 	}
+	
 	
 	
 }

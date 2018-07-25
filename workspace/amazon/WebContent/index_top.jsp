@@ -6,9 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>亚马逊-导航栏</title>
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-<script src="${pageContext.request.contextPath}/scripts/jquery-3.1.0.min.js" type="text/javascript"></script>
-
 </head>
 <body>
 <div id="header">
@@ -17,7 +14,7 @@
 			<c:set value="${sessionScope.user }" var="user"></c:set>
 			<ul class="m_left">
 				<c:if test="${empty loginUser }"> <!-- 未登录时 -->
-					<li><a href="login.jsp" class="c_red">请登录</a>&nbsp;&nbsp;&nbsp;</li>
+					<li><a href="SaveURLServlet?saveURL=${pageContext.request.requestURL}&queryString=${pageContext.request.queryString}" class="c_red">请登录</a>&nbsp;&nbsp;&nbsp;</li>
 					<li><a href="register.jsp">请注册</a></li>
             	</c:if>
                 <c:if test="${!empty loginUser }"> <!-- 登录时 -->
@@ -39,7 +36,7 @@
 	</div>
 	<div class="logo_search">
 		<div class="logo">
-			<img src="images/LOGO.png" alt="" />
+			<img src="images/LOGO.png" alt="" id="logo-img"/>
 		</div>
 		<div class="search">
 			<input type="text" placeholder="输入宝贝" id="qname" />

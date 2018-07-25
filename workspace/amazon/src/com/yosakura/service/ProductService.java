@@ -59,4 +59,11 @@ public interface ProductService {
 	 * @return 商品分类数据
 	 */
 	List<Product> querypopularProduct();
+	/**
+	 * 根据商品id数组来查询商品集合,返回指定数量的商品集合
+	 * @param termsArray id数组
+	 * @param number 指定数量
+	 * @return 商品集合
+	 */
+	List<Product> queryProductsByidArray(Object[] termsArray, int number);
 }

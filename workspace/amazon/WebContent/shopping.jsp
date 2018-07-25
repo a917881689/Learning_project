@@ -107,7 +107,7 @@
 	<div class="container nologin-tip">
     	<span class="wicon"></span>
     		您还没有登录！登录后购物车的商品将保存到您账号中
-    	<a class="btn-login " href="login.jsp" >立即登录</a>
+    	<a class="btn-login " href="SaveURLServlet?saveURL=${pageContext.request.requestURL}&queryString=${pageContext.request.queryString}" >立即登录</a>
 	</div>
 </c:if>
 <div id="position" class="wrap">

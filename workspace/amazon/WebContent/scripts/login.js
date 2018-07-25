@@ -1,4 +1,5 @@
 // JavaScript Document
+
 $(function (){
 	$("#uname").blur(function () {
         var $uname = $(this).val();
@@ -74,5 +75,5 @@ $(function (){
         }
         $('#loginForm').submit();
     })
-   
+
 })

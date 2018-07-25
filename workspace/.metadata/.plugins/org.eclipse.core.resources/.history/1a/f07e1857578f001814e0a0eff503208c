@@ -1,0 +1,23 @@
+package com.yosakura.dao;
+
+import java.sql.SQLException;
+
+import com.yosakura.entity.Shop;
+
+public interface ShopDao {
+	/**
+	 * 添加商品到购物车
+	 * @param shop 待记录购物车对象
+	 * @return 返回影响的行数
+	 * @throws SQLException 
+	 */
+	int addShopCart(Shop shop) throws SQLException;
+
+	/**
+	 * 根据用户id和商品id查询购物车，是否有记录
+	 * @param shop
+	 * @return
+	 * @throws SQLException
+	 */
+	Long queryShopCart(Shop shop) throws SQLException;
+}

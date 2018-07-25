@@ -113,6 +113,17 @@ public class ProductServiceImpl implements ProductService{
 		}
 		return listProModelA;
 	}
+	@Override
+	public List<Product> queryProductsByidArray(Object[] termsArray,int number) {
+		if (termsArray.length <= number) {
+			return queryProductsByidArray(termsArray);
+		}
+		Object[] objArr = new Object[number];
+		for (int i = 0; i < number;i++) {
+			objArr[i] = termsArray[i];
+		}
+		return queryProductsByidArray(objArr);
+	}
 	/**
 	 * 根据ID数组查询商品
 	 */

@@ -1,8 +1,10 @@
 package com.yosakura.dao.impl;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.yosakura.dao.ShopDao;
@@ -12,10 +14,19 @@ import com.yosakura.util.SqlUtil;
 
 public class ShopDaoImpl implements ShopDao {
 	// 根据商品id和用户id查询购物车
+	@Override
 	public Long queryShopCart(Shop shop) throws SQLException {
 		QueryRunner qr = C3P0Util.getQueryRunner();
-		String sql = "SELECT id,pid,pnum,uid FROM shop_cart WHERE pid=? AND uid=?";
+		String sql = "SELECT id FROM amz_shop_cart WHERE pid=? AND uid=?";
 		return qr.query(sql,new ScalarHandler<Long>(),shop.getPid(),shop.getUid());
+		
+	}
+	// 根据用户id查询购物车数据
+	@Override
+	public List<Shop> queryShopCart(long uid) throws SQLException {
+		QueryRunner qr = C3P0Util.getQueryRunner();
+		String sql = "SELECT id,pid,pnum,uid FROM amz_shop_cart WHERE uid=?";
+		return qr.query(sql,new BeanListHandler<Shop>(Shop.class),uid);
 		
 	}
 	// 添加商品到购物车
@@ -23,13 +34,14 @@ public class ShopDaoImpl implements ShopDao {
 	public int addShopCart(Shop shop) throws SQLException {
 		QueryRunner qr = C3P0Util.getQueryRunner();
 		Object[] objAttr = SqlUtil.getObjAttr(shop);
-		String sql = "INSERT INTO shop_cart(pid,pnum,uid) VALUES(?,?,?)";
+		String sql = "INSERT INTO amz_shop_cart(pid,pnum,uid) VALUES(?,?,?)";
 		return qr.update(sql,objAttr);
 	}
-	public int updateShopCart(Shop shop) throws SQLException {
+	@Override
+	public int updateShopCart(long pid,int pnum) throws SQLException {
 		QueryRunner qr = C3P0Util.getQueryRunner();
-		String sql = "UPDATE shop_cart SET pnum=pnum+? WHERE id=?";
-		return qr.update(sql,shop.getPnum(),shop.getId());
+		String sql = "UPDATE amz_shop_cart SET pnum=pnum+? WHERE id=?";
+		return qr.update(sql,pnum,pid);
 	}
 
 }
