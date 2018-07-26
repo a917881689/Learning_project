@@ -57,7 +57,7 @@ public class ProductServiceImpl implements ProductService{
 	 * 分页查询商品
 	 */
 	@Override
-	public PageModel<Product> pageProduct(int currentPage, int pageSize) {
+	public PageModel<Product> queryProduct(int currentPage, int pageSize) {
 		PageModel<Product> pageModel = null;
 		try {
 			ProductDaoImpl pdi = new ProductDaoImpl();
@@ -160,7 +160,48 @@ public class ProductServiceImpl implements ProductService{
 		}
 		return pageModel;
 	}
+	/**
+	 * 根据类别id分页查询商品
+	 */
+	@Override
+	public PageModel<Product> queryProduct(long cid,int currentPage, int pageSize) {
+		PageModel<Product> pageModel = null;
+		try {
+			ProductDaoImpl pdi = new ProductDaoImpl();
+			// 1.获取类别id查询商品的总个数
+			long total = pdi.ProductCount(cid);
+			// 2.计算总页数
+			int totalPage = (int)(total%pageSize == 0?total/pageSize:total/pageSize+1);
+			// 3.获取当前页所有商品的集合
+			List<Product> list = pdi.onePageProductList(cid,currentPage, pageSize);
+			// 4.将以上分页参数封装到PageModel对象中
+			pageModel = new PageModel<>(currentPage, pageSize, total, totalPage, list);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return pageModel;
+	}
 	
+	@Override
+	public PageModel<Product> queryProduct(long cid, String info, int currentPage, int pageSize) {
+		PageModel<Product> pageModel = null;
+		try {
+			ProductDaoImpl pdi = new ProductDaoImpl();
+			// 1.获取类别id查询商品的总个数
+			long total = pdi.ProductCount(cid,info);
+			// 2.计算总页数
+			int totalPage = (int)(total%pageSize == 0?total/pageSize:total/pageSize+1);
+			// 3.获取当前页所有商品的集合
+			List<Product> list = pdi.onePageProductList(cid,info,currentPage, pageSize);
+			// 4.将以上分页参数封装到PageModel对象中
+			pageModel = new PageModel<>(currentPage, pageSize, total, totalPage, list);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return pageModel;
+	}
 	@Override
 	public Product queryProductById(Object terms) {
 		Product  pro = null;
@@ -171,6 +212,33 @@ public class ProductServiceImpl implements ProductService{
 			e.printStackTrace();
 		}
 		return pro;
+	}
+	@Override
+	public PageModel<Product> getProduct(String cid, String info, int currentPage, int pageSize) {
+		PageModel<Product> pageModel = null;
+		// 分页查询商品,判断条件是否为空
+		if (info == null || "".equals(info)) {
+			if (cid == null || "".equals(cid)) {
+				// 条件(info)、类别id都为空
+				pageModel = queryProduct(currentPage, pageSize);
+				System.out.println("条件(info)、类别id都为空");
+			}else {
+				// 条件(info)为空,类别id不为空
+				pageModel = queryProduct(Long.parseLong(cid),currentPage, pageSize);
+				System.out.println("条件(info)为空,类别id不为空");
+			}
+		}else{
+			if (cid == null || "".equals(cid)) {
+				// 条件(info)不为空,类别id空
+				pageModel = queryProduct(info,currentPage, pageSize);
+				System.out.println("条件(info)不为空,类别id空");
+			}else {
+				// 条件(info),类别id都不为空
+				pageModel = queryProduct(Long.parseLong(cid),info,currentPage, pageSize);
+				System.out.println("条件(info),类别id都不为空");
+			}
+		}
+		return pageModel;
 	}
 	
 }

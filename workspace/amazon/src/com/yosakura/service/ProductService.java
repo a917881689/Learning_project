@@ -15,21 +15,46 @@ import com.yosakura.entity.ProductCategory;
 public interface ProductService {
 	/**
 	 * 分页查询商品业务接口
+	 * @param cid 类别id
+	 * @param info 条件
+	 * @param currentPage 当前页
+	 * @param pageSize 一页显示多少个商品
+	 * @return 封装好的分页模型对象
+	 */
+	PageModel<Product> getProduct(String cid, String info, int currentPage, int pageSize);
+	/**
+	 * 分页查询商品业务接口
 	 * @param currentPage  当前页
 	 * @param pageSize 一页显示多少个商品
 	 * @return 封装好的分页模型对象
 	 */
-	PageModel<Product> pageProduct(int currentPage,int pageSize);
+	PageModel<Product> queryProduct(int currentPage, int pageSize);
 		
 	/**
 	 * 分页条件查询商品业务接口
-	 * @param info 条件查询
+	 * @param info 条件
 	 * @param currentPage 当前页
 	 * @param pageSize 一页显示多少个商品
 	 * @return 封装好的分页模型对象
 	 */
 	PageModel<Product> queryProduct(String info, int currentPage, int pageSize);
-
+	/**
+	 * 分页类别查询商品业务接口
+	 * @param classId 类别id
+	 * @param currentPage 当前页
+	 * @param pageSize 一页显示多少个商品
+	 * @return 封装好的分页模型对象
+	 */
+	PageModel<Product> queryProduct(long classId, int currentPage, int pageSize);
+	/**
+	 * 分页类别和条件查询商品业务接口
+	 * @param cid 类别id
+	 * @param info 条件
+	 * @param currentPage 当前页
+	 * @param pageSize 一页显示多少个商品
+	 * @return 封装好的分页模型对象
+	 */
+	PageModel<Product> queryProduct(long cid, String info, int currentPage, int pageSize);
 	/**
 	 * 根据ID数组查询商品 业务接口
 	 * @param recordArray 记录的商品id的数组
@@ -66,4 +91,12 @@ public interface ProductService {
 	 * @return 商品集合
 	 */
 	List<Product> queryProductsByidArray(Object[] termsArray, int number);
+
+	
+
+	
+
+	
+
+	
 }

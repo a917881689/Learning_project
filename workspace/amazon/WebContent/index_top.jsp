@@ -6,8 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>亚马逊-导航栏</title>
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+<script src="${pageContext.request.contextPath}/scripts/jquery-3.1.0.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/scripts/nav.js" type="text/javascript"></script>
 </head>
 <body>
+<input id="path" type="hidden" value="${pageContext.request.contextPath}"/>
 <div id="header">
 	<div class="login_menu">
 		<div class="login_container">
@@ -36,11 +40,11 @@
 	</div>
 	<div class="logo_search">
 		<div class="logo">
-			<img src="images/LOGO.png" alt="" id="logo-img"/>
+			<a href="index.jsp"><img src="images/LOGO.png" alt="" id="logo-img"/></a>
 		</div>
 		<div class="search">
-			<input type="text" placeholder="输入宝贝" id="qname" />
-			<button class="query_button" onclick="">搜索</button>
+			<input type="text" placeholder="输入宝贝" id="input_info" />
+			<button class="query_button" id="btn-query" >搜索</button>
 		</div>
 	</div>
 	<div class="nav_bar">

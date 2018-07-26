@@ -13,7 +13,6 @@
 <script src="${pageContext.request.contextPath}/scripts/jquery-3.1.0.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/adv.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/index.js"></script>
-<script src="${pageContext.request.contextPath}/scripts/recently_browse.js" type="text/javascript"></script>
 
 </head>
 <body>

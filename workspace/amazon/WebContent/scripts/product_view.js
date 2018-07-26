@@ -73,6 +73,7 @@ $(function () {
 		$('#pro-num').val(num-1);
 	})
 
+	// 添加到购物车
 	$('#add-shop-Pro').click(function() {
 		$.ajax({
 			url: "addShop",

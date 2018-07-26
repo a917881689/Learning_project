@@ -25,9 +25,9 @@ $(function () {
                 }
                 var html = "";
                 $.each(data,function (index,pro){
-                    html += "<dt><a href='"+path+"/path?id="+pro.product.id+"'>"+pro.product.name+"</a></dt>";
+                    html += "<dt><a href='"+path+"/product-list.jsp?cid="+pro.product.id+"'>"+pro.product.name+"</a></dt>";
                     $.each(pro.son,function (index,pro){
-                        html += "<dd><a href='"+path+"/path?id="+pro.product.id+"'>"+pro.product.name+"</a></dd>";
+                        html += "<dd><a href='"+path+"/product-list.jsp?cid="+pro.product.id+"'>"+pro.product.name+"</a></dd>";
                     })
                 })
                 $('#proClassify').html(html);

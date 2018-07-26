@@ -51,21 +51,35 @@ public class ProductDaoImpl implements ProductDao{
 	@Override
 	public long ProductCount() throws SQLException {
 		QueryRunner qr = C3P0Util.getQueryRunner();
-		String sql = "SELECT COUNT(*) FROM product";
-		return (long) qr.query(sql, new ScalarHandler<>());
+		String sql = "SELECT COUNT(*) FROM amz_product";
+		return qr.query(sql, new ScalarHandler<Long>());
 	}
 	// 条件查询商品的总条数
 	@Override
 	public long ProductCount(String info) throws SQLException {
 		QueryRunner qr = C3P0Util.getQueryRunner();
-		String sql = "SELECT COUNT(*) FROM product WHERE brand like ? OR memo like ?";
-		return (long) qr.query(sql, new ScalarHandler<>(),info,info);
+		String sql = "SELECT COUNT(*) FROM amz_product WHERE name like ? OR description like ?";
+		return qr.query(sql, new ScalarHandler<Long>(),info,info);
 	}
+	// 分类查询商品的总条数
+	@Override
+	public long ProductCount(long cid) throws SQLException {
+		QueryRunner qr = C3P0Util.getQueryRunner();
+		String sql = "SELECT COUNT(*) FROM amz_product WHERE major_id = ? OR minor_id = ?";
+		return qr.query(sql, new ScalarHandler<Long>(),cid,cid);
+	}
+	@Override
+	public long ProductCount(long cid,String info) throws SQLException {
+		QueryRunner qr = C3P0Util.getQueryRunner();
+		String sql = "SELECT COUNT(*) FROM amz_product WHERE major_id = ? OR minor_id = ? OR name like ? OR description like ?";
+		return qr.query(sql, new ScalarHandler<Long>(),cid,cid,info,info);
+	}
+		
 	// 获取当前页商品的集合
 	@Override
 	public List<Product> onePageProductList(int currentPage, int pageSize) throws SQLException {
 		QueryRunner qr = C3P0Util.getQueryRunner();
-		String sql = "SELECT id,brand,memo,price,img FROM product limit ?,?";
+		String sql = "SELECT id,name,description,price,stock,major_id,minor_id,img_source FROM amz_product limit ?,?";
 		int start = (currentPage-1)*pageSize;
 		return qr.query(sql,new BeanListHandler<Product>(Product.class,new BasicRowProcessor(new GenerousBeanProcessor())),start,pageSize);
 	}
@@ -73,9 +87,25 @@ public class ProductDaoImpl implements ProductDao{
 	@Override
 	public List<Product> onePageProductList(String info,int currentPage, int pageSize) throws SQLException {
 		QueryRunner qr = C3P0Util.getQueryRunner();
-		String sql = "SELECT id,brand,memo,price,img FROM product WHERE brand like ? OR memo like ? limit ?,?";
+		String sql = "SELECT id,name,description,price,stock,major_id,minor_id,img_source FROM amz_product WHERE name like ? OR description like ? limit ?,?";
 		int start = (currentPage-1)*pageSize;
 		return qr.query(sql,new BeanListHandler<Product>(Product.class,new BasicRowProcessor(new GenerousBeanProcessor())),info,info,start,pageSize);
+	}
+	// 获取类别查询当前页商品的集合
+	@Override
+	public List<Product> onePageProductList(long cid,int currentPage, int pageSize) throws SQLException {
+		QueryRunner qr = C3P0Util.getQueryRunner();
+		String sql = "SELECT id,name,description,price,stock,major_id,minor_id,img_source FROM amz_product WHERE major_id = ? OR minor_id = ? limit ?,?";
+		int start = (currentPage-1)*pageSize;
+		return qr.query(sql,new BeanListHandler<Product>(Product.class,new BasicRowProcessor(new GenerousBeanProcessor())),cid,cid,start,pageSize);
+	}
+	// 获取类别查询当前页商品的集合
+	@Override
+	public List<Product> onePageProductList(long cid,String info,int currentPage, int pageSize) throws SQLException {
+		QueryRunner qr = C3P0Util.getQueryRunner();
+		String sql = "SELECT id,name,description,price,stock,major_id,minor_id,img_source FROM amz_product WHERE major_id = ? OR minor_id = ? limit ?,?";
+		int start = (currentPage-1)*pageSize;
+		return qr.query(sql,new BeanListHandler<Product>(Product.class,new BasicRowProcessor(new GenerousBeanProcessor())),cid,cid,info,info,start,pageSize);
 	}
 	// 根据ID数组查询商品集合
 	@Override

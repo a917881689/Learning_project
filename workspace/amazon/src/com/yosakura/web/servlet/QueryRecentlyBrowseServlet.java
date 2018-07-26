@@ -28,7 +28,7 @@ public class QueryRecentlyBrowseServlet extends HttpServlet {
 		String record = null;
 		String[] recordArray = null;
 		List<Product> list = null;
-		String proListJSON = null;
+		String proListJSON = "";
 		if (cookies != null) {
 			for (Cookie cookie : cookies) {
 				if ("record".equals(cookie.getName())) {

@@ -13,10 +13,29 @@
 <title>亚马逊 - 产品列表</title>
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
 <link type="text/css" rel="stylesheet" href="css/style.css" />
+<link type="text/css" rel="stylesheet" href="css/pro_list.css" />
 <link href="${pageContext.request.contextPath}/css/index.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="scripts/function.js"></script>
+<script src="${pageContext.request.contextPath}/scripts/jquery-3.1.0.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/scripts/pro_list.js" type="text/javascript"></script>
 </head>
 <body>
+<input id="path" type="hidden" value="${pageContext.request.contextPath}"/>
+<c:if test="${empty param.page}"><!-- 页码是否为空 -->
+    	<input id="page" type="hidden" value="1"/>
+</c:if>
+<c:if test="${!empty param.page}">
+    	<input id="page" type="hidden" value="${param.page}"/>
+</c:if>
+
+<c:if test="${!empty param.info}">
+    	<input id="page" type="hidden" value=""/>
+</c:if>
+<c:if test="${!empty param.info}">
+    	<input id="info" type="hidden" value="${param.info}"/>
+</c:if>
+    	<input id="totalPage" type="hidden" value=""/>
+    	<input id="cid" type="hidden" value="${param.cid}"/>
+
 	<%@ include file="index_top.jsp"%>
 	<div id="position" class="wrap">
 		您现在的位置：<a href="ProductServlet">亚马逊</a> &gt; <a
@@ -26,75 +45,32 @@
 		<div class="lefter">
 			<%@ include file="index_product_sort.jsp"%>
 			<div class="spacer"></div>
-			<div class="last-view">
-				<h2>最近浏览</h2>
-				<dl class="clearfix">
-
-					<dt>
-						<img style="width: 54px; height: 54px;" src="images/product/0.jpg" />
-					</dt>
-					<dd>
-						<a href="#">商品名称</a>
-					</dd>
-
-					
-						<c:forEach items="" var="p">
-							<dt>
-								<img style="width: 54px; height: 54px;" src="" />
-							</dt>
-							<dd>
-								<a href=""></a>
-							</dd>
-						</c:forEach>
-				
-
-				</dl>
-			</div>
+			<jsp:include page="recently_browse.jsp"/>
 		</div>
 		<div class="main">
 			<div class="product-list">
 				<h2>全部商品</h2>
 				<div class="clear"></div>
-				<ul class="product clearfix">
-
-					<li>
-						<dl>
-							<dt>
-								<a href="#" target="_self"><img src="images/product/0.jpg" /></a>
-							</dt>
-							<dd class="title">
-								<a href="#" target="_self">商品名称</a>
-							</dd>
-							<dd class="price">￥12.34</dd>
-						</dl>
-					</li>
-
-					<li>
-						<dl>
-							<dt>
-								<a href="#" target="_self"><img src="images/product/0.jpg" /></a>
-							</dt>
-							<dd class="title">
-								<a href="#" target="_self">商品名称</a>
-							</dd>
-							<dd class="price">￥12.34</dd>
-						</dl>
-					</li>
-
-
-				</ul>
+				<div class="product clearfix" id="pro_list_div">
+					<!-- 商品页面 -->
+					<div class='pro-info'>
+                        <div class='pro-img'>
+                            <a href=''><img src='${pageContext.request.contextPath}/images/product/14.jpg' alt=''/></a>
+                        </div>
+                        <div class='pro-type'>
+                            <div class='pro-string'>商品名</div>
+                            <div class='pro-price'>￥商品价格</div>
+                            <div class='btn-details'><a href=''>查看详情</a></div>
+                        </div>
+                    </div>
+				</div>
 				<div class="clear"></div>
-				<div class="pager">
-					<ul class="clearfix">
-						<li><a href="#">上一页</a></li>
-						<li>2</li>
-
-
-						<li><a href="#">3</a></li>
-
-
-						<li><a href="#">下一页</a></li>
-					</ul>
+				<div class="pagination" id="pagination">
+				    <span class='link_btn'>首页</span>
+				    <span class='link_btn'>上一页</span>
+				    <span class="current link-num">1</span>
+				    <span class='link_btn' >下一页</span>
+				    <span class='link_btn' >尾页</span>
 				</div>
 			</div>
 		</div>

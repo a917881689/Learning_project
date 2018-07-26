@@ -23,6 +23,21 @@ public interface ProductDao {
 	 */
 	long ProductCount(String info) throws SQLException;
 	/**
+	 * 分类查询商品的总个数接口
+	 * @param cid 类别id
+	 * @return	long类型的商品总条数
+	 * @throws SQLException
+	 */
+	long ProductCount(long classId) throws SQLException;
+	/**
+	 * 条件、分类查询商品的总个数接口
+	 * @param cid 类别id
+	 * @param info 条件
+	 * @return long类型的商品总条数
+	 * @throws SQLException
+	 */
+	long ProductCount(long cid, String info) throws SQLException;
+	/**
 	 * 查询一页商品的数据接口
 	 * @param currentPage 当前页
 	 * @param pageSize 一页商品的个数
@@ -37,7 +52,25 @@ public interface ProductDao {
 	 * @return 当前商品的集合
 	 */
 	List<Product> onePageProductList(String info, int currentPage, int pageSize) throws SQLException;
-	
+	/**
+	 * 类别查询一页商品的数据接口
+	 * @param classId 类别id
+	 * @param currentPage 当前页
+	 * @param pageSize 一页商品的个数
+	 * @return 当前一页商品的集合
+	 * @throws SQLException
+	 */
+	List<Product> onePageProductList(long classId, int currentPage, int pageSize) throws SQLException;
+	/**
+	 * 类别、条件 查询一页商品的数据接口
+	 * @param cid 类别id
+	 * @param info 条件
+	 * @param currentPage 当前页
+	 * @param pageSize 一页商品的个数
+	 * @return 当前一页商品的集合
+	 * @throws SQLException
+	 */
+	List<Product> onePageProductList(long cid, String info, int currentPage, int pageSize) throws SQLException;
 	/**
 	 * 根据ID数组查询商品接口
 	 * @param termsArray 商品id数组
@@ -45,6 +78,8 @@ public interface ProductDao {
 	 * @throws SQLException
 	 */
 	List<Product> queryProductsByidArray(Object[] termsArray) throws SQLException;
+	
+	
 	/**
 	 * 根据ID单个查询商品接口
 	 * @param qr 查询对象
@@ -82,5 +117,9 @@ public interface ProductDao {
 	 * @return 商品分类数据
 	 */
 	List<Product> querypopularProduct() throws SQLException;
+	
+	
+	
+	
 	
 }
