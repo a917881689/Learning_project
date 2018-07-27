@@ -5,12 +5,17 @@ $(function () {
     var path = $('#path').val()
     $('#btn-query').click(function () {
         var info = $('#input_info').val();
-        if ('' == info) {
+        var cid = $('#cid').val();
+        if ('' == info && '' == cid) {
             location.href=path+"/product-list.jsp";
-        }else {
-            location.href=path+"/product-list.jsp?info="+info;
+            return;
         }
-
+        if ('' == cid) {
+            location.href=path+"/product-list.jsp?info="+info;
+            return;
+        }
+        location.href=path+"/product-list.jsp?info="+info+"&cid="+cid;
 
     })
+
 })

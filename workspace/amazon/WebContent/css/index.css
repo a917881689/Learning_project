@@ -191,6 +191,8 @@ body {
     border: 1px solid #c3c3c3;
     margin-top: 10px;
     overflow:hidden;
+    width: 180px;
+    height: 303px;
 }
 
 .pre_look h3 {
@@ -433,6 +435,7 @@ ul.product2 li dl dd.price {
     font-size: 14px;
     text-align: center;
     background: rgba(0, 0, 0, 0.07);
+    margin-top: 20px;
 }
 
 /*底部模块结束*/

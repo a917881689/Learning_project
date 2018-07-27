@@ -16,7 +16,7 @@ $(function () {
 			dataType: "json",
 			success: function (data) {
 				if (data == null) {
-					if (count_pro_index <= 10) {
+					if (count_pro_index <= 3) {
 						get_product_index();
 						count_pro_index += 1;
 					}else{
@@ -24,16 +24,17 @@ $(function () {
 					}
 					return;
 				}
-				console.log("ajax请求成功写入数据:")
+				console.log("开始写入商品信息...");
 				var html = "";
 				$.each(data,function (idenx,pro){
 					html += "<li><dl><dt><a href='"+path+"/productDetail.jsp?pid="+pro.id+"' target='_self'><img src='"+path+"/"+pro.imgSource+"' /></a></dt><dd class='title'><a href='"+path+"/productDetail.jsp?pid="+pro.id+"' target='_self'>"+pro.description+"</a></dd><dd class='price'>￥"+pro.price+"</dd></dl></li>"
 				})
 				$('#major').html(html);
+				console.log("写入商品信息成功");
 			},
 			error: function () {
-				console.log("ajax请求错误,重新请求")
-				if (count_pro_index <= 10) {
+				console.log("ajax请求错误,重新请求");
+				if (count_pro_index <= 3) {
 					get_product_index();
 					count_pro_index += 1;
 				}else{

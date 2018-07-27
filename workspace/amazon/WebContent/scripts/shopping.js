@@ -9,7 +9,7 @@ $(function () {
 			data: {},
 			dataType: "json",
 			success: function (data) {
-				console.log("ajax请求成功写入数据:")
+				console.log("开始写入购物车信息...");
 				var html = "";
 				$.each(data,function (index,pro){
 					html += "<tr><td class='thumb'>"+
@@ -27,9 +27,10 @@ $(function () {
 				})
 				$('#shopCart_table').html(html);
 				console.log("html:"+html)
+				console.log("写入购物车成功!");
 			},
 			error: function () {
-				if (count_pro_cart <= 10) {
+				if (count_pro_cart <= 3) {
 					count_pro_cart += 1;
 					get_pro_cart();
 				}else{

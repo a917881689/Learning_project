@@ -189,11 +189,11 @@ public class ProductServiceImpl implements ProductService{
 		try {
 			ProductDaoImpl pdi = new ProductDaoImpl();
 			// 1.获取类别id查询商品的总个数
-			long total = pdi.ProductCount(cid,info);
+			long total = pdi.ProductCount(cid,"%"+info+"%");
 			// 2.计算总页数
 			int totalPage = (int)(total%pageSize == 0?total/pageSize:total/pageSize+1);
 			// 3.获取当前页所有商品的集合
-			List<Product> list = pdi.onePageProductList(cid,info,currentPage, pageSize);
+			List<Product> list = pdi.onePageProductList(cid,"%"+info+"%",currentPage, pageSize);
 			// 4.将以上分页参数封装到PageModel对象中
 			pageModel = new PageModel<>(currentPage, pageSize, total, totalPage, list);
 		} catch (SQLException e) {

@@ -7,11 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>亚马逊-导航栏</title>
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/nav.css"/>
 <script src="${pageContext.request.contextPath}/scripts/jquery-3.1.0.min.js" type="text/javascript"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="${pageContext.request.contextPath}/scripts/nav.js" type="text/javascript"></script>
 </head>
 <body>
 <input id="path" type="hidden" value="${pageContext.request.contextPath}"/>
+<input id="cid" type="hidden" value="${param.cid}"/>
 <div id="header">
 	<div class="login_menu">
 		<div class="login_container">
@@ -38,15 +41,37 @@
 			</ul>
 		</div>
 	</div>
-	<div class="logo_search">
-		<div class="logo">
-			<a href="index.jsp"><img src="images/LOGO.png" alt="" id="logo-img"/></a>
-		</div>
-		<div class="search">
-			<input type="text" placeholder="输入宝贝" id="input_info" />
-			<button class="query_button" id="btn-query" >搜索</button>
+	<div class="container">
+		<div class="row">
+			<div class="margin-top-30 col-md-1 col-md-push-1 ">
+				<a href="index.jsp"><img src="images/LOGO.png" alt="" id="logo-img"/></a>
+			</div>
+			<div class="col-md-9 margin-top-40">
+				<div class="dropdown col-md-2 col-md-push-3">
+				    <button type="button" class="btn btn-red" data-toggle="dropdown" id="choose_btn_classify">
+				        全部类别 <span class="caret"></span>
+				    </button>
+				    <ul class="dropdown-menu bg-orange" id="pro_top_classify">
+				        <li class="dropdown dropdown-submenu">
+				        	<a class="" >上海</a>
+				        	<ul class="dropdown-menu">
+                        	<li class=""> 
+                        		<a class="" >上海</a>
+                        	</li>
+                        	</ul>
+				        </li>
+				        <li><a class="" >重庆</a></li>
+				        <li><a class="" >成都</a></li>
+				    </ul>
+				</div>
+				<div class="col-md-9 col-md-push-2 margin-left-22">
+					<input type="text" placeholder="输入宝贝" id="input_info"/>
+					<button class="query_button" id="btn-query">搜索</button>
+				</div>
+			</div>
 		</div>
 	</div>
+	<div class="margin-bottom-25"></div>
 	<div class="nav_bar">
 		<div class="nav_bar_container">
 			<ul>
@@ -58,5 +83,6 @@
 		</div>
 	</div>
 </div>
+
 </body>
 </html>

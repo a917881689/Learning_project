@@ -9,8 +9,11 @@
 <script src="${pageContext.request.contextPath}/scripts/jquery-3.1.0.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/scripts/product_classify.js" type="text/javascript"></script>
 <style type="text/css">
-	h2 {
+	.p_category>h2 {
 		margin-top: 0;
+	}
+	.p_category {
+    	font-size: 14px;
 	}
 </style>
 </head>

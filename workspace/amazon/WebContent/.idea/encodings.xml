@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/scripts/nav.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/scripts/pro_list.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/scripts/product_classify.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/scripts/recently_browse.js" charset="UTF-8" />
   </component>
 </project>

@@ -103,7 +103,7 @@ public class ProductDaoImpl implements ProductDao{
 	@Override
 	public List<Product> onePageProductList(long cid,String info,int currentPage, int pageSize) throws SQLException {
 		QueryRunner qr = C3P0Util.getQueryRunner();
-		String sql = "SELECT id,name,description,price,stock,major_id,minor_id,img_source FROM amz_product WHERE major_id = ? OR minor_id = ? limit ?,?";
+		String sql = "SELECT id,name,description,price,stock,major_id,minor_id,img_source FROM amz_product WHERE (major_id = ? OR minor_id = ?) AND (name like ? OR description like ?) limit ?,?";
 		int start = (currentPage-1)*pageSize;
 		return qr.query(sql,new BeanListHandler<Product>(Product.class,new BasicRowProcessor(new GenerousBeanProcessor())),cid,cid,info,info,start,pageSize);
 	}
