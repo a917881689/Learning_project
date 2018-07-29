@@ -1,0 +1,22 @@
+package com.yosakura.dao.impl;
+
+import java.util.List;
+
+import org.apache.commons.dbutils.BasicRowProcessor;
+import org.apache.commons.dbutils.GenerousBeanProcessor;
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+
+import com.yosakura.dao.CommentDao;
+import com.yosakura.entity.Comment;
+import com.yosakura.entity.Order;
+import com.yosakura.util.C3P0Util;
+
+public class CommentDaoImpl implements CommentDao{
+	public List<Comment> queryComment() {
+		QueryRunner qr = C3P0Util.getQueryRunner();
+		String sql = "SELECT id,uid,uname,uaddress,create_time,money,status,type FROM amz_order";
+		return qr.query(sql,new BeanListHandler<Comment>(Comment.class,new BasicRowProcessor(new GenerousBeanProcessor())));
+	}
+
+}

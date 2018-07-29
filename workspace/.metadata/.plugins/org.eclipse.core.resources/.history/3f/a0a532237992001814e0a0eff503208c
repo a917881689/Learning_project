@@ -1,0 +1,168 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>亚马逊- 购物车</title>
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+<link href="${pageContext.request.contextPath}/css/index.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css" />
+<script src="${pageContext.request.contextPath}/scripts/jquery-3.1.0.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="scripts/icheck.min.js"></script>
+<script type="text/javascript" src="scripts/shopping.js"></script>
+<style type="text/css">
+	.nologin-tip {
+	    border: 1px solid #edd28b;
+	    background: #fffdee;
+	    padding: 10px 20px;
+	    line-height: 25px;
+	    margin-bottom: 20px;
+	    color: #f70;
+	}
+	.btn-login:hover {
+	    color: #fff;
+	    text-decoration: none;
+	    background-color: #f07770;
+	}
+	.nologin-tip .wicon {
+	    display: inline-block;
+	    vertical-align: middle;
+	    margin-right: 10px;
+	    width: 16px;
+	    height: 16px;
+	    overflow: hidden;
+	    background: url(//misc.360buyimg.com/user/cart/css/i/icon16.png) 0 0 no-repeat;
+	}
+	.nologin-tip .btn-login {
+	    text-decoration: none;
+	    font-family: arial,"Microsoft YaHei";
+	    display: inline-block;
+	    height: 25px;
+	    line-height: 25px;
+	    background-color: #e73500;
+	    border-radius: 3px;
+	    color: #ffFfff;;
+	    font-size: 12px;
+	    font-weight: 400;
+	    padding: 0 10px;
+	    vertical-align: middle;
+	    cursor: pointer;
+	    border: 0;
+	    float: none;
+	    transition: all .2s ease-out;
+	    margin-left: 10px;
+	}
+	.quantity{
+        position: relative;
+        left: 3px;
+        overflow: hidden;
+        height: 35px;
+        width: 92px;
+    }
+
+    .shop-num{
+	    -webkit-user-select:none;
+	    -moz-user-select:none;
+	    -ms-user-select:none;
+	    user-select:none;
+    	cursor:pointer;
+        border: 1px solid #cacbcb;
+        border-right: 0;
+        height: 26px;
+        line-height: 18px;
+        padding: 1px 0;
+        width: 25px;
+        text-align: center;
+        color: #666;
+        margin: 0;
+        background: #fff;
+        text-decoration: none;
+    }
+    .itxt {
+        position: absolute;
+        left:25px;
+        top: 0;
+        border: 1px solid #cacbcb;
+        width: 42px;
+        height: 26px;
+        line-height: 18px;
+        text-align: center;
+        padding: 1px;
+        margin: 0;
+        font-size: 12px;
+        font-family: verdana;
+        color: #333;
+    }
+    .reduce-num {
+        float: left;
+    }
+    .add-num {
+        float: right;
+        border: 1px solid #cacbcb;
+        border-left: 0;
+        color: #666;
+    }
+    input[type=checkbox] {
+    	zoom:180%
+    }
+</style>
+</head>
+<body>
+<input type="hidden" value="${pageContext.request.contextPath}" id="path"/>
+<%@ include file="index_top.jsp"  %>
+<c:if test="${empty loginUser}">
+	<div class="container nologin-tip">
+    	<span class="wicon"></span>
+    		您还没有登录！登录后购物车的商品将保存到您账号中
+    	<a class="btn-login " href="SaveURLServlet?saveURL=${pageContext.request.requestURL}&queryString=${pageContext.request.queryString}" >立即登录</a>
+	</div>
+</c:if>
+<div id="position" class="wrap">
+	您现在的位置：<a href="index.jsp">亚马逊</a> &gt; 购物车
+</div>
+<div class="wrap">
+	<div id="shopping">
+		<form action="doBuy" method="post">
+			<table>
+				<thead>
+					<tr>
+						<th><label for="checkall">全选<input type="checkbox" id="check-all"></label></th>
+						<th>商品名称</th>
+						<th>商品单价</th>
+						<th>购买数量</th>
+						<th>商品价格</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="shopCart_tbody">
+					<!-- 根据用户购物车生成列表 -->
+					<tr>
+						<td class="thumb"><img style="width: 100px; height: 100px;" src="" /><a href=""></a></td>
+						<td class="price">
+							￥<span id="span_1">span元素</span>
+						</td>
+						<td class="number">
+								<c:set var="hcid" value=""></c:set>
+								<div class="quantity" >
+								    <a href="javascript:void(0);" class="shop-num reduce-num" >-</a>
+								    <input autocomplete="off" type="text" class="itxt" value="1" minnum="1">
+								    <a href="javascript:void(0);" class="shop-num add-num" id="">+</a>
+								</div>
+						</td>
+						<td class="delete"><a href="">删除</a></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="button"><input type="submit" value="" /></div>
+		</form>
+	</div>
+</div>
+<div id="footer">
+	Copyright &copy; 2018 上海海文 All Rights Reserved.
+</div>
+
+</body>
+</html>
+

@@ -7,23 +7,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>亚马逊 - 订单页</title>
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-<link href="${pageContext.request.contextPath}/css/index.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/css/adv.css"
-	rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/css/style.css"
-	rel="stylesheet" type="text/css" />
-<script src="${pageContext.request.contextPath}/scripts/jquery-3.1.0.min.js"
-	type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/scripts/adv.js"
-	type="text/javascript"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/scripts/function.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/scripts/index.js"></script>
-<script type="text/javascript" src="scripts/shopping.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css" />
+<link rel="stylesheet" href="css/nav.css"/>
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-3.1.0.min.js" type="text/javascript"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
+<script src="js/nav.js" type="text/javascript"></script>
+<script src="js/order.js" type="text/javascript"></script>
 <style type="text/css">
 #oderview {
-	font-size: 14px
+	font-size: 14px;
+}
+div#shopping {
+	overflow-y: auto;
+    height: 600px;
 }
 </style>
 
@@ -42,8 +41,6 @@
 						<th>订单时间:</th>
 						<th>订单号:</th>
 						<th>订单总额:</th>
-						<th>
-						<th>
 					</tr>
 					<!-- 根据用户购物车生成列表 -->
 					<tr id="product_id_1">

@@ -1,0 +1,17 @@
+package com.yosakura.service.impl;
+
+import java.util.List;
+
+import com.yosakura.dao.impl.OrderDaoImpl;
+import com.yosakura.entity.Order;
+import com.yosakura.entity.OrderModel;
+import com.yosakura.service.OrderService;
+
+public class OrderServiceImpl implements OrderService{
+	// 获取用户订单数据
+	public List<OrderModel> queryOrder(long uid) {
+		// 查询user的订单表数据
+		OrderDaoImpl odi = new OrderDaoImpl();
+		List<Order> orderList = odi.queryOrder(uid)
+	}
+}

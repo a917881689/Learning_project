@@ -1,0 +1,21 @@
+package com.yosakura.service.impl;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.yosakura.dao.impl.CommentDaoImpl;
+import com.yosakura.entity.Comment;
+import com.yosakura.service.CommentService;
+
+public class CommentServiceImpl implements CommentService{
+	public List<Comment> queryComment(){
+		List<Comment> list = null;
+		CommentDaoImpl cdi = new CommentDaoImpl();
+		try {
+			list = cdi.queryComment();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+}

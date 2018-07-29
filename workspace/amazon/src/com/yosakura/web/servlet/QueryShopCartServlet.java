@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
+import com.yosakura.entity.Shop;
 import com.yosakura.entity.ShopCartModel;
 import com.yosakura.entity.User;
 import com.yosakura.service.impl.ShopServiceImpl;
@@ -27,17 +28,20 @@ public class QueryShopCartServlet extends HttpServlet {
 		if (user != null) {
 			// 用户登录
 			long uid = user.getId();	
+			Cookie[] cookies = req.getCookies();
+			// getCookieValue()获取cookie临时购物车数据，updateShopCart()更新临时购物车数据
+			 List<Shop> tempShopCart = ssi.updateShopCart(uid,CookieUtil.getCookieValue(cookies,"tempShopCart"));
+			 resp.addCookie(CookieUtil.getTempCookie(tempShopCart));
 			// 获取cookie购物车数据,查看是否有数据
-			String cookieShopCartjson = CookieUtil.getCookieValue(req.getCookies(),"shopCart");
+			String cookieShopCartjson = CookieUtil.getCookieValue(cookies,"shopCart");
 			if (cookieShopCartjson != null && !"".equals(cookieShopCartjson)) {
 				// 添加cookie购物车数据到购物车
 				ssi.addShopCart(uid,cookieShopCartjson);
-				// 删除cookie
 				Cookie cookie = new Cookie("shopCart",null);
-				cookie.setMaxAge(0); // 销毁
+				cookie.setMaxAge(0); //销毁
+				// 处理剩下的cookie购物车数据
 				resp.addCookie(cookie);
 			}
-				// 查询购物车模型
 			list = ssi.queryShopCart(uid);		
 		}else {
 			// 用户未登录

@@ -1,0 +1,51 @@
+package com.yosakura.service.impl;
+
+import java.math.BigDecimal;
+import java.sql.SQLException;
+import java.util.List;
+
+import com.yosakura.dao.impl.OrderDaoImpl;
+import com.yosakura.dao.impl.ProductDaoImpl;
+import com.yosakura.entity.Order;
+import com.yosakura.entity.OrderModel;
+import com.yosakura.entity.Product;
+import com.yosakura.service.OrderService;
+
+public class OrderServiceImpl implements OrderService{
+	private Long id;
+	private String orderTime;
+	private BigDecimal totalPrice;
+	private Integer pnum;
+	private Product pro;
+    
+//订单号
+//订单时间
+//订单总额
+//    --订单表
+//商品对象
+//    --查询product
+//商品数量
+//    --查询order_detail
+	// 获取用户订单数据
+	public List<OrderModel> queryOrder(long uid) {
+		
+		// 查询user的订单表数据
+		OrderDaoImpl odi = new OrderDaoImpl();
+		ProductDaoImpl pdi = new ProductDaoImpl();
+		try {
+			List<Order> orderList = odi.queryOrder(uid);
+		    // 查询商品对象
+			for (Order order : orderList) {
+				order.getId();
+				order.getCreateTime();
+				order.getMoney();
+				// 查询商品id,和商品数量
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+}

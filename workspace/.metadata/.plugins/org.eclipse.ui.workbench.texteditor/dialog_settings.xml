@@ -6,22 +6,25 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="num" key="selection"/>
+		<item value="loginUser" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="num"/>
-			<item value="nextPage"/>
-			<item value="hot_sale"/>
-			<item value="newsList"/>
-			<item value="pre_look"/>
-			<item value="p_category"/>
-			<item value="btn-success"/>
-			<item value="field"/>
+			<item value="loginUser"/>
+			<item value="str"/>
+			<item value="js"/>
+			<item value="${pageContext.request.contextPath}/css"/>
+			<item value="${pageContext.request.contextPath}/scripts"/>
+			<item value="${pageContext.request.contextPath}/"/>
+			<item value="updateShopCart"/>
+			<item value="addShopCart"/>
 		</list>
 		<list key="replacehistory">
+			<item value="css"/>
+			<item value="js"/>
+			<item value=" "/>
 			<item value=".jsp"/>
 		</list>
 	</section>
@@ -29,7 +32,7 @@
 		<item value="273" key="DIALOG_WIDTH"/>
 		<item value="1|微软雅黑|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|微软雅黑" key="DIALOG_FONT_NAME"/>
 		<item value="399" key="DIALOG_HEIGHT"/>
-		<item value="1014" key="DIALOG_X_ORIGIN"/>
-		<item value="147" key="DIALOG_Y_ORIGIN"/>
+		<item value="1085" key="DIALOG_X_ORIGIN"/>
+		<item value="218" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

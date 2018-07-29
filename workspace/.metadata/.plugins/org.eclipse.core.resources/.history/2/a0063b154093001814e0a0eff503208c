@@ -1,0 +1,74 @@
+package com.yosakura.entity;
+
+public class Comment {
+	private Long id;
+	private String reply;
+	private String content;
+	private String createTime;
+	private String replyTime;
+	private String nickName;
+	private String state;
+	public Comment() {
+		super();
+	}
+	public Comment(Long id, String reply, String content, String createTime, String replyTime, String nickName,
+			String state) {
+		super();
+		this.id = id;
+		this.reply = reply;
+		this.content = content;
+		this.createTime = createTime;
+		this.replyTime = replyTime;
+		this.nickName = nickName;
+		this.state = state;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getReply() {
+		return reply;
+	}
+	public void setReply(String reply) {
+		this.reply = reply;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+	public String getReplyTime() {
+		return replyTime;
+	}
+	public void setReplyTime(String replyTime) {
+		this.replyTime = replyTime;
+	}
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	@Override
+	public String toString() {
+		return "Comment [id=" + id + ", reply=" + reply + ", content=" + content + ", createTime=" + createTime
+				+ ", replyTime=" + replyTime + ", nickName=" + nickName + ", state=" + state + "]";
+	}
+	
+
+}

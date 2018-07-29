@@ -1,9 +1,0 @@
-package com.yosakura.annotation;
-/**
- * 自定义注解的语法
- * public @interface 注解名称
- *
- */
-public class MyAnnotation {
-
-}

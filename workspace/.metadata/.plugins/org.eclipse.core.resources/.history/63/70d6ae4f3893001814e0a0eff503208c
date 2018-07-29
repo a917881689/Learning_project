@@ -1,0 +1,13 @@
+package com.yosakura.entity;
+
+public class Comment {
+	private Long id;
+	private String reply;
+	private String content;
+	private String createTime;
+	private String replyTime;
+	private String nickName;
+	private String state;
+	
+
+}

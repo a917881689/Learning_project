@@ -6,8 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>亚马逊-最近浏览</title>
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-<script src="${pageContext.request.contextPath}/scripts/jquery-3.1.0.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/scripts/recently_browse.js" type="text/javascript"></script>
+<script src="js/jquery-3.1.0.min.js" type="text/javascript"></script>
+<script src="js/recently_browse.js" type="text/javascript"></script>
 <style type="text/css">
 	.rb-img{
 		width: 54px; 

@@ -1,0 +1,58 @@
+package com.yosakura.web.servlet;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.yosakura.entity.User;
+import com.yosakura.service.impl.ShopServiceImpl;
+import com.yosakura.util.CookieUtil;
+
+@WebServlet("/deleteShopCart")
+public class DeleteShopCartServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String pidStr = req.getParameter("pid");
+		// 非空验证
+		if (pidStr == null || "".equals(pidStr)) {
+			resp.getWriter().write("error");
+			return;
+		}
+		// 读取商品id
+		
+		User user = (User)req.getSession().getAttribute("loginUser");
+		// 判断有没有登录
+		if (user == null) {
+			// 没有登录，获取商品id;
+			long pid = Long.parseLong(pidStr);
+			// 获取cookie购物车数据
+			String cookieShopCart = CookieUtil.getCookieValue(req.getCookies(),"shopCart");
+			Cookie cookie = CookieUtil.getCookie("shopCart", CookieUtil.delCookieShopCart(pid,cookieShopCart));
+			resp.addCookie(cookie);
+			resp.getWriter().write("sue");
+			return;
+		}
+		// 用户已登录，获取购物车记录id
+		String sidStr = req.getParameter("sid");
+		long uid = user.getId();
+		// 非空验证
+		if (sidStr == null || "".equals(sidStr)) {
+			resp.getWriter().write("error");
+			return;
+		}
+		long sid = Long.parseLong(sidStr);
+		ShopServiceImpl ssi = new ShopServiceImpl();
+		// 调用业务层删除记录
+		int result = ssi.delShopCart(uid,sid);
+		resp.getWriter().write(result==1?"sue":"error");
+	}
+
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
+}

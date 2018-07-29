@@ -1,7 +1,0 @@
-package com.yosakura.service;
-
-import com.yosakura.entity.Shop;
-
-public interface ShopService {
-	int addShopCart(Shop shop);
-}

@@ -1,0 +1,36 @@
+package com.yosakura.dao.impl;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
+
+import com.yosakura.dao.OrderDao;
+import com.yosakura.entity.Order;
+import com.yosakura.entity.OrderDetail;
+import com.yosakura.util.C3P0Util;
+import com.yosakura.util.SqlUtil;
+
+public class OrderDaoImpl implements OrderDao{
+	// 添加订单数据到数据库,事务控制,返回数据列的id
+	@Override
+	public int addOrderAffair(Order order) throws SQLException {
+		Connection conn = C3P0Util.getcurrentConnection();
+		QueryRunner qr = new QueryRunner();
+		Object[] objAttr = SqlUtil.getObjAttr(order);
+		String sql = "INSERT INTO amz_order(uid,uname,uaddress,money,status,type) VALUES(?,?,?,?,1,1)";
+		qr.update(conn,sql,objAttr);
+		return qr.query(conn,"select last_insert_id()",new ScalarHandler<Integer>());
+	}
+	// 添加订单详情数据到数据库,事务控制
+	@Override
+	public int addOrderDeteilAffair(OrderDetail orderDetail) throws SQLException {
+		Connection conn = C3P0Util.getcurrentConnection();
+		QueryRunner qr = new QueryRunner();
+		Object[] objAttr = SqlUtil.getObjAttr(orderDetail);
+		String sql = "INSERT INTO amz_order_detail(oid,pid,quantity,money) VALUES(?,?,?,?,1,1)";
+		return qr.update(conn,sql,objAttr);
+	}
+	
+}

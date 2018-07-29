@@ -6,10 +6,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>亚马逊 - 产品显示</title>
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-<link href="${pageContext.request.contextPath}/css/index.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css" />
-<script src="${pageContext.request.contextPath}/scripts/jquery-3.1.0.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/product_view.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css" />
+<link rel="stylesheet" href="css/nav.css"/>
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-3.1.0.min.js" type="text/javascript"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
+<script src="js/nav.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/product_view.js"></script>
 <style type="text/css">
         .button>button.btn-orange {
         	margin: 0 20px;
@@ -55,14 +60,14 @@
     </style>
 </head>
 <body>
-	<%@ include file="index_top.jsp"%>
+	<jsp:include page="index_top.jsp"/>
 	<div id="position" class="wrap">
 		您现在的位置：<a href="index.jsp">亚马逊</a> &gt; <a href=""></a> &gt; <a
 			href=""></a>
 	</div>
 	<div id="main" class="wrap">
 		<div class="lefter">
-			<%@ include file="index_product_sort.jsp"%>
+		<jsp:include page="index_product_sort.jsp"/>
 		</div>
 		<div id="product" class="main">
 			<h1>商品名称:<span id="pro-name"></span></h1>

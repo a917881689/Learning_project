@@ -1,0 +1,60 @@
+package com.yosakura.web.servlet;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.yosakura.entity.Shop;
+import com.yosakura.entity.User;
+import com.yosakura.util.CookieUtil;
+
+// 数量更新后数据的添加到cookie中的临时购物车
+@WebServlet("/updateShopCart")
+public class UpdateTempShopCartServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String sid = req.getParameter("sid");
+		String pid = req.getParameter("pid");
+		String pnum = req.getParameter("pnum");
+		User user = (User)req.getSession().getAttribute("loginUser");
+		// 非空验证
+		if (sid == null || "".equals(sid) || pid == null || "".equals(pid) || pnum == null || "".equals(pnum)) {
+			resp.getWriter().write("error");
+			return;
+		}
+		// 判断有没有登录
+		if (user == null) {
+			// 获取cookie中的临时购物车数据
+			String cookieShopCart = CookieUtil.getCookieValue(req.getCookies(),"shopCart");
+			// 进行更新，接收更新后的数据
+			Shop shop = new Shop(Long.parseLong(pid),Integer.parseInt(pnum));
+			String updateCookieShopCart = CookieUtil.updateCookieTempShopCart(shop,cookieShopCart);
+			// 转成cookie
+			Cookie cookie = new Cookie("shopCart",updateCookieShopCart);
+			cookie.setMaxAge(60*60*24*3650);//过期时间为3650天
+			resp.getWriter().write("sue");
+			return;
+		} 
+		// 获取cookie中的临时购物车数据
+		String tempShopCart = CookieUtil.getCookieValue(req.getCookies(),"tempShopCart");
+		// 进行更新，接收更新后的数据
+		new Shop(Long.parseLong(sid),Long.parseLong(pid),Integer.parseInt(pnum),user.getId());
+		String updateTempShopCart = CookieUtil.updateCookieTempShopCart(,tempShopCart);
+		// 转成cookie
+		Cookie cookie = new Cookie("tempShopCart",updateTempShopCart);
+		cookie.setMaxAge(60*60*24*3650);//过期时间为3650天
+		// 进行存储
+		resp.addCookie(cookie);
+		resp.getWriter().write("sue");
+	}
+
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
+}

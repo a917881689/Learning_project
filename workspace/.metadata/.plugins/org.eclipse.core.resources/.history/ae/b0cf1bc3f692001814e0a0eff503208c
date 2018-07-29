@@ -1,0 +1,23 @@
+package com.yosakura.dao.impl;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import org.apache.commons.dbutils.QueryRunner;
+
+import com.yosakura.dao.OrderDao;
+import com.yosakura.entity.Order;
+import com.yosakura.util.C3P0Util;
+import com.yosakura.util.SqlUtil;
+
+public class OrderDaoImpl implements OrderDao{
+	// 添加订单数据到数据库,事务控制
+	@Override
+	public int addOrderAffair(Order order) throws SQLException {
+		Connection conn = C3P0Util.getcurrentConnection();
+		QueryRunner qr = C3P0Util.getQueryRunner();
+		Object[] objAttr = SqlUtil.getObjAttr(order);
+		String sql = "INSERT INTO amz_order(uid,uname,uaddress,money,status,type) VALUES(?,?,?,?,1,1)";
+		return qr.update(conn,sql,objAttr);
+	}
+}

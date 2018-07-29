@@ -6,14 +6,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>亚马逊 - 留言</title>
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-<link href="${pageContext.request.contextPath}/css/index.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/css/adv.css" rel="stylesheet" type="text/css" />
-<script src="${pageContext.request.contextPath}/scripts/jquery-3.1.0.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/scripts/adv.js" type="text/javascript"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/function.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/index.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/comment.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css" />
+<link rel="stylesheet" href="css/nav.css"/>
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-3.1.0.min.js" type="text/javascript"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
+<script src="js/nav.js" type="text/javascript"></script>
+<script src="js/comment.js" type="text/javascript"></script>
 </head>
 <body>
 <%@ include file="index_top.jsp"  %>
@@ -27,7 +28,7 @@
 	<div class="main">
 		<div class="guestbook">
 			<h2>全部留言</h2>
-			<ul>
+			<ul id="comment-ul">
 				<li>
 					<dl>
 						<dt>内容：</dt>
@@ -38,31 +39,25 @@
 					</dl>
 				</li>
 			</ul>
-			
 			<div class="clear"></div>
-			<div class="pager">
-				<ul class="clearfix">
-				</ul>
-			</div>
-			
 			<div id="reply-box">
-				<form action="addComment" method="post" onsubmit="return commentCheck()">
+				<form id="cm-form">
 					<table>
 						<tr>
 							<td class="field">昵称：</td>
-							<td><input class="text" type="text" name="guestName" /></td>
+							<td><input class="text" type="text" name="niName" /></td>
 						</tr>
 						<tr>
 							<td class="field">留言标题：</td>
-							<td><input class="text" type="text" name="guestTitle" /></td>
+							<td><input class="text" type="text" name="reply" /></td>
 						</tr>
 						<tr>
 							<td class="field">留言内容：</td>
-							<td><textarea name="guestContent"></textarea></td>
+							<td><textarea name="content" class="text" ></textarea></td>
 						</tr>
 						<tr>
 							<td>&nbsp;</td>
-							<td><label class="ui-blue"><input type="submit" name="submit" value="提交留言" /></label></td>
+							<td><button type="button" class="btn btn-success" id="sub-cm-form">提交</button></td>
 						</tr>
 					</table>
 				</form>

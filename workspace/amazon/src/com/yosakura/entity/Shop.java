@@ -5,13 +5,7 @@ public class Shop {
 	private Long pid;
 	private Integer pnum;
 	private Long uid;
-	public Shop(Long id, Long pid, Integer pnum, Long uid) {
-		super();
-		this.id = id;
-		this.pid = pid;
-		this.pnum = pnum;
-		this.uid = uid;
-	}
+	
 	public Shop() {
 		super();
 	}
@@ -25,6 +19,13 @@ public class Shop {
 		super();
 		this.pid = pid;
 		this.pnum = pnum;
+	}
+	public Shop(Long id, Long pid, Integer pnum, Long uid) {
+		super();
+		this.id = id;
+		this.pid = pid;
+		this.pnum = pnum;
+		this.uid = uid;
 	}
 	public Long getId() {
 		return id;

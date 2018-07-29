@@ -12,18 +12,6 @@ import com.yosakura.entity.ProductCategory;
 import com.yosakura.service.ProductService;
 
 public class ProductServiceImpl implements ProductService{
-	public static void main(String[] args) {
-//		List<PageListModel<ProductCategory>> queryProductClassify = new ProductServiceImpl().queryProductClassify();
-//		for (PageListModel<ProductCategory> pageListModelA : queryProductClassify) {
-//			System.out.println("A"+pageListModelA.getProduct().getName());
-//			for (PageListModel<ProductCategory> pageListModelB : pageListModelA.getSon()) {
-//				System.out.println("B"+pageListModelB.getProduct().getName());
-//				for (PageListModel<ProductCategory> pageListModelC : pageListModelB.getSon()) {
-//					System.out.println("C"+pageListModelC.getProduct().getName());
-//				}
-//			}
-//		}
-	}
 	/**
 	 * 查询前五的畅销商品
 	 */
@@ -113,6 +101,7 @@ public class ProductServiceImpl implements ProductService{
 		}
 		return listProModelA;
 	}
+	// 根据id数组查询number个商品
 	@Override
 	public List<Product> queryProductsByidArray(Object[] termsArray,int number) {
 		if (termsArray.length <= number) {
@@ -182,7 +171,7 @@ public class ProductServiceImpl implements ProductService{
 		}
 		return pageModel;
 	}
-	
+	// 根据类别id、条件分页查询商品
 	@Override
 	public PageModel<Product> queryProduct(long cid, String info, int currentPage, int pageSize) {
 		PageModel<Product> pageModel = null;

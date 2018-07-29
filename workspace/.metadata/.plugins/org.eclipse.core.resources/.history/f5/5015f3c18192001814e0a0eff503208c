@@ -1,0 +1,87 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>亚马逊- 购物车</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="css/square/green.css" rel="stylesheet">
+    <script type="text/javascript" src="./js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/icheck.min.js"></script>
+
+</head>
+<body>
+<input type ='checkbox'>
+<input type ='checkbox'checked>
+<input type ='radio' name =''>
+<input type ='radio' name ='' checked>
+<label for="check-all">全选<input type="checkbox" id="check-all"></label>
+<input type="hidden" value="${pageContext.request.contextPath}" id="path"/>
+<c:if test="${empty loginUser}">
+	<div class="container nologin-tip">
+    	<span class="wicon"></span>
+    		您还没有登录！登录后购物车的商品将保存到您账号中
+    	<a class="btn-login " href="SaveURLServlet?saveURL=${pageContext.request.requestURL}&queryString=${pageContext.request.queryString}" >立即登录</a>
+	</div>
+</c:if>
+<div id="position" class="wrap">
+	您现在的位置：<a href="index.jsp">亚马逊</a> &gt; 购物车
+</div>
+<div class="wrap">
+	<div id="shopping">
+		<form action="doBuy" method="post">
+			<table>
+				<thead>
+					<tr>
+						<th><label for="check-all">全选<input type="checkbox" id="check-all"></label></th>
+						<th>商品名称</th>
+						<th>商品单价</th>
+						<th>购买数量</th>
+						<th>商品价格</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="shopCart_tbody">
+					<!-- 根据用户购物车生成列表 -->
+					<tr>
+						<td class="thumb"><img style="width: 100px; height: 100px;" src="" /><a href=""></a></td>
+						<td class="price">
+							￥<span id="span_1">span元素</span>
+						</td>
+						<td class="number">
+								<c:set var="hcid" value=""></c:set>
+								<div class="quantity" >
+								    <a href="javascript:void(0);" class="shop-num reduce-num" >-</a>
+								    <input autocomplete="off" type="text" class="itxt" value="1" minnum="1">
+								    <a href="javascript:void(0);" class="shop-num add-num" id="">+</a>
+								</div>
+						</td>
+						<td class="delete"><a href="">删除</a></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="button"><input type="submit" value="" /></div>
+		</form>
+	</div>
+</div>
+<div id="footer">
+	Copyright &copy; 2018 上海海文 All Rights Reserved.
+</div> 
+
+
+    <script>
+        $(document).ready(function(){
+            $('input').iCheck({
+                labelHover : false,
+                cursor : true,
+                checkboxClass :'icheckbox_square-green',
+                radioClass :'iradio_square-green',
+                increaseArea :'20％'
+            });
+        });
+    </script>
+</body>
+</html>

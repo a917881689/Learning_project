@@ -117,6 +117,14 @@ public interface ProductDao {
 	 * @return 商品分类数据
 	 */
 	List<Product> querypopularProduct() throws SQLException;
+	/**
+	 * 根据商品id减少商品数量
+	 * @param pid 商品id
+	 * @param pnum 减少的数量
+	 * @return 影响的行数
+	 * @throws SQLException
+	 */
+	int reduceProductAffair(Long pid, int pnum) throws SQLException;
 	
 	
 	

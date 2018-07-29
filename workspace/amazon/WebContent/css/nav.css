@@ -109,9 +109,6 @@ button.btn.btn-red.focus,.button.btn.btn-red:focus,.button.btn.btn-red:hover {
 .margin-left-22{
     margin-left: 22px;
 }
-.margin-bottom-25{
-    margin-bottom: 25px;
-}
 .dropdown-submenu {
     position:relative;
 }
@@ -142,4 +139,21 @@ button.btn.btn-red.focus,.button.btn.btn-red:focus,.button.btn.btn-red:hover {
 }
 .dropdown-submenu:hover>a:after {
     border-left-color:#ffffff;
+}
+span.c_red.dialog_login_click:hover {
+    text-decoration: underline;
+    color: black;
+    cursor: pointer;
+}
+.height-120{
+    height: 120px;
+}
+.modal.in .modal-dialog {
+    width: 300px;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+}
+.margin-top-15 {
+    margin-top: 15px;
 }

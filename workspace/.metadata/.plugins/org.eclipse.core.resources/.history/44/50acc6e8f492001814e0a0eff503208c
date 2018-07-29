@@ -1,0 +1,11 @@
+package com.yosakura.entity;
+
+import java.math.BigDecimal;
+
+public class OrderDetail {
+	private Long id;
+	private Long oid;
+	private Long pid;
+	private Integer quantity;
+	private BigDecimal money;
+}

@@ -1,5 +1,6 @@
 package com.yosakura.dao.impl;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +36,14 @@ public class ProductDaoImpl implements ProductDao{
 		String sql = "SELECT id,name,description,price,stock,major_id,minor_id,img_source FROM amz_product ORDER BY RAND()  LIMIT 12";
 		return qr.query(sql,new BeanListHandler<Product>(Product.class,new BasicRowProcessor(new GenerousBeanProcessor())));
 	}
+	// 查询一级分类信息，返回一级分类集合
 	@Override
 	public List<ProductCategory> queryProClassify() throws SQLException {
 		QueryRunner qr = C3P0Util.getQueryRunner();
 		String sql = "SELECT id,name,parent_id FROM amz_product_category WHERE id = parent_id ";
 		return qr.query(sql,new BeanListHandler<ProductCategory>(ProductCategory.class,new BasicRowProcessor(new GenerousBeanProcessor())));
 	}
+	// 根据id查询子分类信息，返回子分类集合
 	@Override
 	public List<ProductCategory> queryProClassify(long id) throws SQLException {
 		QueryRunner qr = C3P0Util.getQueryRunner();
@@ -68,10 +71,11 @@ public class ProductDaoImpl implements ProductDao{
 		String sql = "SELECT COUNT(*) FROM amz_product WHERE major_id = ? OR minor_id = ?";
 		return qr.query(sql, new ScalarHandler<Long>(),cid,cid);
 	}
+	// 分类、条件查询商品的总条数
 	@Override
 	public long ProductCount(long cid,String info) throws SQLException {
 		QueryRunner qr = C3P0Util.getQueryRunner();
-		String sql = "SELECT COUNT(*) FROM amz_product WHERE major_id = ? OR minor_id = ? OR name like ? OR description like ?";
+		String sql = "SELECT COUNT(*) FROM amz_product WHERE (major_id = ? OR minor_id = ?) AND (name like ? OR description like ?)";
 		return qr.query(sql, new ScalarHandler<Long>(),cid,cid,info,info);
 	}
 		
@@ -131,5 +135,13 @@ public class ProductDaoImpl implements ProductDao{
 	public Product queryProductById(Object terms) throws SQLException {
 		QueryRunner qr = C3P0Util.getQueryRunner();
 		return queryProductById(qr,terms);
+	}
+	// 根据id减少商品数量
+	@Override
+	public int reduceProductAffair(Long pid,int pnum) throws SQLException {
+		Connection conn = C3P0Util.getcurrentConnection();
+		QueryRunner qr = new QueryRunner();
+		String sql = "UPDATE amz_product SET stock = stock-? WHERE id=?";
+		return qr.update(conn,sql,pnum,pid);
 	}
 }

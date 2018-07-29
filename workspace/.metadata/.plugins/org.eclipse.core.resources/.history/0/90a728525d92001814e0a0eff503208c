@@ -1,0 +1,39 @@
+package com.yosakura.web.servlet;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.yosakura.entity.User;
+import com.yosakura.util.CookieUtil;
+
+@WebServlet("/deleteShopCart")
+public class DeleteShopCartServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String pidStr = req.getParameter("pid");
+		if (pidStr == null || "".equals(pidStr)) {
+			resp.getWriter().write("error");
+			return;
+		}
+		User user = (User)req.getSession().getAttribute("loginUser");
+		if (user == null) {
+			String cookieShopCart = CookieUtil.getCookieValue(req.getCookies(),"shopCart");
+		}
+		String sidStr = req.getParameter("sid");
+		if (sidStr == null || "".equals(sidStr)) {
+			System.out.println("sid为空");
+			resp.getWriter().write("error");
+			return;
+		}
+		long sid = Long.parseLong(sidStr);
+	}
+
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
+}

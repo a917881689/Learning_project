@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.sun.javafx.css.Rule;
 import com.yosakura.entity.User;
 import com.yosakura.service.impl.UserServiceImpl;
 @WebServlet("/doLogin")
@@ -35,18 +34,14 @@ public class LoginServlet extends HttpServlet{
 			System.out.println("用户登录");
 			// 接收跳转前的网页地址
 			String url = (String)session.getAttribute("saveURL");
-			System.out.println("url:"+url);
 			if (url != null && !"".equals(url)) {
 				session.removeAttribute("saveURL");
 				resp.sendRedirect(url);
-				System.out.println("1");
 			}else {
-				System.out.println("2");
-				resp.sendRedirect("index.jsp");	
+				resp.getWriter().write("<script type='text/javascript'>alert('用户名或密码错误')</script>");	
 			}
 		}else {
 			resp.getWriter().write("<script type='text/javascript'>alert('用户名或密码错误')</script>");
-			resp.setHeader("refresh","1;url=login.jsp");
 		}
 	}
 	@Override

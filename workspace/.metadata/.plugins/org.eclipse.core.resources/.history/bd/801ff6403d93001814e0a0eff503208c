@@ -1,0 +1,34 @@
+package com.yosakura.web.servlet;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.alibaba.fastjson.JSON;
+import com.yosakura.entity.Comment;
+import com.yosakura.service.impl.CommentServiceImpl;
+
+@WebServlet("/getComment")
+public class QueryCommentServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("读取评论信息");
+		CommentServiceImpl csi = new CommentServiceImpl();
+		// 调用业务层查询接口获取数据
+		List<Comment> list = csi.queryComment();
+		String jsonString = JSON.toJSONString(list);
+		// 转成json数据
+		System.out.println("留言记录："+jsonString);
+		resp.getWriter().write(jsonString);
+	}
+
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
+}

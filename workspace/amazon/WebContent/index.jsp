@@ -8,12 +8,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>亚马逊-首页</title>
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-<link href="${pageContext.request.contextPath}/css/index.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/css/adv.css"	rel="stylesheet" type="text/css" />
-<script src="${pageContext.request.contextPath}/scripts/jquery-3.1.0.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/adv.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/index.js"></script>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css" />
+<link rel="stylesheet" href="css/nav.css"/>
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<link href="css/adv.css"	rel="stylesheet" type="text/css" />
+<script src="js/jquery-3.1.0.min.js" type="text/javascript"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
+<script src="js/nav.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/adv.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
 	<input id="path" type="hidden" value="${pageContext.request.contextPath}"/>

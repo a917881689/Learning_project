@@ -1,0 +1,13 @@
+package com.yosakura.service.impl;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.yosakura.entity.Comment;
+import com.yosakura.service.CommentService;
+
+public class CommentServiceImpl implements CommentService{
+	public List<Comment> queryComment(){
+		
+	}
+}

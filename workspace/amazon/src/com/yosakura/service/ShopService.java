@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.yosakura.entity.Shop;
 import com.yosakura.entity.ShopCartModel;
+import com.yosakura.entity.User;
 
 public interface ShopService {
 	/**
@@ -31,7 +32,38 @@ public interface ShopService {
 	 * 将cookie数据添加到数据库中
 	 * @param uid 用户id
 	 * @param cookieJson cookie购物车json
-	 * @return 购物车商品集合
+	 * @return 添加的行数
 	 */
 	int addShopCart(long uid, String cookieJson);
+	/**
+	 * 将用户cookie的临时购物车数据更新到数据库
+	 * @param tempShopCartjson
+	 * @param uid 用户id
+	 * @return 剩下的临时购物车数据
+	 */
+	List<Shop> updateShopCart(long uid, String tempShopCartjson);
+
+	/**
+	 * 删除购物车数据
+	 * @param uid 用户id 
+	 * @param sid 删除的购物车的数据 id
+	 * @return 影响的行数
+	 */
+	int delShopCart(long uid, long sid);
+
+	/**
+	 * 直接购买商品
+	 * @param user 用户对象
+	 * @param pid 商品id
+	 * @param pnum 商品数量
+	 */
+	void buyPro(User user, long pid, int pnum);
+
+	/**
+	 * 结算选中的购物车数据
+	 * @param user  用户对象
+	 * @param sidArr  商品id数组
+	 * @return 未结算的商品id集合
+	 */
+	List<String> shopPayment(User user, String[] sidArr);
 }

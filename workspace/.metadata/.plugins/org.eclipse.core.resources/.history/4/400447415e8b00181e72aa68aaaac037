@@ -1,5 +1,0 @@
-package com.yosakura.service.impl;
-
-public class ShopServiceImpl extends ShopService{
-
-}

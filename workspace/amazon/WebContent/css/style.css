@@ -157,7 +157,6 @@ ul.product li dl dd.price { color:#c30; font-weight:bold; }
 #shopping table td.number dl dt input { width:20px; border:1px solid #c9c9c9; padding:2px; text-align:center; }
 #shopping table td.number dl dd { float:left; width:28px; margin:3px 0; text-align:center; line-height:20px; height:19px; overflow:hidden; border:1px solid #c9c9c9; cursor:pointer; }
 #shopping .button { text-align:right; padding:10px 0; }
-#shopping .button input { border:0; background:url(../images/bg.png) left -213px; width:144px; height:35px; cursor:pointer; }
 #shopping .shadow { width:500px; margin:50px auto; }
 
 #chat-room {}
@@ -196,3 +195,7 @@ ul.product li dl dd.price { color:#c30; font-weight:bold; }
 #menu-mng dl dd{ margin:5px auto; }
 #menu-mng dl dd a { display:block; }
 #menu-mng em { float:right; padding:0 5px; font-style:normal; }
+ul#comment-ul {
+    overflow-y: auto;
+    height: 200px;
+}

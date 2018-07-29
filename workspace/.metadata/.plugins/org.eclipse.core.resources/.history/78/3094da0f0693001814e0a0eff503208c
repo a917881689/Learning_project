@@ -1,0 +1,235 @@
+package com.yosakura.service.impl;
+
+import java.math.BigDecimal;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.alibaba.fastjson.JSON;
+import com.yosakura.dao.impl.OrderDaoImpl;
+import com.yosakura.dao.impl.ProductDaoImpl;
+import com.yosakura.dao.impl.ShopDaoImpl;
+import com.yosakura.entity.Order;
+import com.yosakura.entity.OrderDetail;
+import com.yosakura.entity.Product;
+import com.yosakura.entity.Shop;
+import com.yosakura.entity.ShopCartModel;
+import com.yosakura.entity.User;
+import com.yosakura.service.ShopService;
+import com.yosakura.util.C3P0Util;
+
+public class ShopServiceImpl implements ShopService{
+	public static void main(String[] args) {
+	}
+	//添加商品到购物车
+	@Override
+	public int addShopCart(Shop shop) {
+		int result = 0;
+		try {
+			ShopDaoImpl sdi = new ShopDaoImpl();
+			// 查找有没有相同的商品在购物车
+			Long id = sdi.queryShopCart(shop);
+			if (id != null){
+				// 有相同商品,进行增加
+				result = sdi.numAddShopCart(id,shop.getPnum());	
+			}else {
+				// 没有相同商品,进行增加
+				result = sdi.addShopCart(shop);	
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	/**
+	 * 把cookie购物车数据添加到数据库中
+	 * @param uid
+	 * @param cookieJson
+	 * @return 未添加的购物车商品
+	 */
+	@Override
+	public int addShopCart(long uid,String cookieJson) {
+		int result = 0;
+		List<ShopCartModel> queryShopCart = this.queryShopCart(cookieJson);
+		for (ShopCartModel scm : queryShopCart) {
+			// 处理购物车 分账户添加
+			result += this.addShopCart(new Shop(scm.getPro().getId(),scm.getShop().getPnum(),uid));
+		}		
+		return result;
+	}
+	
+	/**
+	 * 查询已登录用户的购物车数据，返回购物车商品集合
+	 */
+	@Override
+	public List<ShopCartModel> queryShopCart(long uid) {
+		List<ShopCartModel> shopCartList = null;
+		// 获取用户的购物车数据
+		List<Shop> list =null;
+		try {
+			list = new ShopDaoImpl().queryShopCart(uid);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if (list == null || list.size() <= 0) {
+			return shopCartList;
+		}
+		shopCartList = new ArrayList<>();
+		ProductDaoImpl pdi = new ProductDaoImpl();
+		Product pro = null;
+		for (Shop shop : list) {
+	    	// 根据商品id获取商品数据
+			try {
+				pro = pdi.queryProductById(shop.getPid());
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			if (pro != null) {
+				// 根据商品数据和商品数量新建购物车商品模型，添加到集合中 ||需要一个购物车id用作购买成功时，来清空购物车
+				shopCartList.add(new ShopCartModel(pro,shop));
+			}
+	    }
+		return shopCartList;
+	}
+	/**
+	 * 根据cookie购物车数据返回购物车商品集合
+	 */
+	@Override
+	public List<ShopCartModel> queryShopCart(String cookieJson) {
+		List<ShopCartModel> shopCartList = new ArrayList<>();
+		List<Shop> list = JSON.parseArray(cookieJson, Shop.class);
+	    ProductDaoImpl pdi = new ProductDaoImpl();
+	    System.out.println("list:"+list);
+    	Product pro = null;
+	    for (Shop shop : list) {
+	    	// 根据商品id获取商品数据
+	    	try {
+	    		pro = pdi.queryProductById(shop.getPid());
+	    	} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			System.out.println(shop.getPid());
+			if (pro != null) {
+				// 根据商品数据和商品数量新建购物车商品模型，添加到集合中
+				shopCartList.add(new ShopCartModel(pro,shop));
+			}
+	    }
+	    return shopCartList;
+	}
+	// 修改商品数量
+	@Override
+	public List<Shop> updateShopCart(long uid,String tempShopCartjson) {
+		// 用户的临时购物车数据为空
+		if (tempShopCartjson == null || "".equals(tempShopCartjson)) {
+			return null;
+		}
+		List<Shop> list = JSON.parseArray(tempShopCartjson, Shop.class);
+		if (list == null || list.size() <= 0) {
+			return null;
+		}
+		List<Shop> tempList = new ArrayList<>(); 
+		ShopDaoImpl sdi = new ShopDaoImpl();
+		// 用户的临时购物车数据有数据，进行修改
+		for (Shop shop : list) {
+			// 找到uid相同的
+			if (uid == shop.getUid()) {
+				try {
+					sdi.numUpdateShopCart(shop.getId(),shop.getPnum());
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}else {
+				tempList.add(shop);
+			}
+		}
+		return tempList;
+	}
+	// 删除购物车数据
+	@Override
+	public int delShopCart(long uid, long sid) {
+		int result = 0;
+		ShopDaoImpl sdi = new ShopDaoImpl();
+		try {
+			result = sdi.delShopCart(uid,sid);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	// 结算商品返回未结算的购物车商品数据id的数组 的json格式
+	public String shopPayment(User user, String[] sidArr) {
+		List<String> result = new ArrayList<>();
+		int row2;
+		int row1;
+		ShopDaoImpl sdi = new ShopDaoImpl();
+		// 查询购物车数据,非空验证
+		List<Shop> userShopCart = null;
+		try {
+			userShopCart = sdi.queryShopCart(user.getId());
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		if (userShopCart == null || userShopCart.size() <= 0) {
+			return null;
+		}
+		// 循环遍历进map中
+		Map<String,Shop> map = new HashMap<>();
+		for (Shop shop : userShopCart) {
+			map.put(shop.getId().toString(),shop);
+		}
+		OrderDaoImpl odi = new OrderDaoImpl();
+		ProductDaoImpl pdi = new ProductDaoImpl(); 
+		long oid;
+		BigDecimal price;
+		BigDecimal pnum;
+		BigDecimal sumPrice;
+		try {
+			// 设置当前线程的查询对象
+			C3P0Util.beginTransaction();
+			for (String str:sidArr) {
+				try {
+					Shop shop = map.get(str);
+					// 获取pro商品信息
+					Product pro = pdi.queryProductById(str);
+					if (shop == null || pro == null) {
+						result.add(str);
+						continue;
+					}
+					price = pro.getPrice();
+					pnum = new BigDecimal(shop.getPnum());
+					sumPrice = pnum.multiply(price);  
+					System.out.printf("单价%s数量%s总价%s",price.toString(),pnum.toString(),sumPrice.toString());
+					// 初始化标记
+					row1 = 0;
+					row2 = 0;
+					// 删除购物车数据
+					row1 = sdi.delShopCartAffair(user.getId(),shop.getId());
+					System.out.println("row1:"+row1);
+					// 增加订单数据
+					if (row1 > 0) {
+						oid = odi.addOrderAffair(new Order(user.getId(),user.getUname(),user.getAddress(),sumPrice));
+						row2 = odi.addOrderDeteilAffair(new OrderDetail(oid,shop.getPid(),shop.getPnum(),sumPrice));
+					}
+					System.out.println("row2:"+row2);
+					if (row2 > 0) {
+						// 判断操作都成功时 手动提交
+						C3P0Util.commitTransaction();
+					}else {
+						// 处理特殊情况
+						throw new SQLException();
+					}
+				} catch (Exception e) {
+					C3P0Util.rollbackTransaction();
+				}
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return JSON.toJSONString(result);
+	}
+}

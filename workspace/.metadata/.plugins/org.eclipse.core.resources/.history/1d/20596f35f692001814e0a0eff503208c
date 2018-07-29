@@ -1,0 +1,17 @@
+package com.yosakura.dao;
+
+import java.sql.SQLException;
+
+import com.yosakura.entity.Shop;
+
+public interface OrderDao {
+
+	/**
+	 * 增加订单数据
+	 * @param shop 商品
+	 * @return
+	 * @throws SQLException
+	 */
+	int addOrderAffair(Shop shop) throws SQLException;
+
+}

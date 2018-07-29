@@ -7,10 +7,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>亚马逊- 购物车</title>
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-<link href="${pageContext.request.contextPath}/css/index.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css" />
-<script src="${pageContext.request.contextPath}/scripts/jquery-3.1.0.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="scripts/shopping.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css" />
+<link rel="stylesheet" href="css/nav.css"/>
+<link href="css/square/green.css" rel="stylesheet">
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />    
+<script src="js/jquery-3.1.0.min.js" type="text/javascript"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
+<script type="text/javascript" src="js/icheck.min.js"></script>
+<script type="text/javascript" src="js/shopping.js"></script>
+
 <style type="text/css">
 	.nologin-tip {
 	    border: 1px solid #edd28b;
@@ -60,8 +67,12 @@
         height: 35px;
         width: 92px;
     }
-
     .shop-num{
+	    -webkit-user-select:none;
+	    -moz-user-select:none;
+	    -ms-user-select:none;
+	    user-select:none;
+    	cursor:pointer;
         border: 1px solid #cacbcb;
         border-right: 0;
         height: 26px;
@@ -98,16 +109,29 @@
         border-left: 0;
         color: #666;
     }
+    button.btn.btn-green {
+	    background-color: #2ab193;
+	    width: 130px;
+	    font-family: STSong;
+	    letter-spacing: 6px;
+	    font-weight: bolder;
+	    font-size: 18px;
+	    color: white;
+	}
+	button.btn.btn-green:hover {
+    	background-color: #1b8a41;
+	}
+	
 </style>
 </head>
 <body>
 <input type="hidden" value="${pageContext.request.contextPath}" id="path"/>
-<%@ include file="index_top.jsp"  %>
+<jsp:include page="index_top.jsp"/>
 <c:if test="${empty loginUser}">
-	<div class="container nologin-tip">
+	<div class="container nologin-tip" id="not-logged-on" >
     	<span class="wicon"></span>
     		您还没有登录！登录后购物车的商品将保存到您账号中
-    	<a class="btn-login " href="SaveURLServlet?saveURL=${pageContext.request.requestURL}&queryString=${pageContext.request.queryString}" >立即登录</a>
+    	<button class="btn-login dialog_login_click" >立即登录</button>
 	</div>
 </c:if>
 <div id="position" class="wrap">
@@ -115,17 +139,19 @@
 </div>
 <div class="wrap">
 	<div id="shopping">
-		<form action="doBuy" method="post">
-			<table id="shopCart_table">
+		<form id="shop-form">
+			<table>
 				<thead>
 					<tr>
+						<th><label for="check-all">全选<input type="checkbox" id="check-all"></label></th>
 						<th>商品名称</th>
-						<th>商品价格</th>
+						<th>商品单价</th>
 						<th>购买数量</th>
+						<th>商品价格</th>
 						<th>操作</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="shopCart_tbody">
 					<!-- 根据用户购物车生成列表 -->
 					<tr>
 						<td class="thumb"><img style="width: 100px; height: 100px;" src="" /><a href=""></a></td>
@@ -133,7 +159,6 @@
 							￥<span id="span_1">span元素</span>
 						</td>
 						<td class="number">
-								<c:set var="hcid" value=""></c:set>
 								<div class="quantity" >
 								    <a href="javascript:void(0);" class="shop-num reduce-num" >-</a>
 								    <input autocomplete="off" type="text" class="itxt" value="1" minnum="1">
@@ -144,14 +169,13 @@
 					</tr>
 				</tbody>
 			</table>
-			<div class="button"><input type="submit" value="" /></div>
+			<div class="button"><button type="button" class="btn btn-green" id="btn-payment" >结 算 <span class="glyphicon glyphicon-play-circle"></span></button></div>
 		</form>
 	</div>
 </div>
 <div id="footer">
 	Copyright &copy; 2018 上海海文 All Rights Reserved.
-</div>
-
+</div> 
 </body>
 </html>
 
