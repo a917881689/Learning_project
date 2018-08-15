@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.devmode" value="true"></constant>
+	<constant name="struts.action.extension" value=","></constant>
+	<package name="default" extends="struts-default">
+	<default-action-ref name="notFound" />
+		<action name="notFound">
+			<result>/404.jsp</result>
+		</action>
+	</package>
+	<package name="userAjax" extends="json-default" namespace="/">
+		<interceptors>
+			<interceptor name="loginCK" class="com.yosakura.web.interceptor.LoginCK"/>
+			<interceptor-stack name="loginCKStack">
+				<interceptor-ref name="modelDriven"/>
+				<interceptor-ref name="loginCK" />
+				<interceptor-ref name="basicStack" />
+			</interceptor-stack>
+		</interceptors>
+		
+		<global-results>
+			<result name="error" type="redirectAction">
+				<param name="namespace"></param>
+				<param name="actionName">login</param>
+			</result>
+		</global-results>
+		
+		<action name="login" class="com.yosakura.web.action.UserAction" >
+			<result type="dispatcher">/index.jsp</result>
+		</action>
+		
+		<action name="register" class="com.yosakura.web.action.UserAction" >
+			<result type="dispatcher">/register.jsp</result>
+		</action>
+		
+		<!-- 判断登录了没 -->
+		<action name="login-ck" class="com.yosakura.web.action.UserAction" method="loginCk">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<!-- 获取短信息 -->
+		<action name="queryInbox" class="com.yosakura.web.action.MessageAction" method="queryInbox">
+			<interceptor-ref name="loginCKStack" />
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<!-- 获取单个信息详情 -->
+		<action name="read-msg" class="com.yosakura.web.action.MessageAction" method="querySingleMsg">
+			<interceptor-ref name="loginCKStack" />
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<!-- 发送信息 -->
+		<action name="send-msg" class="com.yosakura.web.action.MessageAction" method="sendMsg">
+			<interceptor-ref name="loginCKStack" />
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<!-- 注册 -->
+		<action name="doRegister" class="com.yosakura.web.action.UserAction" method="regist">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<!-- 登录 -->
+		<action name="doLogin" class="com.yosakura.web.action.UserAction" method="login">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<!-- 用户注销 -->
+		<action name="cancel" class="com.yosakura.web.action.UserAction" method="cancel">
+			<interceptor-ref name="loginCKStack" />
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<!-- 查询名字是否重复 -->
+		<action name="queryUserByName" class="com.yosakura.web.action.UserAction" method="queryByName">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<!-- 查询其他用户的用户名和id -->
+		<action name="getUserInfo" class="com.yosakura.web.action.UserAction" method="queryUserInfo">
+			<interceptor-ref name="loginCKStack" />
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		
+		<action name="*" class="com.yosakura.web.action.UserAction" >
+			<interceptor-ref name="loginCKStack" />
+			<result type="dispatcher">/{1}.jsp</result>
+		</action>
+	</package>
+	
+</struts>

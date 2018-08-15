@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="org.apache.commons.dbutils.RowProcessor"/>
-<fullyQualifiedTypeName name="com.yosakura.entity.PageListModel"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
-<fullyQualifiedTypeName name="com.yosakura.entity.News"/>
-<fullyQualifiedTypeName name="java.lang.Double"/>
-<fullyQualifiedTypeName name="com.yosakura.entity.ShopCartModel"/>
-<fullyQualifiedTypeName name="com.mchange.v2.async.StrandedTaskReporting"/>
-<fullyQualifiedTypeName name="com.sun.javafx.css.Rule"/>
-<fullyQualifiedTypeName name="com.alibaba.fastjson.JSONArray"/>
 <fullyQualifiedTypeName name="com.alibaba.fastjson.JSONObject"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="org.apache.taglibs.standard.tag.common.fmt.ParseNumberSupport"/>
@@ -27,7 +18,6 @@
 <fullyQualifiedTypeName name="org.apache.commons.dbutils.handlers.ScalarHandler"/>
 <fullyQualifiedTypeName name="com.yosakura.dao.OrderDao"/>
 <fullyQualifiedTypeName name="org.ietf.jgss.Oid"/>
-<fullyQualifiedTypeName name="com.yosakura.entity.User"/>
 <fullyQualifiedTypeName name="com.yosakura.util.C3P0Util"/>
 <fullyQualifiedTypeName name="java.math.BigInteger"/>
 <fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
@@ -60,4 +50,14 @@
 <fullyQualifiedTypeName name="com.yosakura.util.SqlUtil"/>
 <fullyQualifiedTypeName name="com.yosakura.entity.Comment"/>
 <fullyQualifiedTypeName name="com.yosakura.service.impl.CommentServiceImpl"/>
+<fullyQualifiedTypeName name="com.yosakura.dao.UserDao"/>
+<fullyQualifiedTypeName name="com.yosakura.dao.impl.UserDaoImpl"/>
+<fullyQualifiedTypeName name="com.yosakura.service.UserService"/>
+<fullyQualifiedTypeName name="com.yosakura.service.impl.UserServiceImpl"/>
+<fullyQualifiedTypeName name="com.yosakura.entity.User"/>
+<fullyQualifiedTypeName name="com.mchange.v2.sql.filter.SynchronizedFilterCallableStatement"/>
+<fullyQualifiedTypeName name="java.sql.Timestamp"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.text.ParseException"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
 </qualifiedTypeNameHistroy>

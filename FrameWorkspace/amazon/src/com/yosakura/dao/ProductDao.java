@@ -1,0 +1,133 @@
+package com.yosakura.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import org.apache.commons.dbutils.QueryRunner;
+
+import com.yosakura.entity.Product;
+import com.yosakura.entity.ProductCategory;
+
+
+
+public interface ProductDao {
+	/**
+	 * 查询商品的总个数接口
+	 * @return long类型的总条数
+	 */
+	long ProductCount () throws SQLException;
+	/**
+	 * 条件查询商品的总个数接口
+	 * @param info 条件
+	 * @return long类型的总条数
+	 */
+	long ProductCount(String info) throws SQLException;
+	/**
+	 * 分类查询商品的总个数接口
+	 * @param cid 类别id
+	 * @return	long类型的商品总条数
+	 * @throws SQLException
+	 */
+	long ProductCount(long classId) throws SQLException;
+	/**
+	 * 条件、分类查询商品的总个数接口
+	 * @param cid 类别id
+	 * @param info 条件
+	 * @return long类型的商品总条数
+	 * @throws SQLException
+	 */
+	long ProductCount(long cid, String info) throws SQLException;
+	/**
+	 * 查询一页商品的数据接口
+	 * @param currentPage 当前页
+	 * @param pageSize 一页商品的个数
+	 * @return 当前商品的集合
+	 */
+	List<Product> onePageProductList(int currentPage,int pageSize) throws SQLException;
+	/**
+	 * 条件查询一页商品的数据接口
+	 * @param info 条件
+	 * @param currentPage 当前页
+	 * @param pageSize 一页商品的个数
+	 * @return 当前商品的集合
+	 */
+	List<Product> onePageProductList(String info, int currentPage, int pageSize) throws SQLException;
+	/**
+	 * 类别查询一页商品的数据接口
+	 * @param classId 类别id
+	 * @param currentPage 当前页
+	 * @param pageSize 一页商品的个数
+	 * @return 当前一页商品的集合
+	 * @throws SQLException
+	 */
+	List<Product> onePageProductList(long classId, int currentPage, int pageSize) throws SQLException;
+	/**
+	 * 类别、条件 查询一页商品的数据接口
+	 * @param cid 类别id
+	 * @param info 条件
+	 * @param currentPage 当前页
+	 * @param pageSize 一页商品的个数
+	 * @return 当前一页商品的集合
+	 * @throws SQLException
+	 */
+	List<Product> onePageProductList(long cid, String info, int currentPage, int pageSize) throws SQLException;
+	/**
+	 * 根据ID数组查询商品接口
+	 * @param termsArray 商品id数组
+	 * @return 查询的商品的集合
+	 * @throws SQLException
+	 */
+	List<Product> queryProductsByidArray(Object[] termsArray) throws SQLException;
+	
+	
+	/**
+	 * 根据ID单个查询商品接口
+	 * @param qr 查询对象
+	 * @param terms 商品id
+	 * @return 商品对象
+	 * @throws SQLException
+	 */
+	Product queryProductById(QueryRunner qr, Object terms) throws SQLException;
+	/**
+	 * 根据ID单个查询商品接口
+	 * @param terms 商品id
+	 * @return 商品对象
+	 * @throws SQLException
+	 */
+	Product queryProductById(Object terms) throws SQLException;
+	/**
+	 * 查询商品一级类别接口
+	 * @return 商品一级类别的集合
+	 * @throws SQLException
+	 */
+	List<ProductCategory> queryProClassify() throws SQLException;
+	/**
+	 * 查询商品次级类别接口
+	 * @return 商品一级类别的集合
+	 * @throws SQLException
+	 */
+	List<ProductCategory> queryProClassify(long id) throws SQLException;
+	/**
+	 * 查询显示在首页的商品业务接口
+	 * @return 商品分类数据
+	 */
+	List<Product> queryMajorProduct() throws SQLException;
+	/**
+	 * 查询销量前五的畅销商品业务接口
+	 * @return 商品分类数据
+	 */
+	List<Product> querypopularProduct() throws SQLException;
+	/**
+	 * 根据商品id减少商品数量
+	 * @param pid 商品id
+	 * @param pnum 减少的数量
+	 * @return 影响的行数
+	 * @throws SQLException
+	 */
+	int reduceProductAffair(Long pid, int pnum) throws SQLException;
+	
+	
+	
+	
+	
+}

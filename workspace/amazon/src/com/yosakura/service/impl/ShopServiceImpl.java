@@ -182,8 +182,6 @@ public class ShopServiceImpl implements ShopService{
 		} catch (SQLException e) {
 			e.printStackTrace();
 			C3P0Util.rollbackTransaction();
-		}finally{
-			C3P0Util.close();
 		}
 		
 	}
@@ -215,53 +213,47 @@ public class ShopServiceImpl implements ShopService{
 		BigDecimal price;
 		BigDecimal pnum;
 		BigDecimal sumPrice;
-		try {
-			// 设置当前线程的查询对象
-			C3P0Util.beginTransaction();
-			for (String str:sidArr) {
-				try {
-					Shop shop = map.get(str);
-					// 获取购物车信息
-					Product pro = pdi.queryProductById(shop.getPid());
-					if (shop == null || pro == null) {
-						result.add(str);
-						continue;
-					}
-					price = pro.getPrice();
-					pnum = new BigDecimal(shop.getPnum());
-					sumPrice = pnum.multiply(price);					
-					System.out.printf("单价:%s  数量:%s  总价:%s",price.toString(),pnum.toString(),sumPrice.toString());
-					// 初始化标记
-					row1 = 0;
-					row2 = 0;
-					// 减少商品数量
-					pdi.reduceProductAffair(shop.getPid(),shop.getPnum());
-					// 删除购物车数据
-					row1 = sdi.delShopCartAffair(user.getId(),shop.getId());
-					System.out.println("row1:"+row1);
-					// 增加订单数据
-					if (row1 > 0) {
-						oid = odi.addOrderAffair(new Order(user.getId(),user.getUname(),user.getAddress(),sumPrice));
-						row2 = odi.addOrderDeteilAffair(new OrderDetail(oid,shop.getPid(),shop.getPnum(),sumPrice));
-					}
-					System.out.println("row2:"+row2);
-					if (row2 > 0) {
-						// 判断操作都成功时 手动提交
-						C3P0Util.commitTransaction();
-					}else {
-						// 处理特殊情况
-						C3P0Util.rollbackTransaction();
-						throw new SQLException();
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-					C3P0Util.rollbackTransaction();
+		// 设置当前线程的查询对象
+		for (String str:sidArr) {
+			try {
+				C3P0Util.beginTransaction();
+				Shop shop = map.get(str);
+				// 获取购物车信息
+				Product pro = pdi.queryProductById(shop.getPid());
+				if (shop == null || pro == null) {
+					result.add(str);
+					continue;
 				}
+				price = pro.getPrice();
+				pnum = new BigDecimal(shop.getPnum());
+				sumPrice = pnum.multiply(price);					
+				System.out.printf("单价:%s  数量:%s  总价:%s",price.toString(),pnum.toString(),sumPrice.toString());
+				// 初始化标记
+				row1 = 0;
+				row2 = 0;
+				// 减少商品数量
+				pdi.reduceProductAffair(shop.getPid(),shop.getPnum());
+				// 删除购物车数据
+				row1 = sdi.delShopCartAffair(user.getId(),shop.getId());
+				System.out.println("row1:"+row1);
+				// 增加订单数据
+				if (row1 > 0) {
+					oid = odi.addOrderAffair(new Order(user.getId(),user.getUname(),user.getAddress(),sumPrice));
+					row2 = odi.addOrderDeteilAffair(new OrderDetail(oid,shop.getPid(),shop.getPnum(),sumPrice));
+				}
+				System.out.println("row2:"+row2);
+				if (row2 > 0) {
+					// 判断操作都成功时 手动提交
+					C3P0Util.commitTransaction();
+				}else {
+					// 处理特殊情况
+					C3P0Util.rollbackTransaction();
+					throw new SQLException();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				C3P0Util.rollbackTransaction();
 			}
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}finally {
-			C3P0Util.close();
 		}
 		return result;
 	}

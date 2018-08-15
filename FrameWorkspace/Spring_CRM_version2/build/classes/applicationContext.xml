@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+       <!-- 将CustomerServiceImpl交给Spring管理 [ IOC ] -->
+      <bean id="customerService" class="com.yulu.service.impl.CustomerServiceImpl" >
+      	<property name="customerDao" value="#{customerDao}" />
+      </bean>
+       <!-- 将CustomerDaoImpl交给Spring管理 [ IOC ] -->
+      <bean id="customerDao" class="com.yulu.dao.impl.CustomerDaoImpl" />
+      	
+        
+	  <bean id="linkmanDao" class="com.yulu.dao.impl.LinkmanDaoImpl" />
+	  
+	  <bean id="linkmanService" class="com.yulu.service.impl.LinkmanServiceImpl" >
+	  	<property name="linkmanDao" value="#{linkmanDao}" />
+	  </bean>
+</beans>

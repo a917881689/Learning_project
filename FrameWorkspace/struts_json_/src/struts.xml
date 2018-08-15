@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- <package name="home" extends="struts-default" namespace="/">
+		传统方式处理ajax请求，但这种方式没有使用到ajax的结果处理(不建议使用)
+		<action name="testAjax" class="com.yosakura.web.action.AjaxActionTest" method="ajax">
+			<result name="" type=""></result>
+		</action>
+	</package> -->
+	<!-- 可以使用struts中的json插件来完成ajax请求处理及结果响应 
+		package是支持多继承的,同时支持多层继承
+	-->
+	<package name="ajaxdemo" extends="struts-default" namespace="/">
+		<action name="testAjax" class="com.yosakura.web.action.StrutsAjaxJsonAction" method="strutsAjax">
+			<result type="json">
+				<param name="root">resultJson</param>
+			</result>
+		</action>
+	</package>
+</struts>

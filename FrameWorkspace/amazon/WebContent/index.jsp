@@ -1,0 +1,78 @@
+
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>亚马逊-首页</title>
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css" />
+<link rel="stylesheet" href="css/nav.css"/>
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<link href="css/adv.css"	rel="stylesheet" type="text/css" />
+<script src="js/jquery-3.1.0.min.js" type="text/javascript"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
+<script src="js/nav.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/adv.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+	<input id="path" type="hidden" value="${pageContext.request.contextPath}"/>
+	<jsp:include page="index_top.jsp"/>
+	<div id="middle">
+		<div class="p_left">
+			<!--商品分类-->
+			<jsp:include page="index_product_sort.jsp"/>
+			<!--商品分类结束-->
+			<!-- 最近浏览 -->
+			<jsp:include page="recently_browse.jsp"/>
+		</div>
+
+		<div class="p_center">
+			<div id="wrapper">
+				<div id="focus">
+					<ul>
+						<li><a href="#"><img src="images/T1.jpg" /></a></li>
+						<li><a href="#"><img src="images/T2.jpg" /></a></li>
+						<li><a href="#"><img src="images/T3.jpg" /></a></li>
+						<li><a href="#"><img src="images/T4.jpg" /></a></li>
+						<li><a href="#"><img src="images/T5.jpg" /></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="p_list">
+				<div class="p_info">
+					<img src="images/icon_sale.png" />商品列表
+				</div>
+			</div>
+
+			<ul class="product2" id="major">
+					<li>
+						<dl>
+							<dt>
+								<a href="" target="_self">
+								<img src="" /></a>
+							</dt>
+							<dd class="title">
+								<a href="" target="_self"></a>
+							</dd>
+							<dd class="price">￥</dd>
+						</dl>
+					</li>
+					
+			</ul>
+		</div>
+
+		<div id="p_right">
+			<jsp:include page="index_news.jsp"/>
+			<jsp:include page="hotproduct.jsp"/>
+		</div>
+	</div>
+
+	<div id="foot">Copyright © 2018 上海海文 All Rights Reserved.</div>
+</body>
+</html>
+

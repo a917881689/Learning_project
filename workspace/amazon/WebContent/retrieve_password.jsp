@@ -14,15 +14,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css" />
 <link rel="stylesheet" href="css/nav.css"/>
 <link href="css/index.css" rel="stylesheet" type="text/css" />
-<link href="css/adv.css" rel="stylesheet" type="text/css" />
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-3.1.0.min.js" type="text/javascript"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js"></script>
 <script src="js/nav.js" type="text/javascript"></script>
-<script src="js/adv.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/function.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/get-pwd.js"></script>
 </head>
 <body>
 <%@ include file="index_top.jsp" %>
@@ -32,24 +29,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<em class="corner rt"></em>
 		<div class="box">
 			<h1>请键入找回密码的相关信息：</h1>
-			<form id="loginForm" method="post" action="retrievePassWordServlet">
+			<form id="get-pwd" action="getPwd" method="post">
 				<table>
 					<tr>
 						<td class="field">用户名：</td>
-						<td><input class="text" type="text" name="userName" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
+						<td><input class="text" type="text" name="userName" id="userName"/><span></span></td>
 					</tr>
 					<tr>
 						<td class="field">真实姓名：</td>
-						<td><input class="text" type="text" id="uName" name="uName" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
+						<td><input class="text" type="text" id="uName" name="uName"  /><span></span></td>
 					</tr>
 					<tr>
 						<td class="field">邮箱：</td>
-						<td><input class="text" type="text" id="email" name="email" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
+						<td><input class="text" type="text" id="email" name="email" /><span></span></td>
 					</tr>
-					
 					<tr>
 						<td></td>
-						<td><label class="ui-green"><input type="submit" name="submit" value="提交" /></label></td>
+						<td><button type="button" class="btn btn-success" id="btn-get-pwd">提交</button></td>
 					</tr>
 				</table>
 			</form>

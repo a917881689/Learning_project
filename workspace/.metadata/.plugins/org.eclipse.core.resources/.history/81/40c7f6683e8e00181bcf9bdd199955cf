@@ -1,7 +1,0 @@
-package com.yosakura.dao.impl;
-
-import com.yosakura.dao.NewsDao;
-
-public class NewsDaoImpl implements NewsDao {
-
-}

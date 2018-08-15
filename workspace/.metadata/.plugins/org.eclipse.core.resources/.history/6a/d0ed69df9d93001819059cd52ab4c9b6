@@ -1,0 +1,92 @@
+package com.yosakura.service.impl;
+
+import java.sql.SQLException;
+
+import com.yosakura.dao.impl.UserDaoImpl;
+import com.yosakura.entity.User;
+import com.yosakura.service.UserService;
+/**
+ * 用户业务逻辑层的实现类
+ * @author Administrator
+ *
+ */
+public class UserServiceImpl implements UserService{
+
+	@Override
+	public boolean regist(User user) {
+		if (user == null) {
+			return false;
+		}
+		int rows = 0;
+		try {
+			UserDaoImpl udi = new UserDaoImpl();
+			// 1.需要验证用户名是否存在 （调用dao的查询接口）
+			User queryUser = udi.queryUserByName(user.getUname());
+			// 2.不存在就可以注册了 （调用dao的添加接口）
+			if (queryUser == null) {
+				rows = udi.addUser(user);
+			}
+		} catch (Exception e) {
+			// 打印异常在栈中的轨迹
+			e.printStackTrace();
+		}
+		return rows>0;
+	}
+
+	// 用户登录验证
+	@Override
+	public User login(User user) {
+		if (user == null) {
+			return null;
+		}
+		UserDaoImpl udi = new UserDaoImpl();
+		User verify = null;
+		try {
+			verify = udi.queryUserByLogin(user);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return verify;
+	}
+	
+	// 验证用户名
+	@Override
+	public User queryUserByName(String name) {
+		UserDaoImpl udi = new UserDaoImpl();
+		// 验证用户名是否存在 （调用dao的查询接口）
+		User user = null;
+		try {
+			user = udi.queryUserByName(name);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+	
+	// 验证邮箱
+	@Override
+	public User queryUserByEmail(String email) {
+		UserDaoImpl udi = new UserDaoImpl();
+		// 验证用户名是否存在 （调用dao的查询接口）
+		User user = null;
+		try {
+			user = udi.queryUserByEmail(email);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+
+	public User getpwd(String userName, String uName, String email) {
+		UserDaoImpl udi = new UserDaoImpl();
+		// 验证用户名是否存在 （调用dao的查询接口）
+		User user = null;
+		try {
+			user = udi.getpwd(userName,uName,email);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return user;
+		return null;
+	}
+}

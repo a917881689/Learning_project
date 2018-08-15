@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+        
+        <context:component-scan base-package="com.yulu.entity" />
+        <context:component-scan base-package="com.yulu.service" />   
+        
+        <aop:aspectj-autoproxy/>
+        
+        <!-- 将目标类交给Spring  -->
+		<bean id="customerDao" class="com.yulu.dao.impl.CustomerDaoImpl"></bean>
+		<bean id="customerService" class="com.yulu.service.impl.CustomerServiceImpl"></bean>
+		<bean id="orderService" class="com.yulu.service.impl.OrderServiceImpl"></bean>
+		<bean id="userService" class="com.yulu.service.impl.UserServiceImpl"></bean>
+		
+		<!-- 将切面类交给Spring -->
+		<bean class="com.yulu.entity.MyAspect"/>
+		
+		<!-- 配置切面 -->
+		<aop:config>
+			<!-- 配置众多切点 -->
+			<aop:pointcut expression="execution(* com.yulu.dao.impl.CustomerDaoImpl.add(..))" id="p1"/>
+			<aop:pointcut expression="execution(* com.yulu.dao.impl.CustomerDaoImpl.delete(..))" id="p2"/>
+			<aop:pointcut expression="execution(* com.yulu.dao.impl.CustomerDaoImpl.update(..))" id="p3"/>
+			<aop:pointcut expression="execution(* com.yulu.dao.impl.CustomerDaoImpl.query(..))" id="p4"/>
+			<aop:pointcut expression="execution(* com.yulu.service.impl.*.add(..))" id="p5"/>
+			<!-- 将切点增强  通知（织入） -->
+			<aop:aspect ref="myAspect">
+				<!-- 前置通知 ： add上使用前置通知-->
+				<aop:before method="before" pointcut-ref="p1"/>
+				<!-- 后置通知 -->
+				<aop:after-returning method="afterReturning" pointcut-ref="p2" returning="result"/>
+				<!-- 环绕通知 -->
+				<aop:around method="around" pointcut-ref="p3" />
+				<!-- 异常抛出通知 -->
+				<aop:after-throwing method="exception" pointcut-ref="p4" throwing="e"/>
+				<!-- 最终通知 -->
+				<aop:after method="after" pointcut-ref="p4"/>
+				<!-- add环绕增强通知 -->
+				<aop:after method="serviceAdd" pointcut-ref="p5"/>
+			</aop:aspect>
+		</aop:config>
+</beans>

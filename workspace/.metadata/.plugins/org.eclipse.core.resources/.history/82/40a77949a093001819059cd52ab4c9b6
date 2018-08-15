@@ -1,0 +1,42 @@
+package com.yosakura.web.servlet;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.yosakura.entity.User;
+import com.yosakura.service.impl.UserServiceImpl;
+
+@WebServlet("/getPwd")
+public class GetPwdServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 获取信息
+		String userName = req.getParameter("userName");
+		String uName = req.getParameter("uName");
+		String email = req.getParameter("email");
+		if (userName == null || "".equals(userName) || uName == null || "".equals(uName) || email == null || "".equals(email)) {
+			resp.getWriter().write("error");
+			return;
+		}
+		UserServiceImpl usi = new UserServiceImpl();
+		User user = usi.getpwd(userName,uName,email);
+		if (user == null) {
+			resp.getWriter().write("<script type='text/javascript'>alert('信息错误')</script>");	
+			return;
+			req.(".jsp");
+			resp.setHeader("refresh","1;url=retrieve_password.jsp");
+		}
+		req.setAttribute("userGetPwd",user);
+		req.getRequestDispatcher("back.jsp").forward(req, resp);
+	}
+
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
+}

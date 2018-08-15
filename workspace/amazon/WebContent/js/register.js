@@ -200,6 +200,7 @@ $(function (){
         		if ("unuse" == result) {
         			info.text('验证码不正确，请重新输入').prop("class","error");
         			veryCode_flag = false;
+                    $('#veryCode-img').click();
         			return;
         		}
         	}

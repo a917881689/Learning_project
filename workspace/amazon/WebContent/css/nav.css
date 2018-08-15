@@ -157,3 +157,8 @@ span.c_red.dialog_login_click:hover {
 .margin-top-15 {
     margin-top: 15px;
 }
+button#choose_btn_classify {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: bolder;
+}

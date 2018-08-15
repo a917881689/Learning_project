@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 1.配置类与数据库表的元素 -->
+	<class name="com.yosakura.entity.User" table="sys_user">
+		<!-- 2.实体类与数据库主键的映射 -->
+		<id name="user_id" column="user_id">
+			<!-- 设置主键的生成策略 -->
+			<generator class="native" />
+		</id>
+		<!-- 3.配置主键之外的其它属性 -->
+		<property name="user_code" column="user_code"></property>
+		<property name="user_name" column="user_name"></property>
+		<property name="user_password" column="user_password"></property>
+		<property name="user_state" column="user_state"></property>
+		
+		<!-- 配置多对多映射关系：中间表 
+			set: name : 多方的set属性名
+			column: 自己家的外键名
+			table:中间表名称
+			key: column当前类在中间表的外键/（和另一个预设字段，成为二合一主键）
+			cascade="save-update" 级联更新或保存
+		-->
+		<set name="roles" table="sys_user_role" cascade="save-update">
+			<key column="users_id"></key>
+			<many-to-many class="com.yosakura.entity.Role" column="roles_id" ></many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

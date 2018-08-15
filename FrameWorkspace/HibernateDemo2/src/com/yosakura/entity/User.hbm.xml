@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	<!-- 1.创建类与数据库表的映射 
+		name:完整的类路径 com.yosakura.entity.User
+		table:数据库表名 t_user(若没有写表名,则表名就是类名小写)
+		catalog:数据库名：一般不写
+	-->
+	
+	<class name="com.yosakura.entity.User" table="t_user" catalog="hibernate_day01">
+		<!-- 2.类中属性与数据库主机的映射  type="java.lang.Long" 设置类型-->
+		<id name="id" column="id" length="8">
+			<!-- 主键的生成策略
+				increment:hibernate自带的自动增长
+				identity:使用数据的自动增长（前提数据库支持自动增长，Oracle不可以）
+				squence:使用数据库的自动序列（前提数据库支持序列）
+				native:自动选择使用 数据库的增长策略
+			 -->
+			<generator class="native" ></generator>
+			<!-- <generator class="sequence">
+				<param name="sequence">hibernate_id</param> 指定sequence的名称
+			</generator> -->
+		</id>
+		
+		<!-- 3.配置其他属性字段域数据库的映射 -->
+		<property name="uname" column="uname" length="20" not-null="true" unique="true">
+			<!-- <column name="uname" sql-type="varchar"></column> 可以设置数据库类型		 -->
+		</property>
+		<property name="pwd" column="pwd" length="20" type="java.lang.String"/>
+		<property name="sex" column="sex" length="4"/>
+		<property name="birthday" column="birthday" />
+		
+	</class>
+</hibernate-mapping>

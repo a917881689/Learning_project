@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<li class="current"><em></em>填写注册信息</li>
 				<li class="last"><em></em>注册成功</li>
 			</ul>
-			<form id="regForm" method="post" action="doRegist" onsubmit="return false">
+			<form id="regForm" method="post" action="doRegist">
 				<input type="hidden" name="utype" value="0"/>
 				<table>
 					<tr>

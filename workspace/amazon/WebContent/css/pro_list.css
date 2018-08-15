@@ -52,9 +52,11 @@
 .pro-type>.btn-details>a:hover {
     text-decoration: none;
 }
+
 #page_div {
     text-align: center;
 }
+
 .pagination{
     text-align: center;
     font-size: 12px;

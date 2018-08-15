@@ -37,7 +37,7 @@ public class RegistServlet extends HttpServlet {
 			return;
 			// resp.sendRedirect("registUI.jsp");
 		}
-		User user = new User(uname, pwd,Integer.parseInt(sex),birthday,idCard, mobile, email,address, Integer.parseInt(utype));
+		User user = new User(uname, pwd,Integer.parseInt(sex),birthday,idCard,email,mobile,address, Integer.parseInt(utype));
 		UserServiceImpl usi = new UserServiceImpl();
 		boolean flag = usi.regist(user);
 		if (flag) {
