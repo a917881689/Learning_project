@@ -15,13 +15,7 @@
 			<result>/jsp/{1}/list.jsp</result>
 		</action>
 		
-		<action name="linkman-*" class="customerAction" method="{1}">
-			<result type="json">
-				<param name="root">result</param>
-			</result>
-		</action>
-		
-		<action name="customer-*" class="linkmanAction" method="{1}">
+		<action name="customer-*" class="customerAction" method="{1}">
 			<result type="json">
 				<param name="root">result</param>
 			</result>

@@ -23,15 +23,13 @@ public class LinkmanDaoImpl implements LinkmanDao{
 	@Override
 	public List<Linkman> find() {
 		System.out.println("LinkmanDao执行了find方法");
-		List<Linkman> list = (List<Linkman>) hibernateTemplate.find("from Customer");
-		System.out.println("list="+list);
+		List<Linkman> list = (List<Linkman>) hibernateTemplate.find("from Linkman");
 		return list;
 	}
 	@Override
 	public Linkman queryById(long id) {
 		System.out.println("LinkmanDaoImpl执行了queryById()");
 		Linkman linkman = hibernateTemplate.get(Linkman.class, id);
-		System.out.println("linkman:"+linkman);
 		return linkman;
 	}
 	@Override

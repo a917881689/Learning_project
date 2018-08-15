@@ -1,27 +1,26 @@
 package com.yulu.entity;
 import java.util.HashSet;
-/*`cust_id` bigint(32) NOT NULL AUTO_INCREMENT COMMENT '客户编号(主键)',
-`cust_name` varchar(32) NOT NULL COMMENT '客户名称(公司名称)',
-`cust_source` varchar(32) DEFAULT NULL COMMENT '客户信息来源',
-`cust_industry` varchar(32) DEFAULT NULL COMMENT '客户所属行业',
-`cust_level` varchar(32) DEFAULT NULL COMMENT '客户级别',
-`cust_phone` varchar(64) DEFAULT NULL COMMENT '固定电话',
-`cust_mobile` varchar(16) DEFAULT NULL COMMENT '移动电话',
-PRIMARY KEY (`cust_id`)*/
 /**
  * 客户类（一个客户对于多个联系人）
  */
 import java.util.Set;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import com.alibaba.fastjson.annotation.JSONField;
 @Entity
-@Table
+@Table(name="cst_customer")
 public class Customer {
 	// 客户编号
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -41,6 +40,10 @@ public class Customer {
 	private String cust_mobile;
 	// 
 	@JSONField(serialize = false)
+	@OneToMany                                          //指定一对多关系
+	@Basic(fetch=FetchType.EAGER)
+	@Cascade(value={CascadeType.SAVE_UPDATE})         //设定级联关系
+	@JoinColumn(name="lkm_cust_id")                       //指定与本类主键所对应的外表的外键
 	private Set<Linkman> linkmans = new HashSet<>();
 	public Customer() {
 		super();
@@ -128,7 +131,7 @@ public class Customer {
 	public String toString() {
 		return "Customer [cust_id=" + cust_id + ", cust_name=" + cust_name + ", cust_source=" + cust_source
 				+ ", cust_industry=" + cust_industry + ", cust_level=" + cust_level + ", cust_phone=" + cust_phone
-				+ ", cust_mobile=" + cust_mobile + "]";
+				+ ", cust_mobile=" + cust_mobile + linkmans+"]";
 	}
 	
 }

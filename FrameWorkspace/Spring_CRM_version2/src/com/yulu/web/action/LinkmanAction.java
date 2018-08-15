@@ -4,7 +4,6 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.yulu.entity.Customer;
 import com.yulu.entity.Linkman;
-import com.yulu.util.SpringUtil;
 
 public class LinkmanAction extends ActionSupport implements ModelDriven<Linkman>{
 	private static final long serialVersionUID = 1L;
@@ -33,7 +32,7 @@ public class LinkmanAction extends ActionSupport implements ModelDriven<Linkman>
 		customer.setCust_id(cust_id);
 		linkman.setCustomer(customer);
 		
-		SpringUtil.getLinkmanService().add(linkman);
+		// SpringUtil.getLinkmanService().add(linkman);
 		result = SUCCESS;
 		return SUCCESS;
 	}

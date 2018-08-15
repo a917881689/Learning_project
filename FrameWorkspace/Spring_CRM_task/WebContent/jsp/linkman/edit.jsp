@@ -14,7 +14,7 @@
 </HEAD>
 <BODY>
 	<FORM id="update-form" >
-		<input type="hidden" name="lkm_id" value="${linkman.lkmId }"/>
+		<input type="hidden" name="lkm_id" value="${linkman.lkm_id }"/>
 
 		<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
 			<TBODY>
@@ -45,7 +45,7 @@
 						<TABLE cellSpacing=0 cellPadding=5  border=0>
 							<tr>
 								<td>所属客户：</td>
-								<td colspan="3"><input type="text" name="custId" style="WIDTH: 180px" value="${linkman.cstCustomer.custId}" /></td>
+								<td colspan="3"><input type="text" name="custId" style="WIDTH: 180px" value="${linkman.customer.cust_id}" /></td>
 							</tr>
 							<TR>
 								<td>联系人名称：</td>
@@ -55,9 +55,9 @@
 								</td>
 								<td>联系人性别：</td>
 								<td>
-								<input type="radio" value="1" name="lkm_gender" <c:if test="${linkman.lkm_gender=='男' }">checked</c:if>>男
+								<input type="radio" value="1" name="lkm_gender" >男
 								
-								<input type="radio" value="2" name="lkm_gender" <c:if test="${linkman.lkm_gender=='女' }">checked</c:if>>女
+								<input type="radio" value="2" name="lkm_gender" >女
 								</td>
 							</TR>
 							<TR>

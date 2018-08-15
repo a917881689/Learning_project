@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.alibaba.fastjson.annotation.JSONField;
@@ -15,7 +17,7 @@ import com.alibaba.fastjson.annotation.JSONField;
  *
  */
 @Entity
-@Table
+@Table(name="cst_linkman")
 public class Linkman {
 	// 联系人编号(主键)
 	@Id
@@ -39,6 +41,8 @@ public class Linkman {
 	private String lkm_memo;
 	// 
 	@JSONField(serialize = false)
+	@ManyToOne// 指定多对一关系                       //指定多对一关系
+	@JoinColumn(name="lkm_cust_id")                       
 	private Customer customer;
 	public Linkman() {
 		super();
@@ -121,7 +125,7 @@ public class Linkman {
 	public String toString() {
 		return "Linkman [lkm_id=" + lkm_id + ", lkm_name=" + lkm_name + ", lkm_gender=" + lkm_gender + ", lkm_phone="
 				+ lkm_phone + ", lkm_mobile=" + lkm_mobile + ", lkm_email=" + lkm_email + ", lkm_qq=" + lkm_qq
-				+ ", lkm_position=" + lkm_position + ", lkm_memo=" + lkm_memo + ", customer=" + customer + "]";
+				+ ", lkm_position=" + lkm_position + ", lkm_memo=" + lkm_memo+"]";
 	}
 	
 	

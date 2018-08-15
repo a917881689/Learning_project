@@ -26,11 +26,14 @@ $(function () {
                         '</TR>';
                 }
                 $('#list-tboby').html(html);
+                set_btn_click();
             }
         })
     }
     find();
-    $('.btn-update').click(function () {
-    	location.href="linkman_updateUI?lkm_id="+$(this).siblings('.lkm_id').val();
-    })
+    function set_btn_click(){
+    	$('.btn-update').click(function () {
+        	location.href="linkman_updateUI?lkm_id="+$(this).parent().siblings('.lkm_id').val();
+        })
+    }
 })

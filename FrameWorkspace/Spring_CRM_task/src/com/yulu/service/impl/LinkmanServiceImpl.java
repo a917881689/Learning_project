@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.yulu.dao.LinkmanDao;
 import com.yulu.entity.Linkman;
 import com.yulu.service.LinkmanService;
-
+@Transactional
 public class LinkmanServiceImpl implements LinkmanService{
 	@Resource
 	private LinkmanDao linkmanDao;
