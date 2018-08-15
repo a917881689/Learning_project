@@ -4,5 +4,5 @@ import com.yulu.entity.User;
 
 public interface UserDao {
 	// 添加客户
-	void add(User user);
+	boolean add(User user);
 }
