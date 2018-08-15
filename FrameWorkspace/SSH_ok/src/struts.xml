@@ -7,5 +7,8 @@
 	<package name="ssh" extends="struts-default" namespace="/">
 		<action name="customer_*" class="customerAction" method="{1}">
 		</action>
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="login">/login.jsp</result>
+		</action>
 	</package>
 </struts>

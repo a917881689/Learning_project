@@ -18,12 +18,17 @@
         <context:annotation-config/>
         <!-- 获取action控制权 -->
         <bean id="customerAction" class="com.yulu.web.action.CustomerAction" scope="prototype"></bean>
+        <bean id="userAction" class="com.yulu.web.action.UserAction" scope="prototype"></bean>
         <!-- dao -->
         <bean id="customerDao" class="com.yulu.dao.impl.CustomerDaoImpl" >
         	<property name="sessionFactory" ref="sessionFactory"></property>
         </bean>
+        <bean id="userDao" class="com.yulu.dao.impl.UserDaoImpl" >
+        	<property name="sessionFactory" ref="sessionFactory"></property>
+        </bean>
         <!-- Service -->
         <bean id="customerService" class="com.yulu.service.impl.CustomerServiceImpl"></bean>
+        <bean id="userService" class="com.yulu.service.impl.UserServiceImpl"></bean>
 		<context:property-placeholder location="classpath:jdbc.properties"/>
 		
 		<!-- Spring整合Hibernate(数据源，其它属性，映射文件 -->
@@ -51,6 +56,7 @@
 		    <property name="mappingResources">
 		    	<list> 
 	               <value>com/yulu/entity/Customer.hbm.xml</value>
+	               <value>com/yulu/entity/User.hbm.xml</value>
 	               <!-- <value>com/yulu/entity/Linkman.hbm.xml</value>   -->
 	            </list> 
 		    </property>

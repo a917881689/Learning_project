@@ -16,7 +16,7 @@ TD {
 
 <META content="MSHTML 6.00.6000.16809" name=GENERATOR></HEAD>
 <BODY>
-<FORM id=form1 name=form1 action="${ pageContext.request.contextPath }/user_login.action" method=post target="_parent">
+<FORM id=form1 name=form1 action="${ pageContext.request.contextPath }/crm/user_regist.action" method=post>
 
 <DIV id=UpdatePanel1>
 <DIV id=div1 
@@ -30,10 +30,10 @@ style="LEFT: 0px; POSITION: absolute; TOP: 0px; BACKGROUND-COLOR: #0066ff"></DIV
 <TABLE cellSpacing=0 cellPadding=0 width=900 align=center border=0>
   <TBODY>
   <TR>
-    <TD style="HEIGHT: 105px"><IMG src="images/login_1.gif" 
+    <TD style="HEIGHT: 105px"><IMG src="${ pageContext.request.contextPath }/images/login_1.gif" 
   border=0></TD></TR>
   <TR>
-    <TD background=images/login_2.jpg height=300>
+    <TD background=${ pageContext.request.contextPath }/images/regist_bt.png height=300>
       <TABLE height=300 cellPadding=0 width=900 border=0>
         <TBODY>
         <TR>
@@ -41,11 +41,10 @@ style="LEFT: 0px; POSITION: absolute; TOP: 0px; BACKGROUND-COLOR: #0066ff"></DIV
         <TR>
           <TD width=360></TD>
           <TD>
-          	<s:actionerror/>
             <TABLE cellSpacing=0 cellPadding=2 border=0>
               <TBODY>
               <TR>
-                <TD style="HEIGHT: 28px" width=80>登 录 名：</TD>
+                <TD style="HEIGHT: 28px" width=80> 用户账号：</TD>
                 <TD style="HEIGHT: 28px" width=150><INPUT id=txtName 
                   style="WIDTH: 130px" name="user_code"></TD>
                 <TD style="HEIGHT: 28px" width=370><SPAN 
@@ -57,6 +56,16 @@ style="LEFT: 0px; POSITION: absolute; TOP: 0px; BACKGROUND-COLOR: #0066ff"></DIV
                   type=password name="user_password"></TD>
                 <TD style="HEIGHT: 28px"><SPAN id=RequiredFieldValidator4 
                   style="FONT-WEIGHT: bold; VISIBILITY: hidden; COLOR: white">请输入密码</SPAN></TD></TR>
+             
+              <TR>
+                <TD style="HEIGHT: 28px" width=80> 用户姓名 ：</TD>
+                <TD style="HEIGHT: 28px" width=150><INPUT id=txtName 
+                  style="WIDTH: 130px" name="user_name"></TD>
+                <TD style="HEIGHT: 28px" width=370><SPAN 
+                  id=RequiredFieldValidator3 
+                  style="FONT-WEIGHT: bold; VISIBILITY: hidden; COLOR: white">请输入登录名</SPAN></TD>
+              </TR>
+              
               <TR>
                 <TD style="HEIGHT: 28px">验证码：</TD>
                 <TD style="HEIGHT: 28px"><INPUT id=txtcode 
@@ -69,20 +78,16 @@ style="LEFT: 0px; POSITION: absolute; TOP: 0px; BACKGROUND-COLOR: #0066ff"></DIV
               <TR>
                 <TD></TD>
                 <TD>
-                <input  type="button" id='btn-login' value="登录" /> 
                 <input type="button" id="btn-register" value="注册"/>
               </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
   <TR>
-    <TD><IMG src="images/login_3.jpg" 
+    <TD><IMG src="${ pageContext.request.contextPath }/images/login_3.jpg" 
 border=0></TD></TR></TBODY></TABLE></DIV></DIV>
+
 </FORM>
 <script type="text/javascript">
-	$('#btn-login').click(function () {
-		
-	})
-	
 	$('#btn-register').click(function () {
-		location.href = "regist.jsp"
+		$('#form1').submit();
 	})
 </script>
 </BODY></HTML>
