@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<!--官方的动态代理，来替代DAO-->
+<mapper namespace="com.yulu.mybatis.mapper.UserMapper">
+	<!-- 
+		id:sql的名称（相当于方法名）
+		parameterType : [入参类型] 形参的数据类型
+		resultType: 查询结果的返回类型
+		#{}: 占位符替换，相当于JDBC的？，若是基本数据类型，{变量名任意定义}
+	 -->
+	<select id="queryUserById" parameterType="int" resultType="com.yulu.entity.User">
+		SELECT id,username,birthday,sex,address FROM `user` WHERE id=#{id}
+	</select>
+	<!-- 查询的对象是集合时，他还是写对象的完整类路径 
+		#{} ：占位符替换
+		${} : 字符串拼接，拼接内容是基础数据类型，${value}
+	-->
+	<select id="queryUserByName" parameterType="java.lang.String" resultType="com.yulu.entity.User">
+		<!-- SELECT id,username,birthday,sex,address FROM `user` WHERE username like #{name} -->
+		SELECT id,username,birthday,sex,address FROM `user` WHERE username like '%${value}%'
+	</select>
+	<!-- selectKey 在插入前后执行的语句 
+		useGeneratedKeys="true" 开启使用自动增长的主键
+		keyProperty 封装结果
+	-->
+	<insert id="insertUser" parameterType="com.yulu.entity.User" useGeneratedKeys="true" keyProperty="id">
+		<!-- <selectKey keyProperty="id" resultType="int" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey> -->
+		
+		INSERT INTO user(username,birthday,sex,address) VALUES(#{username},#{birthday},#{sex},#{address})
+		
+		<!-- <selectKey keyProperty="uuid" resultType="int" order="BEFORE">
+			SELECT uuid()
+		</selectKey>
+		INSERT INTO user(id,username,birthday,sex,address) VALUES(#{uuid},#{username},#{birthday},#{sex},#{address}) -->
+	</insert>
+	<update id="updateUserById" parameterType="com.yulu.entity.User">
+		UPDATE user SET sex=#{sex} AND address=#{address} WHERE id=#{id}
+	</update>
+	<delete id="deleteUserById" parameterType="int">
+		DELETE USER WHERE id = #{value}
+	</delete>
+	<select id="queryAll" resultType="com.yulu.entity.User">
+		SELECT id,username,birthday,sex,address FROM `user`
+	</select>
+	
+</mapper>

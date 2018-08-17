@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	
+<struts>
+	<constant name="strtus.devMode" value="true" />
+	
+	<package name="crm" extends="json-default" namespace="/">
+		<!-- 跳转到添加客户页面 -->
+		<action name="*_saveUI" >
+			<result>/jsp/{1}/add.jsp</result>
+		</action>
+		<action name="*_findUI" >
+			<result>/jsp/{1}/list.jsp</result>
+		</action>
+		
+		<action name="customer-*" class="customerAction" method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+</struts>

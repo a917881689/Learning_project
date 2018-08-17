@@ -34,12 +34,13 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	}
 	// 保存客户
 	@Action(value="user-login",results= {
-			@Result(name ="success", type="json",params={"root","result"})})
+			@Result(name ="success", type="json",params={"root","result"}),
+			@Result(name="login",type="redirect",location="/login.jsp")})
 	public String login() {
 		System.out.println("执行regist()方法");
 		user.setUser_password(MD5Utils.md5(user.getUser_password()));
-		userService.login(user);
-		result = SUCCESS;
+		User loginUser = userService.login(user);
+		result = loginUser==null?LOGIN:SUCCESS;
 		return SUCCESS;
 	}
 	
