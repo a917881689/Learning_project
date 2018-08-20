@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.yulu.mybatis.mapper.UserMapper">
+	<!--  一对多主体是User -->
+	<resultMap type="User" id="userOrder">
+		<id property="id" column="id"/>
+		<result property="usernamer" column="usernamer"/>
+		<result property="address" column="address"/>
+		<result property="sex" column="sex"/>
+		<result property="birthday" column="birthday"/>
+		<collection property="orders" ofType="Order">
+			<id property="id" column="oid"/>
+			<result property="userId" column="user_id"/>
+			<result property="number" column="number"/>
+			<result property="createTime" column="createtime"/>
+			<result property="note" column="note"/>	
+		</collection>		
+	</resultMap>
+	<select id="findAllUserOrder" resultMap="userOrder">
+		SELECT u.id,u.username,u.address,u.sex,u.birthday,o.id as oid,o.user_id,o.number,o.createtime,o.note
+		FROM `user` u,`order` o  
+		WHERE o.user_id = u.id 
+	</select>
+</mapper>

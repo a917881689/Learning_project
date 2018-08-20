@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.yulu.mybatis.mapper.OrderMapper">
+
+	<!-- 查询所有的订单 -->
+	<select id="findAllOrder" resultType="Order" >
+		SELECT id,user_id as userId,number,createtime,note FROM `order`
+	</select>
+	
+	<!-- 查询所有的订单信息 resultMap -->
+	<resultMap type="Order" id="orderMap">
+		<!-- 设置主键信息 -->
+		<id property="id" column="id"/>
+		<!-- 设置普通属性  :若实体类字段和数据库字段一致，则可以省略-->
+		<result property="userId" column="user_id" />
+	</resultMap>
+	<select id="findAllOrderByResultMap" resultMap="orderMap">
+		SELECT id,user_id,number,createtime,note FROM `order`
+	</select>
+	
+	<!-- 两表查询（显示订单的用户名和地址和用户id）resultType -->
+	<select id="findAllOrder2" resultType="OrderPro">
+		SELECT o.id,o.user_id as userId,o.number,o.createtime,o.note,u.username,u.address 
+		FROM `order` o,`user` u
+		WHERE o.user_id=u.id
+	</select>
+	
+	
+	<!-- 两表查询（显示订单的用户名和地址和用户id
+	<select id="findAllOrder3" resultMap="">
+		SELECT o.id,o.user_id,o.number,o.createtime,o.note,u.username,u.address 
+		FROM `order` o,`user` u
+		WHERE o.user_id=u.id
+	</select> -->
+</mapper>

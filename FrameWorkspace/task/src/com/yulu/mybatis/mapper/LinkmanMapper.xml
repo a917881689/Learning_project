@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--官方的动态代理替代dao  namespace是接口的完整路劲-->
+<mapper namespace="com.yulu.mybatis.mapper.LinkmanMapper">
+
+    <insert id="insertUser" parameterType="com.yulu.entity.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO USER(USERNAME,BIRTHDAY,SEX,ADDRESS)  VALUES(#{username},#{birthday},#{sex},#{address})
+    </insert>
+
+    <select id="queryUserById" parameterType="int" resultType="com.yulu.entity.User">
+        SELECT * FROM USER WHERE ID=#{ID2}
+    </select>
+
+</mapper>

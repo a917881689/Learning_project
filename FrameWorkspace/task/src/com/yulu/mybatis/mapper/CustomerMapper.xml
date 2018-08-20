@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--官方的动态代理替代dao  namespace是接口的完整路劲-->
+<mapper namespace="com.yulu.mybatis.mapper.CustomerMapper">
+
+    <insert id="add" parameterType="com.yulu.entity.Customer" useGeneratedKeys="true" keyProperty="cust_id">
+        INSERT INTO customer(cust_name,cust_source,cust_industry,cust_level,cust_phone,cust_mobile)
+        VALUES(#{cust_name},#{cust_source},#{cust_industry},#{cust_level},#{cust_phone},#{cust_mobile})
+    </insert>
+
+    <select id="queryById" parameterType="int" resultType="com.yulu.entity.Customer">
+        SELECT cust_id,cust_name,cust_source,cust_industry,cust_level,cust_phone,cust_mobile
+        FROM customer WHERE cust_id=#{value}
+    </select>
+
+
+    <select id="findCount" resultType="long">
+        SELECT count(*) FROM customer
+    </select>
+    <select id="findPage" resultType="com.yulu.entity.Customer">
+        SELECT cust_id,cust_name,cust_source,cust_industry,cust_level,cust_phone,cust_mobile
+        FROM customer LIMIT #{0},#{1}
+    </select>
+
+    <select id="findCountByName" parameterType="String" resultType="long">
+        SELECT count(*) FROM customer WHERE cust_name LIKE concat('%',#{0},'%')
+    </select>
+
+    <select id="findPageByName" resultType="com.yulu.entity.Customer">
+        SELECT cust_id,cust_name,cust_source,cust_industry,cust_level,cust_phone,cust_mobile
+        FROM customer WHERE cust_name LIKE concat('%',#{0},'%') LIMIT #{1},#{2}
+    </select>
+    <delete id="delete" parameterType="long">
+        DELETE FROM customer WHERE cust_id=#{value}
+    </delete>
+
+    <update id="update" parameterType="int">
+        UPDATE customer SET cust_name=#{cust_name},cust_source=#{cust_source},cust_industry=#{cust_industry},
+        cust_level=#{cust_level},cust_phone=#{cust_phone},cust_mobile=#{cust_mobile} WHERE cust_id=#{cust_id}
+    </update>
+</mapper>

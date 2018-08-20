@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/tx 
+         http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd">
+        <!-- 启动依赖注入的注解解析器 -->
+    <context:annotation-config/>
+    <context:component-scan base-package="com.yulu"/>
+        
+        <!-- Spring接管Action控制权 -->
+    <bean id="customerAction" class="com.yulu.web.action.CustomerAction" scope="prototype"/>
+    <bean id="linkmanAction" class="com.yulu.web.action.LinkmanAction" scope="prototype"/>
+    <bean id="userAction" class="com.yulu.web.action.UserAction" scope="prototype"/>
+
+    <bean id="customerService" class="com.yulu.service.impl.CustomerServiceImpl" />
+    <bean id="linkmanService" class="com.yulu.service.impl.LinkmanServiceImpl" />
+    <bean id="userService" class="com.yulu.service.impl.UserServiceImpl"/>
+
+    <!--< 单个MapperFactoryBean定义方式
+    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.yulu.mybatis.mapper.UserMapper" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>-->
+    <!-- 当有多个MapperFactoryBean时
+    MapperScannerConfigurer 会查找类路径下的映射器并自动将它们创建成MapperFactoryBean。 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.yulu.mybatis.mapper" />
+    </bean>
+    <!--引入外部属性文件  -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <!--配置C3P0连接池  -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driverClass}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!-- spring和MyBatis整合 -->
+     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+         <property name="dataSource" ref="dataSource" />
+         <!--<property name="configLocation"  value="classpath:sqlMapConfig.xml"/>-->
+         <!-- 自动扫描mapping.xml文件，**表示迭代查找,也可在sqlMapConfig.xml中单独指定xml文件-->
+         <property name="mapperLocations" >
+             <list>
+                 <value>classpath:com/yulu/mybatis/mapper/CustomerMapper.xml</value>
+                 <value>classpath:com/yulu/mybatis/mapper/LinkmanMapper.xml</value>
+                 <value>classpath:com/yulu/mybatis/mapper/UserMapper.xml</value>
+             </list>
+         </property>
+     </bean>
+
+    <!-- (平台事务管理器)transaction manager, use JtaTransactionManager for global tx -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+</beans>
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.yulu.mybatis.mapper.UserMapper">
+	<!-- Sql片段 (提高代码的重用性及简洁性)：重复次数多并且臃肿的代码-->
+	<sql id="allCol">
+		id,username,birthday,sex,address
+	</sql>
+	<!-- 查询所有 -->
+	<select id="findAll" resultType="User">
+		SELECT <include refid="allCol"/> FROM `user`
+	</select>
+	<!-- 根据名字模糊查询,（简单入参，变量名任意 ）-->
+	<select id="findUserByName" parameterType="String" resultType="User">
+		SELECT <include refid="allCol"/> FROM `user` WHERE username LIKE concat('%',#{name},'%') <!-- like '%${value}%' -->
+	</select>
+	<!-- 根据名字模糊查询,（入参是对象类型User ）-->
+	<select id="findByUserPro" parameterType="UserPro" resultType="User">
+		SELECT <include refid="allCol"/> FROM `user` WHERE username LIKE concat('%',#{user.username},'%')
+	</select>
+	<!-- 多条件查询,根据性别和名字模糊查询 （占位符替换的内容是map中的key） EG:#{key}-->
+	<select id="findUserBySexAndName" parameterType="hashMap" resultType="User">
+		SELECT <include refid="allCol"/> FROM `user` WHERE username LIKE concat('%',#{name},'%') AND sex=#{sex}
+	</select>
+	
+	<!-- 查询所有的用户记录数-->
+	<select id="findUserCount" resultType="int">
+		SELECT COUNT(*) FROM `user` 
+	</select>
+	
+	<select id="findUserById" parameterType="long" resultType="user" >
+		SELECT COUNT(*) FROM `user` WHERE id=#{id}
+	</select>
+</mapper>
