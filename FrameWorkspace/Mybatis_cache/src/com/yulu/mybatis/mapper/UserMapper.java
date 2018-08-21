@@ -13,4 +13,5 @@ import com.yulu.entity.User;
 
 public interface UserMapper {
 	List<User> findAll();
+	User findUserById(Integer id);
 }

@@ -8,4 +8,7 @@
 	<select id="findAll" resultType="user">
 		SELECT * FROM `user`
 	</select>
+	<select id="findUserById" parameterType="int" resultType="user">
+		SELECT * FROM `user` WHERE id=#{value}
+	</select>
 </mapper>

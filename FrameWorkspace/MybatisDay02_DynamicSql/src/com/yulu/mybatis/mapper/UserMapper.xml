@@ -5,7 +5,62 @@
 	
 <mapper namespace="com.yulu.mybatis.mapper.UserMapper">
 	<!-- 查询所有 -->
-	<select id="findAll" resultType="user">
-		SELECT * FROM `user`
+	<select id="findUser" parameterType="User" resultType="User">
+		SELECT * FROM `user` 
+		<where>
+			<if test="id != null ">
+				AND id=#{id}
+			</if>
+			<if test="username != null and username!=''">
+				AND username LIKE concat('%',#{username},'%')
+			</if>
+			
+			<if test="birthday != null ">
+				AND birthday=#{birthday}
+			</if>
+			<if test="sex != null and sex!=''">
+				AND sex=#{sex}
+			</if>
+			<if test="address != null and address!=''">
+				AND address=concat('%',#{address},'%')
+			</if>
+		</where>
+	</select>
+	
+	<select id="findUserById" parameterType="hashMap" resultType="User">
+		SELECT * FROM `user` WHERE 
+		<foreach collection="userIds" item="uid" open="id IN ("  separator="," close=")">
+			#{uid}
+		</foreach>
+	</select>
+	
+	<!-- 多条件拼接高级查询：类似于淘宝 -->
+	<select id="findUserIds" parameterType="User" resultType="User">
+		SELECT * FROM `user` 
+		<where>
+			<if test="UserIds != null ">
+				<foreach collection="userIds" item="uid" open="AND id IN ("  separator="," close=")">
+					#{uid}
+				</foreach>
+			</if>
+			<if test="username != null and username!=''">
+				AND username LIKE concat('%',#{username},'%')
+			</if>
+			
+			<if test="birthday != null ">
+				AND birthday=#{birthday}
+			</if>
+			<if test="sex != null and sex!=''">
+				AND sex=#{sex}
+			</if>
+			<if test="address != null and address!=''">
+				AND address=concat('%',#{address},'%')
+			</if>
+		</where>
+	</select>
+	
+	<!-- 接收多个参数 -->
+	<select id="findUserByNameAndId" parameterMap="map" resultType="user">
+		SELECT * FROM `user` WHERE id=#{uid} AND username=#{uname}
 	</select>
 </mapper>

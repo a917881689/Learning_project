@@ -7,10 +7,21 @@ package com.yulu.mybatis.mapper;
  * 4.接口的返回值类型与sql返回结果类型一致
  */
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 
 import com.yulu.entity.User;
 
 public interface UserMapper {
-	List<User> findAll();
+	/**
+	 * 动态sql语句
+	 * @param user
+	 * @return
+	 */
+	List<User> findUser(User user);
+	List<User> findUserById(HashMap<String,ArrayList<Integer>> hashMap);
+	User findUserByNameAndId(@Param("uid")Integer id,@Param("uname")String uname);
 }
