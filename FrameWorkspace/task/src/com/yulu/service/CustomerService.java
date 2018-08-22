@@ -45,6 +45,4 @@ public interface CustomerService {
 	 */
     PageModel<Customer> find(String name, Integer page, Integer rows);
 
-
-
 }

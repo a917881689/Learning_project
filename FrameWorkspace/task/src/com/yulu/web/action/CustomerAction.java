@@ -1,7 +1,6 @@
 package com.yulu.web.action;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.yulu.entity.Customer;
@@ -17,7 +16,6 @@ import org.springframework.context.annotation.Scope;
 import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 @Scope("prototype")
 @ParentPackage("json-default")
 @Namespace("/")

@@ -26,7 +26,7 @@ public class Customer {
 	public Customer() {
 		super();
 	}
-	
+
 	public Customer(Long cust_id, String cust_name, String cust_source) {
 		super();
 		this.cust_id = cust_id;
@@ -111,5 +111,5 @@ public class Customer {
 				+ ", cust_industry=" + cust_industry + ", cust_level=" + cust_level + ", cust_phone=" + cust_phone
 				+ ", cust_mobile=" + cust_mobile + linkmans+"]";
 	}
-	
+
 }

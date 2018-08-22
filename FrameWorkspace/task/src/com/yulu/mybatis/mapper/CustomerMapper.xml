@@ -4,40 +4,245 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--官方的动态代理替代dao  namespace是接口的完整路劲-->
 <mapper namespace="com.yulu.mybatis.mapper.CustomerMapper">
-
-    <insert id="add" parameterType="com.yulu.entity.Customer" useGeneratedKeys="true" keyProperty="cust_id">
-        INSERT INTO customer(cust_name,cust_source,cust_industry,cust_level,cust_phone,cust_mobile)
-        VALUES(#{cust_name},#{cust_source},#{cust_industry},#{cust_level},#{cust_phone},#{cust_mobile})
-    </insert>
-
-    <select id="queryById" parameterType="int" resultType="com.yulu.entity.Customer">
-        SELECT cust_id,cust_name,cust_source,cust_industry,cust_level,cust_phone,cust_mobile
-        FROM customer WHERE cust_id=#{value}
+    <resultMap id="BaseResultMap" type="com.yulu.entity.Customer" >
+        <id column="cust_id" property="cust_id" jdbcType="BIGINT" />
+        <result column="cust_name" property="cust_name" jdbcType="VARCHAR" />
+        <result column="cust_source" property="cust_source" jdbcType="VARCHAR" />
+        <result column="cust_industry" property="cust_industry" jdbcType="VARCHAR" />
+        <result column="cust_level" property="cust_level" jdbcType="VARCHAR" />
+        <result column="cust_phone" property="cust_phone" jdbcType="VARCHAR" />
+        <result column="cust_mobile" property="cust_mobile" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Example_Where_Clause" >
+        <where >
+            <foreach collection="oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause" >
+        <where >
+            <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+                <if test="criteria.valid" >
+                    <trim prefix="(" suffix=")" prefixOverrides="and" >
+                        <foreach collection="criteria.criteria" item="criterion" >
+                            <choose >
+                                <when test="criterion.noValue" >
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue" >
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue" >
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue" >
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List" >
+    cust_id, cust_name, cust_source, cust_industry, cust_level, cust_phone, cust_mobile
+  </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yulu.entity.CustomerExample" >
+        select
+        <if test="distinct" >
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from cst_customer
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null" >
+            order by ${orderByClause}
+        </if>
+        <if test="start !=0 or limit!=0">
+            limit #{start},#{limit}</if>
     </select>
-
-
-    <select id="findCount" resultType="long">
-        SELECT count(*) FROM customer
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select
+        <include refid="Base_Column_List" />
+        from cst_customer
+        where cust_id = #{cust_id,jdbcType=BIGINT}
     </select>
-    <select id="findPage" resultType="com.yulu.entity.Customer">
-        SELECT cust_id,cust_name,cust_source,cust_industry,cust_level,cust_phone,cust_mobile
-        FROM customer LIMIT #{0},#{1}
-    </select>
-
-    <select id="findCountByName" parameterType="String" resultType="long">
-        SELECT count(*) FROM customer WHERE cust_name LIKE concat('%',#{0},'%')
-    </select>
-
-    <select id="findPageByName" resultType="com.yulu.entity.Customer">
-        SELECT cust_id,cust_name,cust_source,cust_industry,cust_level,cust_phone,cust_mobile
-        FROM customer WHERE cust_name LIKE concat('%',#{0},'%') LIMIT #{1},#{2}
-    </select>
-    <delete id="delete" parameterType="long">
-        DELETE FROM customer WHERE cust_id=#{value}
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from cst_customer
+    where cust_id = #{cust_id,jdbcType=BIGINT}
+  </delete>
+    <delete id="deleteByExample" parameterType="com.yulu.entity.CustomerExample" >
+        delete from cst_customer
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
     </delete>
-
-    <update id="update" parameterType="int">
-        UPDATE customer SET cust_name=#{cust_name},cust_source=#{cust_source},cust_industry=#{cust_industry},
-        cust_level=#{cust_level},cust_phone=#{cust_phone},cust_mobile=#{cust_mobile} WHERE cust_id=#{cust_id}
+    <insert id="insert" parameterType="com.yulu.entity.Customer" >
+    insert into cst_customer (cust_id, cust_name, cust_source,
+      cust_industry, cust_level, cust_phone,
+      cust_mobile)
+    values (#{cust_id,jdbcType=BIGINT}, #{cust_name,jdbcType=VARCHAR}, #{cust_source,jdbcType=VARCHAR},
+      #{cust_industry,jdbcType=VARCHAR}, #{cust_level,jdbcType=VARCHAR}, #{cust_phone,jdbcType=VARCHAR},
+      #{cust_mobile,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.yulu.entity.Customer" >
+        insert into cst_customer
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="cust_id != null" >
+                cust_id,
+            </if>
+            <if test="cust_name != null" >
+                cust_name,
+            </if>
+            <if test="cust_source != null" >
+                cust_source,
+            </if>
+            <if test="cust_industry != null" >
+                cust_industry,
+            </if>
+            <if test="cust_level != null" >
+                cust_level,
+            </if>
+            <if test="cust_phone != null" >
+                cust_phone,
+            </if>
+            <if test="cust_mobile != null" >
+                cust_mobile,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="cust_id != null" >
+                #{cust_id,jdbcType=BIGINT},
+            </if>
+            <if test="cust_name != null" >
+                #{cust_name,jdbcType=VARCHAR},
+            </if>
+            <if test="cust_source != null" >
+                #{cust_source,jdbcType=VARCHAR},
+            </if>
+            <if test="cust_industry != null" >
+                #{cust_industry,jdbcType=VARCHAR},
+            </if>
+            <if test="cust_level != null" >
+                #{cust_level,jdbcType=VARCHAR},
+            </if>
+            <if test="cust_phone != null" >
+                #{cust_phone,jdbcType=VARCHAR},
+            </if>
+            <if test="cust_mobile != null" >
+                #{cust_mobile,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.yulu.entity.CustomerExample" resultType="java.lang.Integer" >
+        select count(*) from cst_customer
+        <if test="_parameter != null" >
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map" >
+        update cst_customer
+        <set >
+            <if test="record.cust_id != null" >
+                cust_id = #{record.cust_id,jdbcType=BIGINT},
+            </if>
+            <if test="record.cust_name != null" >
+                cust_name = #{record.cust_name,jdbcType=VARCHAR},
+            </if>
+            <if test="record.cust_source != null" >
+                cust_source = #{record.cust_source,jdbcType=VARCHAR},
+            </if>
+            <if test="record.cust_industry != null" >
+                cust_industry = #{record.cust_industry,jdbcType=VARCHAR},
+            </if>
+            <if test="record.cust_level != null" >
+                cust_level = #{record.cust_level,jdbcType=VARCHAR},
+            </if>
+            <if test="record.cust_phone != null" >
+                cust_phone = #{record.cust_phone,jdbcType=VARCHAR},
+            </if>
+            <if test="record.cust_mobile != null" >
+                cust_mobile = #{record.cust_mobile,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
     </update>
+    <update id="updateByExample" parameterType="map" >
+        update cst_customer
+        set cust_id = #{record.cust_id,jdbcType=BIGINT},
+        cust_name = #{record.cust_name,jdbcType=VARCHAR},
+        cust_source = #{record.cust_source,jdbcType=VARCHAR},
+        cust_industry = #{record.cust_industry,jdbcType=VARCHAR},
+        cust_level = #{record.cust_level,jdbcType=VARCHAR},
+        cust_phone = #{record.cust_phone,jdbcType=VARCHAR},
+        cust_mobile = #{record.cust_mobile,jdbcType=VARCHAR}
+        <if test="_parameter != null" >
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yulu.entity.Customer" >
+        update cst_customer
+        <set >
+            <if test="cust_name != null" >
+                cust_name = #{cust_name,jdbcType=VARCHAR},
+            </if>
+            <if test="cust_source != null" >
+                cust_source = #{cust_source,jdbcType=VARCHAR},
+            </if>
+            <if test="cust_industry != null" >
+                cust_industry = #{cust_industry,jdbcType=VARCHAR},
+            </if>
+            <if test="cust_level != null" >
+                cust_level = #{cust_level,jdbcType=VARCHAR},
+            </if>
+            <if test="cust_phone != null" >
+                cust_phone = #{cust_phone,jdbcType=VARCHAR},
+            </if>
+            <if test="cust_mobile != null" >
+                cust_mobile = #{cust_mobile,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where cust_id = #{cust_id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yulu.entity.Customer" >
+    update cst_customer
+    set cust_name = #{cust_name,jdbcType=VARCHAR},
+      cust_source = #{cust_source,jdbcType=VARCHAR},
+      cust_industry = #{cust_industry,jdbcType=VARCHAR},
+      cust_level = #{cust_level,jdbcType=VARCHAR},
+      cust_phone = #{cust_phone,jdbcType=VARCHAR},
+      cust_mobile = #{cust_mobile,jdbcType=VARCHAR}
+    where cust_id = #{cust_id,jdbcType=BIGINT}
+  </update>
 </mapper>

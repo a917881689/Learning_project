@@ -50,14 +50,16 @@
      <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
          <property name="dataSource" ref="dataSource" />
          <!--<property name="configLocation"  value="classpath:sqlMapConfig.xml"/>-->
-         <!-- 自动扫描mapping.xml文件，**表示迭代查找,也可在sqlMapConfig.xml中单独指定xml文件-->
-         <property name="mapperLocations" >
+         <!-- 扫描mapping.xml文件，**表示迭代查找,也可在sqlMapConfig.xml中单独指定xml文件
+         	推荐使用包扫描:org.mybatis.spring.mapper.MapperScannerConfigurer
+         -->
+         <!-- <property name="mapperLocations" >
              <list>
                  <value>classpath:com/yulu/mybatis/mapper/CustomerMapper.xml</value>
                  <value>classpath:com/yulu/mybatis/mapper/LinkmanMapper.xml</value>
                  <value>classpath:com/yulu/mybatis/mapper/UserMapper.xml</value>
              </list>
-         </property>
+         </property> -->
      </bean>
 
     <!-- (平台事务管理器)transaction manager, use JtaTransactionManager for global tx -->
