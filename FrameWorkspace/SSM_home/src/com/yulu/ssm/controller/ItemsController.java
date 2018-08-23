@@ -2,13 +2,11 @@ package com.yulu.ssm.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 /**
  * 控制器层
  *
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yulu.ssm.pojo.Items;
+import com.yulu.ssm.pojo.ItemsPro;
 import com.yulu.ssm.service.ItemsService;
 @Controller
 public class ItemsController {
@@ -62,4 +61,31 @@ public class ItemsController {
 		return "redirect:findAllItems.action";
 	}
 	
+	@RequestMapping("/queryByName.action")
+	public String queryByName(String name,ModelMap modelMap) {
+		System.out.println(name);
+		if (name != null && !"".equals(name)) {
+			List<Items> list = itemsService.queryByName(name);
+			modelMap.addAttribute("itemsList",list);
+			return "jsp/itemList";
+		}
+		return "redirect:findAllItems.action";
+	}
+	
+	@RequestMapping("/batchDelete.action")
+	public String batchDelete(@RequestParam("idArray[]")Long[] idArray) {
+		System.out.println(idArray);
+		itemsService.batchDelete(idArray);
+		return "success";
+	}
+	
+	@RequestMapping("/batchUpdate.action")
+	public String batchUpdate(ItemsPro itemsPro) {
+		List<Items> list = itemsPro.getList();
+		System.out.println(list);
+		if (list != null && list.size() >0) {
+			itemsService.batchUpdate(list);	
+		}
+		return "redirect:findAllItems.action";
+	}
 }

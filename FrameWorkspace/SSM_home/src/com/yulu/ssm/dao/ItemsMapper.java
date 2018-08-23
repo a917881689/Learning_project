@@ -35,4 +35,9 @@ public interface ItemsMapper {
     int updateByPrimaryKey(Items record);
     
     List<Items> selectItemsList();
+
+	void batchDelete(Long[] idArray);
+
+	void batchUpdatePriceAndDetail(List<Items> list);
+	
 }

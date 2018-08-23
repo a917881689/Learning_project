@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.yulu.ssm.dao.ItemsMapper;
 import com.yulu.ssm.pojo.Items;
+import com.yulu.ssm.pojo.ItemsExample;
 import com.yulu.ssm.service.ItemsService;
 
 
@@ -37,4 +38,23 @@ public class ItemsServiceImpl implements ItemsService {
 	public void updateitem(Items items) {
 		itemsMapper.updateByPrimaryKeySelective(items);
 	}
+
+	@Override
+	public void batchDelete(Long[] idArray) {
+		itemsMapper.batchDelete(idArray);
+	}
+
+	@Override
+	public List<Items> queryByName(String name) {
+		ItemsExample example = new ItemsExample();
+		example.createCriteria().andNameLike("%"+name+"%");
+		return itemsMapper.selectByExampleWithBLOBs(example);
+	}
+
+	@Override
+	public void batchUpdate(List<Items> list) {
+		itemsMapper.batchUpdatePriceAndDetail(list);
+	}
+	
+	
 }

@@ -271,4 +271,21 @@
       createtime = #{createtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <delete id="batchDelete">
+  	delete from items where id in
+  	<foreach item="id" collection="array" open="(" separator="," close=")">
+  		#{id}
+  	</foreach>
+  </delete>
+  <update id="batchUpdatePriceAndDetail" >
+  	<foreach item="items" collection="list" separator=";">
+  		update items
+  		  <set>
+			  price = #{items.price},
+			  detail = #{items.detail}
+		  </set>
+		  where  id=#{items.id}
+  	</foreach>
+  </update>
+  
 </mapper>

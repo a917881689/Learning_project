@@ -19,4 +19,10 @@ public interface ItemsService {
 
 	void updateitem(Items items);
 
+	void batchDelete(Long[] idArray);
+
+	List<Items> queryByName(String name);
+
+	void batchUpdate(List<Items> list);
+
 }
