@@ -103,7 +103,6 @@
         $('#formAdd').form('submit',{
             url:"customer_save.action",
             success:function(data){
-                data = JSON.parse(data);
                 // 2.关闭窗口
                 $('#winAdd').window('close');
                 // 3.弹出提示框
@@ -121,12 +120,11 @@
     function _delete(cid) {
         // 1.异步删除
         $.ajax({
-            url:"customer_delete",
+            url:"customer_delete.action",
 			type:"get",
 			data:{"cust_id":cid},
-			dataType:"json",
+			dataType:"text",
             success:function(data){
-                data = JSON.parse(data);
                 // 弹出提示框
                 $.messager.show({
                     title:'提示消息',
@@ -143,7 +141,6 @@
         $('#formUpdate').form('submit',{
             url:"customer_update.action",
             success:function(data){
-                data = JSON.parse(data);
                 // 2.关闭窗口
                 $('#winUpdate').window('close');
                 // 3.弹出提示框
@@ -226,7 +223,7 @@
                 }
 			});
 		}
-        dg_load('customer_find')
+        dg_load('customer_find.action')
 
     })
 </script>

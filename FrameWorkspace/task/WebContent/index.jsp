@@ -69,7 +69,7 @@
                 <a href="showCustomer.jsp" class="myA">展示客户</a>
             </div>
             <div title="联系人管理" style="padding:10px;">
-                <a href="addLinkman.html" class="myA">添加联系人</a>
+                <a href="addLinkman.action" class="myA">添加联系人</a>
             </div>
             <div title="客户拜访管理">
                 <a href="#" class="myA">添加客户访问记录</a>

@@ -14,7 +14,7 @@ public interface CustomerService {
 	 * 添加客户的方法
 	 * @param customer 客户
 	 */
-	void addCustomer(Customer customer);
+	int addCustomer(Customer customer);
 	/**
 	 * 查询客户列表
 	 * @param

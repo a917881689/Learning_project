@@ -3,6 +3,7 @@ package com.yulu.service.impl;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.yulu.mybatis.mapper.UserMapper;
@@ -12,11 +13,12 @@ import com.yulu.service.UserService;
  * 
  */
 @Transactional
+@Service
 public class UserServiceImpl implements UserService {
 	/**
 	 * dao实现类对象注入
 	 */
-	@Resource(name="userMapper")
+	@Autowired
 	private UserMapper userMapper;
 
 	@Override

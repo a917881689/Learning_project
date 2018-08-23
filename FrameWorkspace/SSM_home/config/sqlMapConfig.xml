@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+	
+<configuration>
+	<!-- 1.环境（配置数据源Spring使用DBCP创建数据源） -->
+	<!-- 2.别名（实体类配置） -->
+	<!-- 3.映射文件的扫描(动态代理的方式就直接交给Spring处理了，简单) -->
+	<!-- 4.配置第三方插件 -->
+</configuration>

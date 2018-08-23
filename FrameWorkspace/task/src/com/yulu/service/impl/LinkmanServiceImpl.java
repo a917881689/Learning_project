@@ -2,16 +2,20 @@ package com.yulu.service.impl;
 
 import java.util.List;
 
+
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.yulu.mybatis.mapper.LinkmanMapper;
 import com.yulu.entity.Linkman;
 import com.yulu.service.LinkmanService;
 @Transactional
+@Service
 public class LinkmanServiceImpl implements LinkmanService{
-	@Resource(name="linkmanMapper")
+	@Autowired
 	private LinkmanMapper linkmanMapper;
 	
 	@Override
